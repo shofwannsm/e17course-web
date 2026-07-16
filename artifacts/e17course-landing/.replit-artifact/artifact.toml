@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "E17Course Landing Page"
+version = "1.0.0"
+id = "artifacts/e17course-landing"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24093
+
+[services.development]
+run = "pnpm --filter @workspace/e17course-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/e17course-landing", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/e17course-landing/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24093"
+BASE_PATH = "/"
