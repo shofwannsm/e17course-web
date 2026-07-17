@@ -14,7 +14,7 @@ const navLinks: NavLink[] = [
   { name: 'Beranda',     href: '/',          type: 'route'  },
   { name: 'Program',    href: '/program',    type: 'route'  },
   { name: 'Publikasi',  href: '#publikasi',  type: 'scroll' },
-  { name: 'Artikel',    href: '#artikel',    type: 'scroll' },
+  { name: 'Artikel',    href: '/artikel',    type: 'route'  },
   { name: 'Tentang Kami', href: '#tentang', type: 'scroll' },
 ];
 
