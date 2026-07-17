@@ -4,9 +4,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/home/Hero';
 import { BannerCarousel } from '@/components/home/BannerCarousel';
 import { PartnerMarquee } from '@/components/home/PartnerMarquee';
-import { ProgramHighlights } from '@/components/home/ProgramHighlights';
-import { ProgramSection } from '@/components/home/ProgramSection';
-import { BnspSection } from '@/components/home/BnspSection';
+import { ProgramPreview } from '@/components/home/ProgramPreview';
 import { WhySection } from '@/components/home/WhySection';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CtaSection } from '@/components/home/CtaSection';
@@ -20,8 +18,7 @@ export default function Home() {
         <Hero />
         <BannerCarousel />
         <PartnerMarquee />
-        <ProgramSection />
-        <BnspSection />
+        <ProgramPreview />
         <WhySection />
         <Testimonials />
         <CtaSection />
