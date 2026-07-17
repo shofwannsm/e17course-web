@@ -1,49 +1,40 @@
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { ArrowRight, Layers } from 'lucide-react';
+import { ArrowRight, Code2, ShieldCheck, Building2 } from 'lucide-react';
 
-const featured = [
+const categories = [
   {
-    category: 'Software Development',
-    title: 'Core Banking – Temenos 24',
-    desc: 'Pelajari sistem core banking yang digunakan dalam industri perbankan modern.',
-    slug: 'core-banking',
-    type: 'bootcamp',
+    icon: Code2,
+    label: 'Bootcamp & Training',
+    desc: 'Program intensif berbasis industri untuk memulai karier IT dari nol hingga siap kerja.',
+    count: '14+ Program',
+    href: '/program#program',
+    color: 'bg-amber-50 border-amber-100 hover:border-primary/30',
+    iconBg: 'bg-primary/10',
+    iconColor: 'text-primary',
+    cta: 'Jelajahi Program',
   },
   {
-    category: 'Software Development',
-    title: 'Outsystems Development',
-    desc: 'Bangun aplikasi enterprise lebih cepat dengan platform low-code modern.',
-    slug: 'outsystems',
-    type: 'bootcamp',
+    icon: ShieldCheck,
+    label: 'Sertifikasi BNSP',
+    desc: 'Validasi kompetensimu dengan sertifikasi resmi yang diakui secara nasional oleh BNSP.',
+    count: '19+ Skema',
+    href: '/program#sertifikasi',
+    color: 'bg-white border-gray-200 hover:border-primary/30',
+    iconBg: 'bg-accent/10',
+    iconColor: 'text-accent',
+    cta: 'Lihat Skema',
   },
   {
-    category: 'Software Development',
-    title: 'Frontend Development – React.js',
-    desc: 'Kuasai fondasi dan praktik terbaik membangun antarmuka web modern.',
-    slug: 'frontend-reactjs',
-    type: 'bootcamp',
-  },
-  {
-    category: 'Software Development',
-    title: 'Backend Development – Node.js',
-    desc: 'Rancang dan bangun API serta layanan backend yang scalable.',
-    slug: 'backend-nodejs',
-    type: 'bootcamp',
-  },
-  {
-    category: 'IT Quality Assurance',
-    title: 'Manual Testing',
-    desc: 'Bangun fondasi kuat pengujian software untuk menemukan bug dan meningkatkan kualitas aplikasi.',
-    slug: 'manual-testing',
-    type: 'bootcamp',
-  },
-  {
-    category: 'IT Quality Assurance',
-    title: 'Automation Testing – Katalon',
-    desc: 'Kuasai automation testing end-to-end memakai tools standar industri.',
-    slug: 'automation-katalon',
-    type: 'bootcamp',
+    icon: Building2,
+    label: 'Corporate Training',
+    desc: 'Solusi peningkatan kompetensi tim yang dirancang khusus sesuai kebutuhan bisnis perusahaan.',
+    count: 'Custom Program',
+    href: '/program#corporate',
+    color: 'bg-secondary/5 border-secondary/10 hover:border-secondary/30',
+    iconBg: 'bg-secondary/10',
+    iconColor: 'text-secondary',
+    cta: 'Jadwalkan Konsultasi',
   },
 ];
 
@@ -59,17 +50,15 @@ export function ProgramPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="inline-flex items-center gap-2 text-[11px] font-extrabold tracking-widest text-primary uppercase mb-3">
-              <Layers size={13} /> Bootcamp &amp; Training
+            <span className="text-[11px] font-extrabold tracking-widest text-primary uppercase mb-3 block">
+              Program Kami
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-secondary leading-tight">
-              BE THE NEXT TECH AVENGERS
+              Satu Platform,<br />
+              <span className="text-primary">Tiga Jalur Belajar</span>
             </h2>
-            <p className="mt-2 text-secondary font-bold text-sm">
-              Mulai Karier IT dengan Learning Path yang Tepat!
-            </p>
-            <p className="mt-1 text-secondary/55 text-sm max-w-lg leading-relaxed">
-              Pilih program yang sesuai dengan tujuan karier dan kuasai skill yang dibutuhkan untuk berkembang di industri teknologi.
+            <p className="mt-2 text-secondary/55 text-sm max-w-md leading-relaxed">
+              Temukan jalur yang paling sesuai dengan tujuan kariermu — dari bootcamp intensif, sertifikasi resmi, hingga pelatihan tim perusahaan.
             </p>
           </motion.div>
 
@@ -78,7 +67,6 @@ export function ProgramPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="shrink-0"
           >
             <Link
               href="/program"
@@ -90,34 +78,42 @@ export function ProgramPreview() {
           </motion.div>
         </div>
 
-        {/* ── Horizontal scroll row ── */}
-        <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
-          {featured.map((item, i) => (
-            <motion.div
-              key={item.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06 }}
-              className="flex-none w-64 snap-start bg-amber-50 border border-amber-100 rounded-2xl p-6 flex flex-col hover:shadow-lg hover:border-primary/30 transition-all group"
-            >
-              <span className="text-[10px] font-extrabold tracking-widest text-primary/70 uppercase mb-3">
-                {item.category}
-              </span>
-              <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug">
-                {item.title}
-              </h3>
-              <p className="text-sm text-secondary/60 leading-relaxed flex-1 mb-5">
-                {item.desc}
-              </p>
-              <Link
-                href="/program"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:text-secondary transition-colors group-hover:gap-2.5"
+        {/* ── 3 Category cards ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {categories.map((cat, i) => {
+            const Icon = cat.icon;
+            return (
+              <motion.div
+                key={cat.label}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className={`border rounded-2xl p-7 flex flex-col gap-4 transition-all hover:shadow-lg ${cat.color}`}
               >
-                Konsultasi &amp; Daftar <ArrowRight size={14} />
-              </Link>
-            </motion.div>
-          ))}
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${cat.iconBg}`}>
+                  <Icon size={22} className={cat.iconColor} />
+                </div>
+
+                <div>
+                  <span className="text-[10px] font-extrabold tracking-widest text-secondary/40 uppercase">
+                    {cat.count}
+                  </span>
+                  <h3 className="text-xl font-extrabold text-secondary mt-0.5">{cat.label}</h3>
+                </div>
+
+                <p className="text-sm text-secondary/60 leading-relaxed flex-1">{cat.desc}</p>
+
+                <Link
+                  href={cat.href}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-secondary/70 hover:text-secondary transition-colors group"
+                >
+                  {cat.cta}
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>
