@@ -7,6 +7,7 @@ import Program from '@/pages/Program';
 import Artikel from '@/pages/Artikel';
 import TentangKami from '@/pages/TentangKami';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 const queryClient = new QueryClient();
 
@@ -24,14 +25,16 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <LanguageProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </LanguageProvider>
   );
 }
 
