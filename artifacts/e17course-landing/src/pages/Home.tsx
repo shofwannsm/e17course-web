@@ -6,6 +6,7 @@ import { BannerCarousel } from '@/components/home/BannerCarousel';
 import { PartnerMarquee } from '@/components/home/PartnerMarquee';
 import { ProgramHighlights } from '@/components/home/ProgramHighlights';
 import { ProgramSection } from '@/components/home/ProgramSection';
+import { BnspSection } from '@/components/home/BnspSection';
 import { WhySection } from '@/components/home/WhySection';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CtaSection } from '@/components/home/CtaSection';
@@ -20,6 +21,7 @@ export default function Home() {
         <BannerCarousel />
         <PartnerMarquee />
         <ProgramSection />
+        <BnspSection />
         <WhySection />
         <Testimonials />
         <CtaSection />
