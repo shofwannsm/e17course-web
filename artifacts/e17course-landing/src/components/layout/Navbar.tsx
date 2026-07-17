@@ -1,20 +1,27 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { Menu, X } from 'lucide-react';
 import logo from '@assets/e17brand/logo.png';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const navLinks = [
-  { name: 'Beranda', href: '#hero' },
-  { name: 'Program', href: '#program' },
-  { name: 'Publikasi', href: '#publikasi' },
-  { name: 'Artikel', href: '#artikel' },
-  { name: 'Tentang Kami', href: '#tentang' },
+type NavLink = {
+  name: string;
+  href: string;
+  type: 'scroll' | 'route';
+};
+
+const navLinks: NavLink[] = [
+  { name: 'Beranda',     href: '/',          type: 'route'  },
+  { name: 'Program',    href: '/program',    type: 'route'  },
+  { name: 'Publikasi',  href: '#publikasi',  type: 'scroll' },
+  { name: 'Artikel',    href: '#artikel',    type: 'scroll' },
+  { name: 'Tentang Kami', href: '#tentang', type: 'scroll' },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -22,16 +29,30 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        setMobileMenuOpen(false);
-      }
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
+
+  const isActive = (link: NavLink) => {
+    if (link.type === 'route') {
+      if (link.href === '/') return location === '/';
+      return location.startsWith(link.href);
     }
+    return false;
   };
+
+  const handleScrollLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
+  const linkClass = (link: NavLink) =>
+    `text-sm font-semibold transition-colors relative py-1 ${
+      isActive(link) ? 'text-primary' : 'text-secondary/70 hover:text-secondary'
+    }`;
 
   return (
     <header
@@ -51,25 +72,26 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className={`text-sm font-semibold transition-colors relative py-1 ${
-                  link.name === 'Beranda'
-                    ? 'text-primary'
-                    : 'text-secondary/70 hover:text-secondary'
-                }`}
-              >
-                {link.name}
-                {link.name === 'Beranda' && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary rounded-full" />
-                )}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.type === 'route' ? (
+                <Link key={link.name} href={link.href} className={linkClass(link)}>
+                  {link.name}
+                  {isActive(link) && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary rounded-full" />
+                  )}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleScrollLink(e, link.href)}
+                  className={linkClass(link)}
+                >
+                  {link.name}
+                </a>
+              )
+            )}
           </nav>
-
 
           {/* Mobile Toggle */}
           <button
@@ -91,18 +113,28 @@ export function Navbar() {
             className="md:hidden bg-white border-t border-gray-100"
           >
             <nav className="flex flex-col px-4 py-4 gap-3 max-w-7xl mx-auto">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
-                  className={`text-base font-medium py-2 ${
-                    link.name === 'Beranda' ? 'text-primary' : 'text-secondary/70'
-                  }`}
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.type === 'route' ? (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`text-base font-medium py-2 ${
+                      isActive(link) ? 'text-primary' : 'text-secondary/70'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleScrollLink(e, link.href)}
+                    className="text-base font-medium py-2 text-secondary/70"
+                  >
+                    {link.name}
+                  </a>
+                )
+              )}
             </nav>
           </motion.div>
         )}
