@@ -2,60 +2,136 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Star } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { bnspDetailsMap, type BnspSchemeDetail } from '@/data/bnspDetails';
+import { BnspDetailModal } from './BnspDetailModal';
+
+const categories = {
+  id: [
+    'Semua',
+    'Data Science & Advanced Analytics',
+    'Software Development & Programming',
+    'Multimedia, Design & Content Creation',
+    'IT Infrastructure & Networking',
+    'Office Productivity & Digital Literacy',
+    'Digital Business & Marketing',
+  ],
+  en: [
+    'All',
+    'Data Science & Advanced Analytics',
+    'Software Development & Programming',
+    'Multimedia, Design & Content Creation',
+    'IT Infrastructure & Networking',
+    'Office Productivity & Digital Literacy',
+    'Digital Business & Marketing',
+  ],
+};
 
 const schemes = {
   id: [
-    { category:'Data Science',        title:'Artificial Intelligence Management', desc:'Kuasai pengelolaan proyek AI dari perencanaan hingga perawatan solusi kecerdasan buatan.',           slug:'ai-management'    },
-    { category:'Data Science',        title:'Data Analyst',                       desc:'Buktikan kemampuan mengolah dan mengamankan data untuk mendukung keputusan bisnis.',                  slug:'data-analyst'     },
-    { category:'Data Science',        title:'Data Scientist',                     desc:'Validasi kompetensi membangun dan mengevaluasi model data science secara profesional.',               slug:'data-scientist'   },
-    { category:'Data Science',        title:'Big Data Specialist',                desc:'Sertifikasi kemampuan mengelola dan memproses data skala besar menggunakan platform modern.',        slug:'big-data'         },
-    { category:'Software Development',title:'Junior Web Developer',               desc:'Validasi kompetensi dasar pengembangan web front-end dan back-end sesuai standar BNSP.',             slug:'junior-web-dev'   },
-    { category:'Software Development',title:'Pemrograman Berorientasi Objek',     desc:'Sertifikasi penguasaan konsep OOP dan implementasinya dalam bahasa pemrograman modern.',            slug:'oop'              },
-    { category:'Software Development',title:'Mobile Application Developer',       desc:'Buktikan kemampuan merancang dan membangun aplikasi mobile lintas platform.',                        slug:'mobile-dev'       },
-    { category:'Software Development',title:'Database Programmer',                desc:'Validasi kompetensi desain, implementasi, dan pengelolaan database relasional.',                     slug:'database'         },
-    { category:'Multimedia & Design', title:'Graphic Designer',                   desc:'Sertifikasi kompetensi desain grafis digital untuk media cetak dan digital profesional.',            slug:'graphic-designer' },
-    { category:'Multimedia & Design', title:'UI/UX Designer',                     desc:'Validasi kemampuan merancang antarmuka dan pengalaman pengguna yang efektif dan estetis.',           slug:'ui-ux'            },
-    { category:'Multimedia & Design', title:'Video Editor',                       desc:'Buktikan kompetensi produksi dan pengeditan video untuk konten digital berkualitas tinggi.',         slug:'video-editor'     },
-    { category:'IT Infrastructure',   title:'Administrasi Sistem Jaringan',       desc:'Sertifikasi kemampuan instalasi, konfigurasi, dan pemeliharaan infrastruktur jaringan komputer.',   slug:'network-admin'    },
-    { category:'IT Infrastructure',   title:'Cyber Security Analyst',             desc:'Validasi kompetensi identifikasi dan penanganan ancaman keamanan siber pada sistem organisasi.',    slug:'cyber-security'   },
-    { category:'IT Infrastructure',   title:'Cloud Computing Practitioner',       desc:'Buktikan kemampuan mengelola layanan cloud untuk kebutuhan infrastruktur bisnis modern.',           slug:'cloud'            },
-    { category:'Office Productivity', title:'Spreadsheet Specialist',             desc:'Sertifikasi penguasaan pengolahan data, formula, dan visualisasi menggunakan aplikasi spreadsheet.',slug:'spreadsheet'      },
-    { category:'Office Productivity', title:'Digital Documentation',              desc:'Validasi kemampuan membuat dan mengelola dokumen digital profesional untuk kebutuhan kerja.',        slug:'digital-docs'     },
-    { category:'Digital Business',    title:'Digital Marketing Specialist',       desc:'Sertifikasi kompetensi strategi dan implementasi pemasaran digital yang terukur dan efektif.',      slug:'digital-mktg'     },
-    { category:'Digital Business',    title:'E-Commerce Operator',                desc:'Validasi kemampuan mengelola toko online, katalog produk, dan transaksi digital secara profesional.',slug:'ecommerce'        },
-    { category:'Digital Business',    title:'Content Creator Professional',       desc:'Buktikan kompetensi perencanaan, pembuatan, dan distribusi konten digital yang efektif.',          slug:'content-creator'  },
+    // Category 1: Data Science & Advanced Analytics
+    { category: 'Data Science & Advanced Analytics', tag: 'DATA SCIENCE', title: 'Artificial Intelligence Management', desc: 'Dapatkan pengakuan resmi BNSP atas kompetensimu mengelola proyek AI, sesuai SKKNI Bidang Artificial Intelligence.', slug: 'ai-management' },
+    { category: 'Data Science & Advanced Analytics', tag: 'DATA SCIENCE', title: 'Data Analyst', desc: 'Buktikan kompetensimu mengolah dan mengamankan data secara profesional dengan sertifikasi resmi BNSP.', slug: 'data-analyst' },
+    { category: 'Data Science & Advanced Analytics', tag: 'DATA SCIENCE', title: 'Data Scientist', desc: 'Validasi kompetensimu membangun dan mengevaluasi model data science, diakui secara nasional oleh BNSP.', slug: 'data-scientist' },
+
+    // Category 2: Software Development & Programming
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Backend Programmer', desc: 'Sertifikasi resmi BNSP untuk kompetensimu merancang dan membangun layanan backend yang andal.', slug: 'backend-programmer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Frontend Programmer', desc: 'Dapatkan pengakuan resmi atas kompetensi membangun antarmuka web modern, sesuai standar BNSP.', slug: 'frontend-programmer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Junior Web Developer', desc: 'Buktikan kompetensi dasar pengembangan web-mu dengan sertifikasi resmi yang diakui industri.', slug: 'junior-web-developer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Junior Web Programmer', desc: 'Validasi kompetensi dasar pemrograman webmu melalui sertifikasi kompetensi BNSP.', slug: 'junior-web-programmer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Pemrogram Junior', desc: 'Sertifikasi resmi BNSP untuk kompetensi pemrograman tingkat dasar yang kamu kuasai.', slug: 'pemrogram-junior' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Web Developer Junior', desc: 'Buktikan kompetensi membangun halaman web dengan kode terstruktur, sesuai standar BNSP.', slug: 'web-developer-junior' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Database Programmer', desc: 'Dapatkan pengakuan resmi atas kompetensimu merancang dan mengelola basis data aplikasi.', slug: 'database-programmer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'IT Quality Assurance', desc: 'Validasi kompetensi pengujian software-mu, dari unit testing hingga audit TI, dengan sertifikasi BNSP.', slug: 'it-quality-assurance' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'UI/UX Designer', desc: 'Buktikan kompetensi merancang pengalaman pengguna dengan pengakuan resmi dari BNSP.', slug: 'ui-ux-designer' },
+
+    // Category 3: Multimedia, Design & Content Creation
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Editor Video', desc: 'Sertifikasi resmi BNSP atas kompetensi editing video profesionalmu, diakui di seluruh industri.', slug: 'editor-video' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Desainer Grafis Muda', desc: 'Dapatkan pengakuan resmi atas kompetensi dasar desain grafis yang kamu miliki.', slug: 'desainer-grafis-muda' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Content Creator', desc: 'Validasi kompetensimu memproduksi konten multimedia secara profesional dengan sertifikasi BNSP.', slug: 'content-creator' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Desainer Konten Visual Junior', desc: 'Buktikan kompetensi merancang konsep hingga materi visual siap produksi, diakui BNSP.', slug: 'desainer-konten-visual-junior' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Desainer Multimedia Muda', desc: 'Sertifikasi resmi atas kompetensimu menggabungkan teks, gambar, dan audio jadi produk multimedia.', slug: 'desainer-multimedia-muda' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Animator Muda', desc: 'Dapatkan pengakuan resmi BNSP atas kompetensi animasi digital 2D yang kamu kuasai.', slug: 'animator-muda' },
+
+    // Category 4: IT Infrastructure & Networking
+    { category: 'IT Infrastructure & Networking', tag: 'IT INFRASTRUCTURE', title: 'Teknisi Pusat Data Muda', desc: 'Validasi kompetensimu mengelola operasional harian pusat data dengan sertifikasi resmi BNSP.', slug: 'teknisi-pusat-data-muda' },
+    { category: 'IT Infrastructure & Networking', tag: 'IT INFRASTRUCTURE', title: 'Network Administrator Muda', desc: 'Buktikan kompetensi merancang dan mengonfigurasi jaringan komputer, diakui secara nasional.', slug: 'network-administrator-muda' },
+    { category: 'IT Infrastructure & Networking', tag: 'IT INFRASTRUCTURE', title: 'Teknisi Perbaikan Komputer', desc: 'Sertifikasi resmi BNSP atas kompetensi perbaikan hardware komputer yang kamu miliki.', slug: 'teknisi-perbaikan-komputer' },
+    { category: 'IT Infrastructure & Networking', tag: 'IT INFRASTRUCTURE', title: 'Data Center Manager', desc: 'Dapatkan pengakuan resmi atas kompetensi manajerial mengelola operasional pusat data.', slug: 'data-center-manager' },
+
+    // Category 5: Office Productivity & Digital Literacy
+    { category: 'Office Productivity & Digital Literacy', tag: 'OFFICE PRODUCTIVITY', title: 'Data Management Staff', desc: 'Validasi kompetensi dasar pengoperasian komputer dan aplikasi perkantoranmu dengan sertifikasi BNSP.', slug: 'data-management-staff' },
+    { category: 'Office Productivity & Digital Literacy', tag: 'OFFICE PRODUCTIVITY', title: 'Junior Office Operator', desc: 'Buktikan kompetensi mengoperasikan aplikasi perkantoran, diakui secara resmi oleh BNSP.', slug: 'junior-office-operator' },
+    { category: 'Office Productivity & Digital Literacy', tag: 'OFFICE PRODUCTIVITY', title: 'Operator Komputer Muda', desc: 'Sertifikasi resmi atas kompetensi dasar pengoperasian sistem dan aplikasi perkantoranmu.', slug: 'operator-komputer-muda' },
+
+    // Category 6: Digital Business & Marketing
+    { category: 'Digital Business & Marketing', tag: 'DIGITAL BUSINESS', title: 'Digital Marketing', desc: 'Dapatkan pengakuan resmi BNSP atas kompetensimu menyusun strategi kampanye dan pemasaran digital.', slug: 'digital-marketing' },
   ],
   en: [
-    { category:'Data Science',        title:'Artificial Intelligence Management', desc:'Master AI project management from planning to maintaining intelligent solutions.',                    slug:'ai-management'    },
-    { category:'Data Science',        title:'Data Analyst',                       desc:'Prove your ability to process and secure data to support business decision-making.',                 slug:'data-analyst'     },
-    { category:'Data Science',        title:'Data Scientist',                     desc:'Validate the competency of building and evaluating data science models professionally.',             slug:'data-scientist'   },
-    { category:'Data Science',        title:'Big Data Specialist',                desc:'Certification of ability to manage and process large-scale data using modern platforms.',           slug:'big-data'         },
-    { category:'Software Development',title:'Junior Web Developer',               desc:'Validate basic web development competency for front-end and back-end per BNSP standards.',          slug:'junior-web-dev'   },
-    { category:'Software Development',title:'Object-Oriented Programming',        desc:'Certification of mastery of OOP concepts and their implementation in modern programming languages.',slug:'oop'              },
-    { category:'Software Development',title:'Mobile Application Developer',       desc:'Prove the ability to design and build cross-platform mobile applications.',                        slug:'mobile-dev'       },
-    { category:'Software Development',title:'Database Programmer',                desc:'Validate competency in design, implementation, and management of relational databases.',            slug:'database'         },
-    { category:'Multimedia & Design', title:'Graphic Designer',                   desc:'Certification of digital graphic design competency for professional print and digital media.',      slug:'graphic-designer' },
-    { category:'Multimedia & Design', title:'UI/UX Designer',                     desc:'Validate the ability to design effective and aesthetic user interfaces and experiences.',           slug:'ui-ux'            },
-    { category:'Multimedia & Design', title:'Video Editor',                       desc:'Prove video production and editing competency for high-quality digital content.',                   slug:'video-editor'     },
-    { category:'IT Infrastructure',   title:'Network System Administration',      desc:'Certification of ability to install, configure, and maintain computer network infrastructure.',    slug:'network-admin'    },
-    { category:'IT Infrastructure',   title:'Cyber Security Analyst',             desc:'Validate competency in identifying and handling cyber security threats in organisational systems.', slug:'cyber-security'   },
-    { category:'IT Infrastructure',   title:'Cloud Computing Practitioner',       desc:'Prove the ability to manage cloud services for modern business infrastructure needs.',              slug:'cloud'            },
-    { category:'Office Productivity', title:'Spreadsheet Specialist',             desc:'Certification of mastery of data processing, formulas, and visualisation using spreadsheet apps.', slug:'spreadsheet'      },
-    { category:'Office Productivity', title:'Digital Documentation',              desc:'Validate the ability to create and manage professional digital documents for work needs.',          slug:'digital-docs'     },
-    { category:'Digital Business',    title:'Digital Marketing Specialist',       desc:'Certification of strategy and implementation competency for measurable digital marketing.',        slug:'digital-mktg'     },
-    { category:'Digital Business',    title:'E-Commerce Operator',                desc:'Validate the ability to manage online stores, product catalogues, and digital transactions.',      slug:'ecommerce'        },
-    { category:'Digital Business',    title:'Content Creator Professional',       desc:'Prove competency in planning, creating, and distributing effective digital content.',               slug:'content-creator'  },
-  ],
-};
+    // Category 1: Data Science & Advanced Analytics
+    { category: 'Data Science & Advanced Analytics', tag: 'DATA SCIENCE', title: 'Artificial Intelligence Management', desc: 'Get official BNSP recognition for your competence in managing AI projects, per SKKNI in Artificial Intelligence.', slug: 'ai-management' },
+    { category: 'Data Science & Advanced Analytics', tag: 'DATA SCIENCE', title: 'Data Analyst', desc: 'Prove your competence in processing and securing data professionally with official BNSP certification.', slug: 'data-analyst' },
+    { category: 'Data Science & Advanced Analytics', tag: 'DATA SCIENCE', title: 'Data Scientist', desc: 'Validate your competence in building and evaluating data science models, nationally recognised by BNSP.', slug: 'data-scientist' },
 
-const categories = {
-  id: ['Semua','Data Science','Software Development','Multimedia & Design','IT Infrastructure','Office Productivity','Digital Business'],
-  en: ['All',  'Data Science','Software Development','Multimedia & Design','IT Infrastructure','Office Productivity','Digital Business'],
+    // Category 2: Software Development & Programming
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Backend Programmer', desc: 'Official BNSP certification for your competence in designing and building reliable backend services.', slug: 'backend-programmer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Frontend Programmer', desc: 'Get official recognition for your competence in building modern web interfaces, per BNSP standards.', slug: 'frontend-programmer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Junior Web Developer', desc: 'Prove your basic web development competence with industry-recognised official certification.', slug: 'junior-web-developer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Junior Web Programmer', desc: 'Validate your basic web programming competence through BNSP competency certification.', slug: 'junior-web-programmer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Pemrogram Junior', desc: 'Official BNSP certification for entry-level programming competencies you master.', slug: 'pemrogram-junior' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Web Developer Junior', desc: 'Prove your competence in building web pages with structured code, per BNSP standards.', slug: 'web-developer-junior' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'Database Programmer', desc: 'Get official recognition for your competence in designing and managing application databases.', slug: 'database-programmer' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'IT Quality Assurance', desc: 'Validate your software testing competence, from unit testing to IT audit, with BNSP certification.', slug: 'it-quality-assurance' },
+    { category: 'Software Development & Programming', tag: 'SOFTWARE DEVELOPMENT', title: 'UI/UX Designer', desc: 'Prove your competence in designing user experiences with official recognition from BNSP.', slug: 'ui-ux-designer' },
+
+    // Category 3: Multimedia, Design & Content Creation
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Video Editor', desc: 'Official BNSP certification for your professional video editing competence, recognised industry-wide.', slug: 'editor-video' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Junior Graphic Designer', desc: 'Get official recognition for the basic graphic design competencies you possess.', slug: 'desainer-grafis-muda' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Content Creator', desc: 'Validate your competence in producing multimedia content professionally with BNSP certification.', slug: 'content-creator' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Junior Visual Content Designer', desc: 'Prove your competence from concept design to production-ready visual materials, recognised by BNSP.', slug: 'desainer-konten-visual-junior' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Junior Multimedia Designer', desc: 'Official certification for combining text, images, and audio into multimedia products.', slug: 'desainer-multimedia-muda' },
+    { category: 'Multimedia, Design & Content Creation', tag: 'MULTIMEDIA & DESIGN', title: 'Junior Animator', desc: 'Get official BNSP recognition for the 2D digital animation competencies you master.', slug: 'animator-muda' },
+
+    // Category 4: IT Infrastructure & Networking
+    { category: 'IT Infrastructure & Networking', tag: 'IT INFRASTRUCTURE', title: 'Data Center Technician', desc: 'Validate your competence in managing daily data center operations with official BNSP certification.', slug: 'teknisi-pusat-data-muda' },
+    { category: 'IT Infrastructure & Networking', tag: 'IT INFRASTRUCTURE', title: 'Junior Network Administrator', desc: 'Prove your competence in designing and configuring computer networks, nationally recognised.', slug: 'network-administrator-muda' },
+    { category: 'IT Infrastructure & Networking', tag: 'IT INFRASTRUCTURE', title: 'Computer Repair Technician', desc: 'Official BNSP certification for computer hardware repair competencies you possess.', slug: 'teknisi-perbaikan-komputer' },
+    { category: 'IT Infrastructure & Networking', tag: 'IT INFRASTRUCTURE', title: 'Data Center Manager', desc: 'Get official recognition for managerial competence in managing data center operations.', slug: 'data-center-manager' },
+
+    // Category 5: Office Productivity & Digital Literacy
+    { category: 'Office Productivity & Digital Literacy', tag: 'OFFICE PRODUCTIVITY', title: 'Data Management Staff', desc: 'Validate your basic computer and office application operation competencies with BNSP certification.', slug: 'data-management-staff' },
+    { category: 'Office Productivity & Digital Literacy', tag: 'OFFICE PRODUCTIVITY', title: 'Junior Office Operator', desc: 'Prove your competence in operating office applications, officially recognised by BNSP.', slug: 'junior-office-operator' },
+    { category: 'Office Productivity & Digital Literacy', tag: 'OFFICE PRODUCTIVITY', title: 'Junior Computer Operator', desc: 'Official certification for basic system and office application operation competencies.', slug: 'operator-komputer-muda' },
+
+    // Category 6: Digital Business & Marketing
+    { category: 'Digital Business & Marketing', tag: 'DIGITAL BUSINESS', title: 'Digital Marketing', desc: 'Get official BNSP recognition for your competence in formulating digital marketing and campaign strategies.', slug: 'digital-marketing' },
+  ],
 };
 
 const T = {
-  id: { badge:'Sertifikasi BNSP', h2a:'TERLATIH,', h2b:'KOMPETEN,', h2c:'UNGGUL!', quote:'Untuk menang di dunia kerja, kompetensi saja tidak cukup.', quoteEm:'You need a stamp of excellence!', badges:['Diakui Nasional','Standar Industri','Ujian Terstruktur'], sub:'Pilihan Skema Sertifikasi', link:'Lihat detail & persyaratan', cta:'Lihat Semua Skema Sertifikasi' },
-  en: { badge:'BNSP Certification', h2a:'TRAINED,', h2b:'COMPETENT,', h2c:'EXCELLENT!', quote:'To win in the workplace, competency alone is not enough.', quoteEm:'You need a stamp of excellence!', badges:['Nationally Recognised','Industry Standard','Structured Exam'], sub:'Available Certification Schemes', link:'View details & requirements', cta:'View All Certification Schemes' },
+  id: {
+    badge: 'PROGRAM SERTIFIKASI KOMPETENSI BNSP 2026',
+    h2a: 'PILIH SKEMA SERTIFIKASI',
+    h2b: 'SESUAI BIDANGMU',
+    desc: '26 skema sertifikasi kompetensi BNSP dari PT Edukasi Tujuh Belas, mengacu pada SKKNI Kementerian Ketenagakerjaan RI dan diuji oleh Asesor berlisensi LSP.',
+    quote: 'Untuk menang di dunia kerja, kompetensi saja tidak cukup.',
+    quoteEm: 'You need an official stamp of excellence!',
+    badges: ['Diakui Nasional', 'Mengacu SKKNI Kemnaker RI', 'Asesor Berlisensi LSP'],
+    sub: 'Skema Sertifikasi Resmi BNSP (26 Skema)',
+    link: 'Lihat detail & unit kompetensi',
+    cta: 'Konsultasi & Daftar Sertifikasi',
+  },
+  en: {
+    badge: 'BNSP COMPETENCY CERTIFICATION PROGRAM 2026',
+    h2a: 'CHOOSE CERTIFICATION SCHEME',
+    h2b: 'FOR YOUR FIELD',
+    desc: '26 BNSP competency certification schemes from PT Edukasi Tujuh Belas, based on SKKNI Ministry of Manpower RI and assessed by LSP licensed assessors.',
+    quote: 'To win in the workplace, competency alone is not enough.',
+    quoteEm: 'You need an official stamp of excellence!',
+    badges: ['Nationally Recognised', 'SKKNI Compliant', 'LSP Licensed Assessors'],
+    sub: 'Official BNSP Certification Schemes (26 Schemes)',
+    link: 'View details & unit competencies',
+    cta: 'Consult & Register for Certification',
+  },
 };
 
 export function BnspSection() {
@@ -64,8 +140,18 @@ export function BnspSection() {
   const cats = categories[lang];
   const items = schemes[lang];
   const [activeCat, setActiveCat] = useState(cats[0]);
+  const [selectedScheme, setSelectedScheme] = useState<BnspSchemeDetail | null>(null);
 
-  const filtered = activeCat === cats[0] ? items : items.filter(s => s.category === categories.id[cats.indexOf(activeCat)]);
+  const filtered = activeCat === cats[0] 
+    ? items 
+    : items.filter(s => s.category === (cats.indexOf(activeCat) >= 1 ? categories.id[cats.indexOf(activeCat)] : activeCat));
+
+  const handleOpenDetail = (slug: string) => {
+    const detail = bnspDetailsMap[slug];
+    if (detail) {
+      setSelectedScheme(detail);
+    }
+  };
 
   return (
     <section id="sertifikasi" className="py-24 bg-gray-50 relative overflow-hidden">
@@ -73,13 +159,14 @@ export function BnspSection() {
         <span className="text-[18rem] font-extrabold text-secondary/[0.025] select-none leading-none">BNSP</span>
       </div>
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative">
-        <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="text-center mb-14 max-w-2xl mx-auto">
+        <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="text-center mb-14 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-white border border-primary/20 shadow-sm text-primary text-[11px] font-extrabold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
             <ShieldCheck size={14} />{t.badge}
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-secondary leading-[1.1] mb-5">
-            {t.h2a}<br /><span className="text-primary">{t.h2b}</span> {t.h2c}
+            {t.h2a}<br /><span className="text-primary">{t.h2b}</span>
           </h2>
+          <p className="text-secondary/70 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-6">{t.desc}</p>
           <div className="bg-white border border-gray-200 rounded-2xl px-6 py-4 inline-block text-left shadow-sm mb-6">
             <div className="flex gap-1 mb-2">{[...Array(5)].map((_,i) => <Star key={i} size={12} className="fill-primary text-primary" />)}</div>
             <p className="text-secondary/70 text-sm leading-relaxed">{t.quote} <em className="text-accent font-semibold not-italic">{t.quoteEm}</em></p>
@@ -87,35 +174,49 @@ export function BnspSection() {
           <div className="flex flex-wrap justify-center gap-2 mb-2">
             {t.badges.map(b => <span key={b} className="bg-primary/10 text-secondary text-xs font-semibold px-3 py-1 rounded-full">✓ {b}</span>)}
           </div>
-          <h3 className="text-lg font-bold text-secondary mt-6">{t.sub}</h3>
+          <h3 className="text-xl font-bold text-secondary mt-8">{t.sub}</h3>
         </motion.div>
 
         <div className="flex flex-wrap gap-2 justify-center mb-10">
           {cats.map(cat => (
-            <button key={cat} onClick={() => setActiveCat(cat)} className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all ${activeCat===cat ? 'bg-primary text-secondary border-primary shadow-sm' : 'bg-white text-secondary/60 border-gray-200 hover:border-gray-400 hover:text-secondary'}`}>{cat}</button>
+            <button key={cat} onClick={() => setActiveCat(cat)} className={`px-4 py-2 rounded-full text-xs md:text-sm font-semibold border transition-all ${activeCat===cat ? 'bg-primary text-secondary border-primary shadow-sm' : 'bg-white text-secondary/60 border-gray-200 hover:border-gray-400 hover:text-secondary'}`}>{cat}</button>
           ))}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((s, i) => (
-            <motion.div key={s.slug} initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay: i*0.05 }}
-              className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-lg hover:border-primary/30 transition-all group">
-              <span className="text-[10px] font-extrabold tracking-widest text-accent uppercase mb-3">{s.category}</span>
-              <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug">{s.title}</h3>
-              <p className="text-sm text-secondary/55 leading-relaxed flex-1 mb-5">{s.desc}</p>
-              <a href={`#${s.slug}`} className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-secondary transition-colors group-hover:gap-2.5">
-                {t.link} <ArrowRight size={14} />
-              </a>
+            <motion.div key={s.slug} initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay: i*0.03 }}
+              onClick={() => handleOpenDetail(s.slug)}
+              className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:border-primary/40 transition-all cursor-pointer group">
+              <div className="flex items-center justify-between gap-2 mb-3">
+                <span className="text-[10px] font-extrabold tracking-wider text-primary uppercase bg-primary/10 px-2.5 py-1 rounded-md">{s.tag}</span>
+                <span className="text-[11px] text-gray-400 font-bold group-hover:text-primary transition-colors">Detail & Unit Uji →</span>
+              </div>
+              <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug group-hover:text-primary transition-colors">{s.title}</h3>
+              <p className="text-sm text-secondary/60 leading-relaxed flex-1 mb-5">{s.desc}</p>
+              <button 
+                onClick={(e) => { e.stopPropagation(); handleOpenDetail(s.slug); }}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary transition-colors group-hover:gap-2.5"
+              >
+                {t.link} <ArrowRight size={13} />
+              </button>
             </motion.div>
           ))}
         </div>
 
         <motion.div initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="flex justify-center mt-12">
-          <button className="px-8 py-4 rounded-full border-2 border-secondary text-secondary font-bold text-base hover:bg-secondary hover:text-white transition-all flex items-center gap-2 group">
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full bg-primary text-secondary font-bold text-base hover:bg-primary/90 transition-all flex items-center gap-2 group shadow-md hover:shadow-lg">
             {t.cta}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
         </motion.div>
       </div>
+
+      {/* Interactive Detail Modal */}
+      <BnspDetailModal 
+        scheme={selectedScheme}
+        isOpen={Boolean(selectedScheme)}
+        onClose={() => setSelectedScheme(null)}
+      />
     </section>
   );
 }
