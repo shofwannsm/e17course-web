@@ -219,7 +219,7 @@ export function BnspDetailModal({ scheme, isOpen, onClose }: BnspDetailModalProp
           <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-1">
             
             <a
-              href={`https://wa.me/6281234567890?text=${waMessage}`}
+              href={`https://wa.me/6281399271717?text=${waMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3 rounded-full bg-secondary text-white font-extrabold text-xs sm:text-sm hover:bg-secondary/90 transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg"

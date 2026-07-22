@@ -6,24 +6,24 @@ import { useLanguage } from '@/context/LanguageContext';
 const T = {
   id: {
     eyebrow: 'Program Kami',
-    h2: 'Satu Platform,',
-    h2accent: 'Tiga Jalur Belajar',
-    desc: 'Dari bootcamp intensif, sertifikasi resmi BNSP, hingga pelatihan tim perusahaan — pilih jalur yang paling sesuai dengan tujuanmu.',
+    h2: 'Pilihan Program',
+    h2accent: 'E17 Course',
+    desc: 'Temukan program pelatihan dan sertifikasi IT yang dirancang khusus sesuai dengan tujuan kariermu.',
     viewAll: 'Lihat Semua Program',
     categories: [
-      { eyebrow:'Jalur 01', label:'Bootcamp & Training',  tagline:'Siap Kerja dalam Hitungan Bulan',       desc:'Program intensif berbasis industri — dari nol hingga siap berkarier di bidang IT profesional.', count:'14+', countLabel:'Program Aktif',      chips:['Software Dev','QA Testing','Data & AI'],            cta:'Jelajahi Program',         href:'/program#program',      chipBg:'bg-white/10 text-white/70',  bg:'bg-secondary',   border:'',                      iconWrap:'bg-primary/20 text-primary',    textMain:'text-white',   textSub:'text-white/60',     textCount:'text-primary',  ctaClass:'bg-primary text-secondary hover:bg-primary/90' },
+      { eyebrow:'Jalur 01', label:'Bootcamp',  tagline:'Siap Kerja dalam Hitungan Bulan',       desc:'Program intensif berbasis industri — dari nol hingga siap berkarier di bidang IT profesional.', count:'6', countLabel:'Program Utama',       chips:['Software Dev','QA Testing','Core Banking'],          cta:'Jelajahi Program',         href:'/program#program',      chipBg:'bg-white/10 text-white/70',  bg:'bg-secondary',   border:'',                      iconWrap:'bg-primary/20 text-primary',    textMain:'text-white',   textSub:'text-white/60',     textCount:'text-primary',  ctaClass:'bg-primary text-secondary hover:bg-primary/90' },
       { eyebrow:'Jalur 02', label:'Sertifikasi BNSP',     tagline:'Stamp of Excellence Resmi Nasional',    desc:'Validasi kompetensimu dengan sertifikasi yang diakui negara dan dipercaya perusahaan.',        count:'26', countLabel:'Skema Tersedia',    chips:['Data Science','Software Dev','Digital Business'],       cta:'Lihat Skema',              href:'/program#sertifikasi',  chipBg:'bg-accent/10 text-accent',   bg:'bg-amber-50', border:'border border-amber-200', iconWrap:'bg-accent/15 text-accent',      textMain:'text-secondary',textSub:'text-secondary/55', textCount:'text-accent',   ctaClass:'bg-secondary text-white hover:bg-secondary/90' },
       { eyebrow:'Jalur 03', label:'Corporate Training',   tagline:'Transformasi Kompetensi Tim Anda',      desc:'Pelatihan custom yang dirancang khusus untuk kebutuhan dan target bisnis perusahaanmu.',        count:'Custom', countLabel:'Sesuai Kebutuhan', chips:['In-house','Online / Hybrid','Bersertifikat'],          cta:'Jadwalkan Konsultasi',    href:'/program#corporate',    chipBg:'bg-secondary/8 text-secondary',bg:'bg-white',    border:'border border-gray-200', iconWrap:'bg-secondary/10 text-secondary',textMain:'text-secondary',textSub:'text-secondary/55', textCount:'text-secondary',ctaClass:'bg-secondary text-white hover:bg-secondary/90' },
     ],
   },
   en: {
     eyebrow: 'Our Programs',
-    h2: 'One Platform,',
-    h2accent: 'Three Learning Paths',
-    desc: 'From intensive bootcamps, official BNSP certification, to corporate team training — pick the path that fits your goals.',
+    h2: 'Explore Our',
+    h2accent: 'Programs',
+    desc: 'Discover IT training and certification programs tailored specifically to your career goals.',
     viewAll: 'View All Programs',
     categories: [
-      { eyebrow:'Path 01', label:'Bootcamp & Training',  tagline:'Job-Ready in a Matter of Months',       desc:'Industry-based intensive program — from zero to a professional IT career.',                    count:'14+', countLabel:'Active Programs',  chips:['Software Dev','QA Testing','Data & AI'],            cta:'Explore Programs',         href:'/program#program',      chipBg:'bg-white/10 text-white/70',  bg:'bg-secondary',   border:'',                      iconWrap:'bg-primary/20 text-primary',    textMain:'text-white',   textSub:'text-white/60',     textCount:'text-primary',  ctaClass:'bg-primary text-secondary hover:bg-primary/90' },
+      { eyebrow:'Path 01', label:'Bootcamp',  tagline:'Job-Ready in a Matter of Months',       desc:'Industry-based intensive program — from zero to a professional IT career.',                    count:'6', countLabel:'Main Programs',     chips:['Software Dev','QA Testing','Core Banking'],          cta:'Explore Programs',         href:'/program#program',      chipBg:'bg-white/10 text-white/70',  bg:'bg-secondary',   border:'',                      iconWrap:'bg-primary/20 text-primary',    textMain:'text-white',   textSub:'text-white/60',     textCount:'text-primary',  ctaClass:'bg-primary text-secondary hover:bg-primary/90' },
       { eyebrow:'Path 02', label:'BNSP Certification',   tagline:'Official National Stamp of Excellence', desc:'Validate your competence with nationally recognised certification trusted by companies.',     count:'26', countLabel:'Available Schemes', chips:['Data Science','Software Dev','Digital Business'],       cta:'View Schemes',             href:'/program#sertifikasi',  chipBg:'bg-accent/10 text-accent',   bg:'bg-amber-50', border:'border border-amber-200', iconWrap:'bg-accent/15 text-accent',      textMain:'text-secondary',textSub:'text-secondary/55', textCount:'text-accent',   ctaClass:'bg-secondary text-white hover:bg-secondary/90' },
       { eyebrow:'Path 03', label:'Corporate Training',   tagline:'Transform Your Team\'s Competency',     desc:'Custom training specifically designed to meet your company\'s business needs and targets.',    count:'Custom', countLabel:'Tailored Needs',   chips:['In-house','Online / Hybrid','Certified'],              cta:'Schedule Consultation',   href:'/program#corporate',    chipBg:'bg-secondary/8 text-secondary',bg:'bg-white',    border:'border border-gray-200', iconWrap:'bg-secondary/10 text-secondary',textMain:'text-secondary',textSub:'text-secondary/55', textCount:'text-secondary',ctaClass:'bg-secondary text-white hover:bg-secondary/90' },
     ],

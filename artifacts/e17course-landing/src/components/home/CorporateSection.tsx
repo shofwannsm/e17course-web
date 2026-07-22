@@ -4,34 +4,46 @@ import { useLanguage } from '@/context/LanguageContext';
 
 const T = {
   id: {
-    badge:'Corporate Training',
-    h2a:'Solusi Pengembangan', h2b:'Talenta Digital', h2c:'untuk Perusahaan',
-    desc:'E17 Course membantu perusahaan meningkatkan kompetensi tim melalui program corporate training yang dirancang sesuai kebutuhan bisnis, dengan pembelajaran berbasis praktik, materi relevan industri, dan instruktur berpengalaman untuk mendukung transformasi digital organisasi.',
-    benefits:[
+    badge: 'Corporate Training',
+    h2a: 'Solusi Pengembangan', h2b: 'Talenta Digital', h2c: 'untuk Perusahaan',
+    desc: 'E17 Course membantu meningkatkan kompetensi tim perusahaan sesuai kebutuhan bisnis dengan pembelajaran berbasis praktik, relevansi usaha dan instruktur berpengalaman.',
+    benefits: [
       'Kurikulum disesuaikan kebutuhan bisnis perusahaan',
       'Instruktur berpengalaman dari industri nyata',
       'Jadwal fleksibel — online, offline, atau hybrid',
       'Laporan kompetensi dan sertifikat kelulusan',
     ],
-    cta:'Jadwalkan Konsultasi',
-    terminalLabel:'— UPGRADE YOUR TEAM COMPETENCY',
-    modules:['Productivity & Performance','Customer Experience & Sales','Leadership & Management','Communication & Collaboration Skills','HR & Organizational Mindset','Digital Transformation Fundamentals','Data-Driven Decision Making'],
-    tag:'In-house & Public Training', tagSub:'Online · Offline · Hybrid',
+    cta: 'Jadwalkan Konsultasi Corporate',
+    terminalLabel: '— CORPORATE TRAINING MODULES',
+    modules: [
+      'Productivity & Performance',
+      'Customer Experience & Sales',
+      'Leadership & Management',
+      'Communication & Collaboration Skills',
+      'HR & Organizational Mindset',
+    ],
+    tag: 'In-house & Public Training', tagSub: 'Online · Offline · Hybrid',
   },
   en: {
-    badge:'Corporate Training',
-    h2a:'Digital Talent', h2b:'Development Solutions', h2c:'for Your Company',
-    desc:'E17 Course helps companies enhance team competency through corporate training programs designed to fit business needs, with practice-based learning, industry-relevant materials, and experienced instructors to support your organisation\'s digital transformation.',
-    benefits:[
+    badge: 'Corporate Training',
+    h2a: 'Digital Talent', h2b: 'Development Solutions', h2c: 'for Your Company',
+    desc: 'E17 Course helps enhance company team competencies tailored to business needs with practice-based learning, business relevance, and experienced instructors.',
+    benefits: [
       'Curriculum tailored to company business needs',
       'Experienced instructors from real industries',
       'Flexible schedule — online, offline, or hybrid',
       'Competency reports and graduation certificates',
     ],
-    cta:'Schedule Consultation',
-    terminalLabel:'— UPGRADE YOUR TEAM COMPETENCY',
-    modules:['Productivity & Performance','Customer Experience & Sales','Leadership & Management','Communication & Collaboration Skills','HR & Organizational Mindset','Digital Transformation Fundamentals','Data-Driven Decision Making'],
-    tag:'In-house & Public Training', tagSub:'Online · Offline · Hybrid',
+    cta: 'Schedule Corporate Consultation',
+    terminalLabel: '— CORPORATE TRAINING MODULES',
+    modules: [
+      'Productivity & Performance',
+      'Customer Experience & Sales',
+      'Leadership & Management',
+      'Communication & Collaboration Skills',
+      'HR & Organizational Mindset',
+    ],
+    tag: 'In-house & Public Training', tagSub: 'Online · Offline · Hybrid',
   },
 };
 

@@ -1,28 +1,29 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Star } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Search } from 'lucide-react';
+import { Link } from 'wouter';
 import { useLanguage } from '@/context/LanguageContext';
 import { bnspDetailsMap, type BnspSchemeDetail } from '@/data/bnspDetails';
 import { BnspDetailModal } from './BnspDetailModal';
 
 const categories = {
   id: [
-    'Semua',
-    'Data Science & Advanced Analytics',
-    'Software Development & Programming',
-    'Multimedia, Design & Content Creation',
-    'IT Infrastructure & Networking',
-    'Office Productivity & Digital Literacy',
-    'Digital Business & Marketing',
+    { label: 'Semua', count: 26 },
+    { label: 'Data Science & Advanced Analytics', count: 3 },
+    { label: 'Software Development & Programming', count: 9 },
+    { label: 'Multimedia, Design & Content Creation', count: 6 },
+    { label: 'IT Infrastructure & Networking', count: 4 },
+    { label: 'Office Productivity & Digital Literacy', count: 3 },
+    { label: 'Digital Business & Marketing', count: 1 },
   ],
   en: [
-    'All',
-    'Data Science & Advanced Analytics',
-    'Software Development & Programming',
-    'Multimedia, Design & Content Creation',
-    'IT Infrastructure & Networking',
-    'Office Productivity & Digital Literacy',
-    'Digital Business & Marketing',
+    { label: 'All', count: 26 },
+    { label: 'Data Science & Advanced Analytics', count: 3 },
+    { label: 'Software Development & Programming', count: 9 },
+    { label: 'Multimedia, Design & Content Creation', count: 6 },
+    { label: 'IT Infrastructure & Networking', count: 4 },
+    { label: 'Office Productivity & Digital Literacy', count: 3 },
+    { label: 'Digital Business & Marketing', count: 1 },
   ],
 };
 
@@ -109,42 +110,65 @@ const schemes = {
 
 const T = {
   id: {
-    badge: 'PROGRAM SERTIFIKASI KOMPETENSI BNSP 2026',
-    h2a: 'PILIH SKEMA SERTIFIKASI',
-    h2b: 'SESUAI BIDANGMU',
-    desc: '26 skema sertifikasi kompetensi BNSP dari PT Edukasi Tujuh Belas, mengacu pada SKKNI Kementerian Ketenagakerjaan RI dan diuji oleh Asesor berlisensi LSP.',
-    quote: 'Untuk menang di dunia kerja, kompetensi saja tidak cukup.',
-    quoteEm: 'You need an official stamp of excellence!',
+    badge: 'Sertifikasi BNSP',
+    h2a: 'TERLATIH, KOMPETEN,',
+    h2b: 'UNGGUL!',
+    descQuote: 'Untuk menang di dunia kerja, kompetensi saja tidak cukup.',
+    descQuoteEm: 'You need a stamp of excellence!',
+    desc: 'E17 Course siap mendampingi proses Sertifikasi BNSP, mulai dari persiapan dokumen, portofolio, hingga uji kompetensi.',
+    searchPlaceholder: 'Cari skema... (misal: Data Analyst, Video Editor, Web Developer)',
     badges: ['Diakui Nasional', 'Mengacu SKKNI Kemnaker RI', 'Asesor Berlisensi LSP'],
-    sub: 'Skema Sertifikasi Resmi BNSP (26 Skema)',
+    sub: 'Pilihan Skema Sertifikasi',
     link: 'Lihat detail & unit kompetensi',
     cta: 'Konsultasi & Daftar Sertifikasi',
+    viewAllPage: 'Lihat Semua 26 Skema Sertifikasi Lengkap di Halaman Program',
+    noResults: 'Tidak ada skema yang cocok dengan pencarian Anda.',
   },
   en: {
-    badge: 'BNSP COMPETENCY CERTIFICATION PROGRAM 2026',
-    h2a: 'CHOOSE CERTIFICATION SCHEME',
-    h2b: 'FOR YOUR FIELD',
-    desc: '26 BNSP competency certification schemes from PT Edukasi Tujuh Belas, based on SKKNI Ministry of Manpower RI and assessed by LSP licensed assessors.',
-    quote: 'To win in the workplace, competency alone is not enough.',
-    quoteEm: 'You need an official stamp of excellence!',
+    badge: 'BNSP Certification',
+    h2a: 'TRAINED, COMPETENT,',
+    h2b: 'EXCELLENT!',
+    descQuote: 'To win in the workplace, competency alone is not enough.',
+    descQuoteEm: 'You need a stamp of excellence!',
+    desc: 'E17 Course is ready to assist your BNSP Certification process, from document preparation, portfolio, to competency testing.',
+    searchPlaceholder: 'Search scheme... (e.g., Data Analyst, Video Editor, Web Developer)',
     badges: ['Nationally Recognised', 'SKKNI Compliant', 'LSP Licensed Assessors'],
-    sub: 'Official BNSP Certification Schemes (26 Schemes)',
+    sub: 'Choice of Certification Schemes',
     link: 'View details & unit competencies',
     cta: 'Consult & Register for Certification',
+    viewAllPage: 'View All 26 Full Certification Schemes on Program Page',
+    noResults: 'No certification schemes match your search.',
   },
 };
 
-export function BnspSection() {
+interface BnspSectionProps {
+  isHomePage?: boolean;
+}
+
+export function BnspSection({ isHomePage = false }: BnspSectionProps) {
   const { lang } = useLanguage();
   const t = T[lang];
   const cats = categories[lang];
   const items = schemes[lang];
-  const [activeCat, setActiveCat] = useState(cats[0]);
+  
+  const [activeCat, setActiveCat] = useState(cats[0].label);
+  const [searchTerm, setSearchTerm] = useState('');
   const [selectedScheme, setSelectedScheme] = useState<BnspSchemeDetail | null>(null);
 
-  const filtered = activeCat === cats[0] 
+  // Filter items by category
+  const categoryFiltered = activeCat === cats[0].label 
     ? items 
-    : items.filter(s => s.category === (cats.indexOf(activeCat) >= 1 ? categories.id[cats.indexOf(activeCat)] : activeCat));
+    : items.filter(s => s.category === (cats.findIndex(c => c.label === activeCat) >= 1 ? categories.id[cats.findIndex(c => c.label === activeCat)].label : activeCat));
+
+  // Filter items by search query
+  const filtered = categoryFiltered.filter(s => 
+    s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    s.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    s.tag.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // On Home Page: show top 6 featured schemes
+  const displayedItems = isHomePage ? filtered.slice(0, 6) : filtered;
 
   const handleOpenDetail = (slug: string) => {
     const detail = bnspDetailsMap[slug];
@@ -154,61 +178,140 @@ export function BnspSection() {
   };
 
   return (
-    <section id="sertifikasi" className="py-24 bg-gray-50 relative overflow-hidden">
+    <section id="sertifikasi" className="py-20 bg-gray-50 relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
         <span className="text-[18rem] font-extrabold text-secondary/[0.025] select-none leading-none">BNSP</span>
       </div>
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative">
-        <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="text-center mb-14 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-white border border-primary/20 shadow-sm text-primary text-[11px] font-extrabold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+        
+        {/* Section Header */}
+        <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="text-center mb-10 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-white border border-primary/20 shadow-sm text-primary text-[11px] font-extrabold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
             <ShieldCheck size={14} />{t.badge}
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-secondary leading-[1.1] mb-5">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-secondary leading-[1.1] mb-4">
             {t.h2a}<br /><span className="text-primary">{t.h2b}</span>
           </h2>
-          <p className="text-secondary/70 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-6">{t.desc}</p>
-          <div className="bg-white border border-gray-200 rounded-2xl px-6 py-4 inline-block text-left shadow-sm mb-6">
-            <div className="flex gap-1 mb-2">{[...Array(5)].map((_,i) => <Star key={i} size={12} className="fill-primary text-primary" />)}</div>
-            <p className="text-secondary/70 text-sm leading-relaxed">{t.quote} <em className="text-accent font-semibold not-italic">{t.quoteEm}</em></p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-2 mb-2">
+          <p className="text-secondary/90 text-sm md:text-base font-bold leading-relaxed max-w-2xl mx-auto mb-2">
+            {t.descQuote} <em className="text-accent font-extrabold not-italic">{t.descQuoteEm}</em>
+          </p>
+          <p className="text-secondary/70 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto mb-6">
+            {t.desc}
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-2 mb-4">
             {t.badges.map(b => <span key={b} className="bg-primary/10 text-secondary text-xs font-semibold px-3 py-1 rounded-full">✓ {b}</span>)}
           </div>
-          <h3 className="text-xl font-bold text-secondary mt-8">{t.sub}</h3>
+          <h3 className="text-xl font-black text-secondary mt-6">{t.sub}</h3>
         </motion.div>
 
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {cats.map(cat => (
-            <button key={cat} onClick={() => setActiveCat(cat)} className={`px-4 py-2 rounded-full text-xs md:text-sm font-semibold border transition-all ${activeCat===cat ? 'bg-primary text-secondary border-primary shadow-sm' : 'bg-white text-secondary/60 border-gray-200 hover:border-gray-400 hover:text-secondary'}`}>{cat}</button>
-          ))}
-        </div>
+        {/* Search Bar (Shown on Full Program Page or Home Page) */}
+        {!isHomePage && (
+          <div className="max-w-xl mx-auto mb-8 relative">
+            <div className="relative flex items-center">
+              <Search className="absolute left-4 text-gray-400" size={18} />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder={t.searchPlaceholder}
+                className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-gray-200 shadow-sm text-xs sm:text-sm text-secondary focus:outline-none focus:border-primary transition-all placeholder:text-gray-400"
+              />
+              {searchTerm && (
+                <button 
+                  onClick={() => setSearchTerm('')}
+                  className="absolute right-4 text-xs font-bold text-gray-400 hover:text-secondary"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((s, i) => (
-            <motion.div key={s.slug} initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay: i*0.03 }}
-              onClick={() => handleOpenDetail(s.slug)}
-              className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:border-primary/40 transition-all cursor-pointer group">
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="text-[10px] font-extrabold tracking-wider text-primary uppercase bg-primary/10 px-2.5 py-1 rounded-md">{s.tag}</span>
-                <span className="text-[11px] text-gray-400 font-bold group-hover:text-primary transition-colors">Detail & Unit Uji →</span>
-              </div>
-              <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug group-hover:text-primary transition-colors">{s.title}</h3>
-              <p className="text-sm text-secondary/60 leading-relaxed flex-1 mb-5">{s.desc}</p>
+        {/* Category Tabs */}
+        <div className="flex flex-wrap gap-2 justify-center mb-8">
+          {cats.map(cat => {
+            const isActive = activeCat === cat.label;
+
+            return (
               <button 
-                onClick={(e) => { e.stopPropagation(); handleOpenDetail(s.slug); }}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary transition-colors group-hover:gap-2.5"
+                key={cat.label} 
+                onClick={() => setActiveCat(cat.label)} 
+                className={`px-4 py-2 rounded-full text-xs md:text-sm font-bold border transition-all flex items-center gap-2 ${
+                  isActive 
+                    ? 'bg-primary text-secondary border-primary shadow-sm' 
+                    : 'bg-white text-secondary/60 border-gray-200 hover:border-gray-400 hover:text-secondary'
+                }`}
               >
-                {t.link} <ArrowRight size={13} />
+                <span>{cat.label}</span>
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
+                  isActive ? 'bg-secondary/15 text-secondary' : 'bg-gray-100 text-gray-500'
+                }`}>
+                  {cat.count}
+                </span>
               </button>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
 
-        <motion.div initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="flex justify-center mt-12">
-          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full bg-primary text-secondary font-bold text-base hover:bg-primary/90 transition-all flex items-center gap-2 group shadow-md hover:shadow-lg">
-            {t.cta}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
+        {/* Card Grid */}
+        {displayedItems.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {displayedItems.map((s, i) => (
+              <motion.div 
+                key={s.slug} 
+                initial={{ opacity:0, y:16 }} 
+                animate={{ opacity:1, y:0 }} 
+                transition={{ delay: i * 0.03 }}
+                onClick={() => handleOpenDetail(s.slug)}
+                className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:border-primary/40 transition-all cursor-pointer group"
+              >
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-[10px] font-extrabold tracking-wider text-primary uppercase bg-primary/10 px-2.5 py-1 rounded-md">{s.tag}</span>
+                  <span className="text-[11px] text-gray-400 font-bold group-hover:text-primary transition-colors">Detail & Unit Uji →</span>
+                </div>
+                <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug group-hover:text-primary transition-colors">{s.title}</h3>
+                <p className="text-sm text-secondary/60 leading-relaxed flex-1 mb-5">{s.desc}</p>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); handleOpenDetail(s.slug); }}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary transition-colors group-hover:gap-2.5"
+                >
+                  {t.link} <ArrowRight size={13} />
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12 bg-white rounded-2xl border border-gray-200">
+            <p className="text-sm text-gray-500 font-medium">{t.noResults}</p>
+          </div>
+        )}
+
+        {/* On Home Page: Direct CTA to Dedicated Program Page */}
+        {isHomePage && (
+          <div className="flex flex-col items-center mt-10">
+            <Link 
+              href="/program#sertifikasi"
+              className="px-8 py-4 rounded-full bg-secondary text-white font-extrabold text-xs sm:text-sm hover:bg-secondary/90 transition-all flex items-center gap-2.5 shadow-md hover:shadow-lg group"
+            >
+              {t.viewAllPage} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <p className="text-xs text-gray-400 mt-2 font-medium">
+              Menampilkan 6 skema terpopuler dari 26 skema sertifikasi BNSP resmi
+            </p>
+          </div>
+        )}
+
+        {/* On Program Page: WhatsApp Consultation CTA */}
+        {!isHomePage && (
+          <motion.div initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="flex justify-center mt-12">
+            <a href="https://wa.me/6281399271717" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full bg-primary text-secondary font-bold text-base hover:bg-primary/90 transition-all flex items-center gap-2 group shadow-md hover:shadow-lg">
+              {t.cta}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
+        )}
+
       </div>
 
       {/* Interactive Detail Modal */}

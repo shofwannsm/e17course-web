@@ -67,9 +67,8 @@ export function Navbar() {
         <div className="flex items-center justify-between h-14">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <img src={logo} alt="E17 Course Logo" className="h-8 object-contain" />
-            <span className="font-bold text-lg text-secondary hidden sm:block">E17 Course</span>
+          <Link href="/" className="flex items-center shrink-0">
+            <img src={logo} alt="E17 Course Logo" className="h-9 sm:h-10 object-contain" />
           </Link>
 
           {/* Desktop Nav */}

@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { FaFacebookF, FaXTwitter, FaInstagram, FaYoutube } from 'react-icons/fa6';
 import logo from '@assets/e17brand/logo.png';
 import { useLanguage } from '@/context/LanguageContext';
@@ -8,8 +8,9 @@ const T = {
     desc: 'Lembaga pelatihan IT terpercaya di Indonesia dengan sertifikasi BNSP. Membangun masa depan profesional teknologi lewat pendidikan berkualitas.',
     ourSocialMedia: 'Sosial Media Kami',
     contactTitle: 'PT Edukasi Tujuh Belas',
-    address: 'Graha Edukasi, Lt. 3\nJl. Teknologi No. 17, Jakarta Selatan 12345',
-    phone: '+62 812 3456 7890',
+    address: 'Jl. Basoka Raya No.8, Joglo, Kembangan, Kota Jakarta Barat, DKI Jakarta 11640',
+    phone: '0813-9927-1717',
+    hours: 'Buka · Tutup Jam 18:00 WIB',
     email: 'info@e17course.com',
     companyTitle: 'E17 COURSE',
     companyLinks: [
@@ -21,12 +22,12 @@ const T = {
     ],
     programTitle: 'PROGRAM UNGGULAN',
     programLinks: [
-      { label: 'Bootcamp & Sertifikasi IT', href: '/program' },
+      { label: 'Bootcamp IT', href: '/program' },
       { label: 'E-learning Interaktif', href: '/program' },
       { label: 'Review CV AI', href: '#' },
       { label: 'Corporate Training', href: '#' },
     ],
-    copy: '© 2025 PT Edukasi Tujuh Belas. All rights reserved.',
+    copy: '© 2026 PT Edukasi Tujuh Belas. All rights reserved.',
     privacy: 'Kebijakan Privasi',
     terms: 'Syarat & Ketentuan',
   },
@@ -34,8 +35,9 @@ const T = {
     desc: 'Indonesia\'s trusted IT training institution with official BNSP certification. Building the future of technology professionals through quality education.',
     ourSocialMedia: 'Our Social Media',
     contactTitle: 'PT Edukasi Tujuh Belas',
-    address: 'Graha Edukasi, 3rd Floor\nJl. Teknologi No. 17, South Jakarta 12345',
-    phone: '+62 812 3456 7890',
+    address: 'Jl. Basoka Raya No.8, Joglo, Kembangan, West Jakarta, Jakarta 11640',
+    phone: '+62 813-9927-1717',
+    hours: 'Open · Closes 6:00 pm',
     email: 'info@e17course.com',
     companyTitle: 'E17 COURSE',
     companyLinks: [
@@ -47,12 +49,12 @@ const T = {
     ],
     programTitle: 'FEATURED PROGRAMS',
     programLinks: [
-      { label: 'IT Bootcamp & Certification', href: '/program' },
+      { label: 'IT Bootcamp', href: '/program' },
       { label: 'Interactive E-learning', href: '/program' },
       { label: 'Review CV AI', href: '#' },
       { label: 'Corporate Training', href: '#' },
     ],
-    copy: '© 2025 PT Edukasi Tujuh Belas. All rights reserved.',
+    copy: '© 2026 PT Edukasi Tujuh Belas. All rights reserved.',
     privacy: 'Privacy Policy',
     terms: 'Terms & Conditions',
   },
@@ -72,23 +74,23 @@ export function Footer() {
             {/* Logo, Desc & Social Media */}
             <div className="flex flex-col justify-between space-y-6">
               <div>
-                <img src={logo} alt="E17 Course Logo" className="h-10 mb-4 brightness-0 invert" />
+                <img src={logo} alt="E17 Course Logo" className="h-10 md:h-12 mb-4 object-contain" />
                 <p className="text-gray-300 text-xs md:text-sm leading-relaxed max-w-xs">{t.desc}</p>
               </div>
 
               <div>
                 <h5 className="font-semibold text-gray-200 text-xs md:text-sm mb-3 uppercase tracking-wider">{t.ourSocialMedia}</h5>
                 <div className="flex items-center gap-3">
-                  <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#3b5998] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Facebook">
+                  <a href="https://www.facebook.com/e17course" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#3b5998] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Facebook">
                     <FaFacebookF size={15} />
                   </a>
-                  <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-black border border-white/10 flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="X">
+                  <a href="https://x.com/e17course" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-black border border-white/10 flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="X">
                     <FaXTwitter size={15} />
                   </a>
-                  <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Instagram">
+                  <a href="https://www.instagram.com/e17course/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Instagram">
                     <FaInstagram size={16} />
                   </a>
-                  <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FF0000] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="YouTube">
+                  <a href="https://www.youtube.com/@e17course" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FF0000] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="YouTube">
                     <FaYoutube size={16} />
                   </a>
                 </div>
@@ -105,7 +107,11 @@ export function Footer() {
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="text-primary shrink-0" size={18} />
-                  <span>{t.phone}</span>
+                  <a href="https://wa.me/6281399271717" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">{t.phone}</a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Clock className="text-primary shrink-0" size={18} />
+                  <span className="text-xs bg-white/10 px-2.5 py-1 rounded-full">{t.hours}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="text-primary shrink-0" size={18} />
