@@ -115,7 +115,7 @@ const T = {
     h2b: 'UNGGUL!',
     descQuote: 'Untuk menang di dunia kerja, kompetensi saja tidak cukup.',
     descQuoteEm: 'You need a stamp of excellence!',
-    desc: 'E17 Course siap mendampingi proses Sertifikasi BNSP, mulai dari persiapan dokumen, portofolio, hingga uji kompetensi.',
+    desc: 'E17 Course siap mendampingi proses Sertifikasi BNSP, mulai<br />dari persiapan dokumen, portofolio, hingga uji kompetensi.',
     searchPlaceholder: 'Cari skema... (misal: Data Analyst, Video Editor, Web Developer)',
     badges: ['Diakui Nasional', 'Mengacu SKKNI Kemnaker RI', 'Asesor Berlisensi LSP'],
     sub: 'Pilihan Skema Sertifikasi',
@@ -189,20 +189,31 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
           <div className="inline-flex items-center gap-2 bg-white border border-primary/20 shadow-sm text-primary text-[11px] font-extrabold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
             <ShieldCheck size={14} />{t.badge}
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-secondary leading-[1.1] mb-4">
+          <h2 className="text-3xl md:text-5xl font-black text-secondary leading-[1.1] mb-4">
             {t.h2a}<br /><span className="text-primary">{t.h2b}</span>
           </h2>
           <p className="text-secondary/90 text-sm md:text-base font-bold leading-relaxed max-w-2xl mx-auto mb-2">
-            {t.descQuote} <em className="text-accent font-extrabold not-italic">{t.descQuoteEm}</em>
+            {t.descQuote} <br /><em className="text-accent font-extrabold not-italic">{t.descQuoteEm}</em>
           </p>
-          <p className="text-secondary/70 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto mb-6">
-            {t.desc}
-          </p>
+          <p 
+            className="text-secondary/70 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto mb-6"
+            dangerouslySetInnerHTML={{ __html: t.desc }}
+          />
           
-          <div className="flex flex-wrap justify-center gap-2 mb-4">
-            {t.badges.map(b => <span key={b} className="bg-primary/10 text-secondary text-xs font-semibold px-3 py-1 rounded-full">✓ {b}</span>)}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            {t.badges.map(b => (
+              <span
+                key={b}
+                className="bg-amber-50/60 border border-amber-200/50 text-amber-800 text-xs font-extrabold px-4 py-2 rounded-full shadow-xs inline-flex items-center gap-2 hover:scale-[1.02] transition-transform duration-200 select-none"
+              >
+                <span className="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px] font-black shrink-0">
+                  ✓
+                </span>
+                {b}
+              </span>
+            ))}
           </div>
-          <h3 className="text-xl font-black text-secondary mt-6">{t.sub}</h3>
+          <h3 className="text-xl font-black text-secondary mt-10">{t.sub}</h3>
         </motion.div>
 
         {/* Search Bar (Shown on Full Program Page or Home Page) */}

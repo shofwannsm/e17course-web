@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Clock, User, BookOpen, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { Link } from 'wouter';
 
 const T = {
   id: {
@@ -246,52 +247,53 @@ export function ArticlesSection() {
                 key={a.id}
                 className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 pl-4"
               >
-                <motion.a
-                  href="/artikel"
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  className="bg-white border border-gray-200/90 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full"
-                >
-                  <div>
-                    {/* Article Image Container */}
-                    <div className="aspect-[16/10] overflow-hidden bg-gray-100 relative">
-                      <img
-                        src={a.image}
-                        alt={a.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-3 left-3">
-                        <span className={`text-[10px] font-extrabold px-3 py-1 rounded-full border backdrop-blur-md shadow-sm ${categoryColors[a.category] ?? 'bg-gray-100 text-gray-700'}`}>
-                          {a.category}
-                        </span>
+                <Link href={`/artikel/${a.id}`}>
+                  <motion.a
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                    className="bg-white border border-gray-200/90 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full"
+                  >
+                    <div>
+                      {/* Article Image Container */}
+                      <div className="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+                        <img
+                          src={a.image}
+                          alt={a.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 left-3">
+                          <span className={`text-[10px] font-extrabold px-3 py-1 rounded-full border backdrop-blur-md shadow-sm ${categoryColors[a.category] ?? 'bg-gray-100 text-gray-700'}`}>
+                            {a.category}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+                          {a.readTime} baca
+                        </div>
                       </div>
-                      <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
-                        {a.readTime} baca
+
+                      {/* Article Card Body */}
+                      <div className="p-6">
+                        <h3 className="text-base sm:text-lg font-extrabold text-secondary leading-snug group-hover:text-primary transition-colors mb-3 line-clamp-2">
+                          {a.title}
+                        </h3>
+
+                        <p className="text-xs sm:text-sm text-secondary/60 leading-relaxed line-clamp-3 font-medium">
+                          {a.excerpt}
+                        </p>
                       </div>
                     </div>
 
-                    {/* Article Card Body */}
-                    <div className="p-6">
-                      <h3 className="text-base sm:text-lg font-extrabold text-secondary leading-snug group-hover:text-primary transition-colors mb-3 line-clamp-2">
-                        {a.title}
-                      </h3>
-
-                      <p className="text-xs sm:text-sm text-secondary/60 leading-relaxed line-clamp-3 font-medium">
-                        {a.excerpt}
-                      </p>
+                    {/* Footer Meta Details */}
+                    <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-semibold bg-gray-50/50">
+                      <span className="flex items-center gap-1.5 text-secondary/70 font-bold">
+                        <User size={13} className="text-gray-400" /> {a.author}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock size={12} /> {a.date}
+                      </span>
                     </div>
-                  </div>
-
-                  {/* Footer Meta Details */}
-                  <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-semibold bg-gray-50/50">
-                    <span className="flex items-center gap-1.5 text-secondary/70 font-bold">
-                      <User size={13} className="text-gray-400" /> {a.author}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock size={12} /> {a.date}
-                    </span>
-                  </div>
-                </motion.a>
+                  </motion.a>
+                </Link>
               </div>
             ))}
           </div>

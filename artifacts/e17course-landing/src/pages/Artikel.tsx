@@ -5,8 +5,7 @@ import { Footer } from '@/components/layout/Footer';
 import { FloatingButtons } from '@/components/layout/FloatingButtons';
 import { ArrowRight, Clock, User, Search } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { ArticleDetailModal } from '@/components/home/ArticleDetailModal';
-import { articleContentsMap, type ArticleContent } from '@/data/articleContents';
+import { useLocation } from 'wouter';
 
 const T = {
   id: {
@@ -169,17 +168,14 @@ function Chip({ cat }: { cat: string }) {
 export default function Artikel() {
   const { lang } = useLanguage();
   const t = T[lang];
+  const [, setLocation] = useLocation();
 
   const [activeCat, setActiveCat] = useState(t.categories[0]);
   const [query, setQuery] = useState('');
   const [displayCount, setDisplayCount] = useState(6);
-  const [selectedArticle, setSelectedArticle] = useState<ArticleContent | null>(null);
 
   const handleOpenArticle = (id: number) => {
-    const content = articleContentsMap[id];
-    if (content) {
-      setSelectedArticle(content);
-    }
+    setLocation(`/artikel/${id}`);
   };
 
   const filtered = t.articles.filter(a => {
@@ -306,13 +302,6 @@ export default function Artikel() {
 
       <Footer />
       <FloatingButtons />
-
-      {/* Article Detail Modal */}
-      <ArticleDetailModal
-        article={selectedArticle}
-        isOpen={Boolean(selectedArticle)}
-        onClose={() => setSelectedArticle(null)}
-      />
     </div>
   );
 }
