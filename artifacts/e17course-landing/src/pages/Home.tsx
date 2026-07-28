@@ -7,7 +7,6 @@ import { PartnerMarquee } from '@/components/home/PartnerMarquee';
 import { ProgramPreview } from '@/components/home/ProgramPreview';
 import { BootcampCardStack } from '@/components/home/BootcampCardStack';
 import { BnspSection } from '@/components/home/BnspSection';
-import { WhySection } from '@/components/home/WhySection';
 import { Testimonials } from '@/components/home/Testimonials';
 import { ArticlesSection } from '@/components/home/ArticlesSection';
 import { CtaSection } from '@/components/home/CtaSection';
@@ -28,7 +27,6 @@ export default function Home() {
         <ProgramPreview />
         <BootcampCardStack />
         <BnspSection isHomePage={true} />
-        <WhySection />
         <Testimonials />
         <ArticlesSection />
         <CtaSection />
