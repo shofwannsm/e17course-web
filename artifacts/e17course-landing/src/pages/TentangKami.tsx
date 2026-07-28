@@ -8,11 +8,8 @@ import buildingFuture from '@assets/e17brand/building-future.png';
 
 const T = {
   id: {
-    eyebrow: 'Tentang Kami',
     h1a: 'Dari Mana Pun Kamu Memulai,',
     h1b: 'Kami Bantu Kamu Bertumbuh!',
-    subhero: 'Di bawah naungan PT Edukasi Tujuh Belas, kami menghadirkan ekosistem pembelajaran yang dirancang sesuai kebutuhan industri meliputi Bootcamp, Corporate Training, Sertifikasi Kompetensi BNSP, serta Publikasi Buku ber-ISBN.',
-    
     storyTitle: 'Tentang E17 Course',
     story: [
       'Perkembangan teknologi terus mengubah cara dunia bekerja. Di sisi lain, kebutuhan industri terhadap talenta yang kompeten semakin meningkat. Tantangannya, tidak semua individu memiliki akses terhadap pembelajaran yang relevan untuk membangun keterampilan yang dibutuhkan dunia kerja saat ini.',
@@ -59,11 +56,8 @@ const T = {
     cta2: 'Konsultasi via WhatsApp',
   },
   en: {
-    eyebrow: 'About Us',
     h1a: 'No Matter Where You Start,',
     h1b: 'We Help You Grow!',
-    subhero: 'Under PT Edukasi Tujuh Belas, we provide a learning ecosystem designed for industry needs including Bootcamp, Corporate Training, BNSP Certification, and ISBN Book Publication.',
-    
     storyTitle: 'About E17 Course',
     story: [
       'Technology development continues to change how the world works. On the other hand, industry demand for competent talent is rising. The challenge is that not all individuals have access to learning relevant to today\'s workplace.',
@@ -140,13 +134,13 @@ function Interactive3DWorkspace() {
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative rounded-3xl p-3 bg-gradient-to-b from-white/25 via-white/10 to-white/5 border border-white/20 shadow-2xl backdrop-blur-md cursor-grab active:cursor-grabbing transition-transform duration-200 ease-out group"
+      className="relative rounded-3xl p-3 bg-gradient-to-b from-white/25 via-white/10 to-white/5 border border-gray-200/80 shadow-xl backdrop-blur-md cursor-grab active:cursor-grabbing transition-transform duration-200 ease-out group"
     >
       {/* Ambient Glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-amber-500/15 to-transparent rounded-3xl blur-2xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-amber-500/10 to-transparent rounded-3xl blur-2xl pointer-events-none" />
 
-      {/* Editorial Vector Illustration: Building Your Future */}
-      <div className="relative rounded-2xl overflow-hidden bg-white p-2 border border-white/20 shadow-inner">
+      {/* Editorial Vector Illustration */}
+      <div className="relative rounded-2xl overflow-hidden bg-white p-2 border border-gray-200 shadow-inner">
         <img
           src={buildingFuture}
           alt="E17 Course - Building Your Future Editorial Illustration"
@@ -154,7 +148,7 @@ function Interactive3DWorkspace() {
         />
 
         {/* Caption Label */}
-        <div className="bg-secondary/90 backdrop-blur-md text-white text-[11px] font-bold px-3.5 py-2 rounded-xl border border-white/10 mt-2 flex items-center justify-between">
+        <div className="bg-secondary/95 backdrop-blur-md text-white text-[11px] font-bold px-3.5 py-2 rounded-xl border border-white/10 mt-2 flex items-center justify-between">
           <span className="text-primary font-black">Building Your Future</span>
           <span className="text-gray-300 font-medium">Menyusun Fondasi Karier IT</span>
         </div>
@@ -184,7 +178,6 @@ function Interactive3DWorkspace() {
           <span className="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md">Experience</span>
         </div>
       </motion.div>
-
     </motion.div>
   );
 }
@@ -199,134 +192,31 @@ export default function TentangKami() {
 
       <main className="pt-[72px]">
 
-        {/* HERO SECTION */}
-        <section className="relative bg-secondary text-white py-20 md:py-24 overflow-hidden">
-          <div aria-hidden className="pointer-events-none absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(212,162,0,0.18) 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }} />
-          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
-
-          <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              
-              {/* Left Column (Text Content) */}
-              <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="lg:col-span-7">
-                <span className="inline-block text-[11px] font-extrabold tracking-widest text-primary uppercase mb-4 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                  {t.eyebrow}
-                </span>
-
-                <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-[1.15] mb-6 tracking-tight">
-                  {t.h1a}<br /><span className="text-primary">{t.h1b}</span>
+        {/* 1. PERJALANAN KAMI SECTION (Now at the top, seamless layout) */}
+        <section className="py-20 bg-gray-50 border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="max-w-3xl mb-12">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-2xl bg-primary/25 flex items-center justify-center text-secondary">
+                  <Compass size={20} className="text-amber-600" />
+                </div>
+                <h1 className="text-3xl md:text-5xl font-black text-secondary tracking-tight">
+                  {t.journeyTitle}
                 </h1>
-
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl font-medium">
-                  {t.story[0]}
-                </p>
-              </motion.div>
-
-              {/* Right Column (Interactive 3D Isometric Workspace Component) */}
-              <motion.div initial={{ opacity: 0, scale: 0.92, x: 24 }} animate={{ opacity: 1, scale: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="lg:col-span-5 relative">
-                <Interactive3DWorkspace />
-              </motion.div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* MAIN STORY & JOURNEY SECTION */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-              
-              {/* Left Column: Story & Journey */}
-              <div className="lg:col-span-7 space-y-12">
-                
-                {/* About Section */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-secondary mb-5">
-                    {t.storyTitle}
-                  </h2>
-                  <div className="space-y-4 text-secondary/75 text-sm sm:text-base leading-relaxed">
-                    {t.story.map((p: string, i: number) => (
-                      <p key={i} dangerouslySetInnerHTML={{ __html: p.replace(/<b>/g, '<strong class="text-secondary font-extrabold">').replace(/<\/b>/g, '</strong>') }} />
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Perjalanan Kami (Our Journey) */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-amber-50/60 border border-amber-200/80 rounded-3xl p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
-                      <Compass size={20} />
-                    </div>
-                    <h2 className="text-xl sm:text-2xl font-black text-secondary">
-                      {t.journeyTitle}
-                    </h2>
-                  </div>
-
-                  <div className="space-y-4 text-secondary/80 text-sm leading-relaxed">
-                    {t.journeyStory.map((p: string, i: number) => (
-                      <p key={i} dangerouslySetInnerHTML={{ __html: p.replace(/<i>/g, '<em class="text-accent font-bold not-italic">').replace(/<\/i>/g, '</em>') }} />
-                    ))}
-                  </div>
-                </motion.div>
-
               </div>
-
-              {/* Right Column: Services & Target Audience */}
-              <div className="lg:col-span-5 space-y-6">
-                
-                {/* Services Box */}
-                <div className="bg-gray-50 border border-gray-200/80 rounded-3xl p-7 shadow-sm">
-                  <p className="text-xs font-black text-secondary/40 uppercase tracking-widest mb-4">
-                    {t.servicesLabel}
-                  </p>
-                  <div className="flex flex-col gap-2.5">
-                    {t.services.map((l: string, i: number) => {
-                      const Icon = serviceIcons[i];
-                      return (
-                        <div key={l} className="flex items-center gap-3 bg-white border border-gray-200 px-4 py-3 rounded-2xl shadow-2xs">
-                          <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                            <Icon size={16} />
-                          </div>
-                          <span className="text-xs sm:text-sm font-bold text-secondary">{l}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Target Audience */}
-                <div className="bg-secondary text-white rounded-3xl p-7 shadow-xl relative overflow-hidden">
-                  <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-primary/10 blur-2xl pointer-events-none" />
-                  <p className="text-xs font-black text-primary uppercase tracking-widest mb-5">
-                    {t.targetLabel}
-                  </p>
-                  <div className="space-y-3">
-                    {t.targets.map((s: string) => (
-                      <div key={s} className="flex items-center gap-3 text-xs sm:text-sm text-gray-200 font-medium">
-                        <CheckCircle2 size={16} className="text-primary shrink-0" />
-                        <span>{s}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
+              <div className="space-y-6 text-secondary/75 text-sm sm:text-base leading-relaxed font-medium">
+                {t.journeyStory.map((p: string, i: number) => (
+                  <p key={i} dangerouslySetInnerHTML={{ __html: p.replace(/<i>/g, '<em class="text-amber-600 font-extrabold not-italic">').replace(/<\/i>/g, '</em>') }} />
+                ))}
               </div>
-
             </div>
-          </div>
-        </section>
 
-        {/* VISION & MISSION SECTION */}
-        <section className="py-20 bg-gray-50 relative overflow-hidden border-t border-gray-100">
-          <div aria-hidden className="pointer-events-none absolute right-0 top-0 w-96 h-96 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #D4A200 1.5px, transparent 1.5px)', backgroundSize: '28px 28px' }} />
-          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            {/* Vision & Mission Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              
               {/* Vision Card */}
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white border border-gray-200 rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-sm">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white border border-gray-200 rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xs hover:shadow-md transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6 text-primary">
-                  <Eye size={24} />
+                  <Eye size={24} className="text-amber-600" />
                 </div>
                 <h2 className="text-2xl font-black text-secondary mb-4">{t.visionTitle}</h2>
                 <p className="text-secondary/75 text-sm sm:text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: t.visionText.replace(/<b>/g, '<strong class="text-secondary font-black">').replace(/<\/b>/g, '</strong>') }} />
@@ -334,7 +224,7 @@ export default function TentangKami() {
               </motion.div>
 
               {/* Mission Card */}
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-secondary text-white rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xl">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-secondary text-white rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xl hover:shadow-2xl transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mb-6 text-primary">
                   <Target size={24} />
                 </div>
@@ -351,11 +241,59 @@ export default function TentangKami() {
                 </div>
                 <span className="absolute -bottom-6 -right-4 text-[9rem] font-black text-white/[0.03] leading-none select-none">M</span>
               </motion.div>
-
             </div>
           </div>
         </section>
 
+
+        {/* 2. DARI MANA PUN KAMU MEMULAI (TENTANG KAMI STORY) SECTION */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              {/* Left Column: Title and Story paragraphs */}
+              <div className="lg:col-span-7 space-y-6">
+                <h2 className="text-3xl md:text-5xl font-black text-secondary leading-[1.15] tracking-tight">
+                  {t.h1a}<br />
+                  <span className="text-primary">{t.h1b}</span>
+                </h2>
+                
+                <div className="space-y-5 text-secondary/75 text-sm sm:text-base leading-relaxed font-medium">
+                  {t.story.map((p: string, i: number) => (
+                    <p key={i} dangerouslySetInnerHTML={{ __html: p.replace(/<b>/g, '<strong class="text-secondary font-extrabold">').replace(/<\/b>/g, '</strong>') }} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column: Interactive Illustration and Quick Services Box */}
+              <div className="lg:col-span-5 space-y-8">
+                {/* 3D Workspace component */}
+                <Interactive3DWorkspace />
+
+                {/* Main Services quick info */}
+                <div className="bg-gray-50 border border-gray-200/80 rounded-3xl p-6 shadow-2xs">
+                  <p className="text-xs font-black text-secondary/40 uppercase tracking-widest mb-4">
+                    {t.servicesLabel}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {t.services.map((l: string, i: number) => {
+                      const Icon = serviceIcons[i];
+                      return (
+                        <div key={l} className="flex items-center gap-2.5 bg-white border border-gray-200/60 px-4 py-2.5 rounded-2xl shadow-3xs">
+                          <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                            <Icon size={15} />
+                          </div>
+                          <span className="text-xs font-extrabold text-secondary">{l}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
 
 
         {/* BOTTOM CTA */}

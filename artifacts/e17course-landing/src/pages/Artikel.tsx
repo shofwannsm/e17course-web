@@ -5,6 +5,8 @@ import { Footer } from '@/components/layout/Footer';
 import { FloatingButtons } from '@/components/layout/FloatingButtons';
 import { ArrowRight, Clock, User, Search } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { ArticleDetailModal } from '@/components/home/ArticleDetailModal';
+import { articleContentsMap, type ArticleContent } from '@/data/articleContents';
 
 const T = {
   id: {
@@ -171,6 +173,14 @@ export default function Artikel() {
   const [activeCat, setActiveCat] = useState(t.categories[0]);
   const [query, setQuery] = useState('');
   const [displayCount, setDisplayCount] = useState(6);
+  const [selectedArticle, setSelectedArticle] = useState<ArticleContent | null>(null);
+
+  const handleOpenArticle = (id: number) => {
+    const content = articleContentsMap[id];
+    if (content) {
+      setSelectedArticle(content);
+    }
+  };
 
   const filtered = t.articles.filter(a => {
     const matchCat = activeCat === t.categories[0] || a.category === activeCat;
@@ -232,6 +242,7 @@ export default function Artikel() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.04 }}
+                  onClick={() => handleOpenArticle(a.id)}
                   className="bg-white border border-gray-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-primary/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 >
                   <div>
@@ -295,6 +306,13 @@ export default function Artikel() {
 
       <Footer />
       <FloatingButtons />
+
+      {/* Article Detail Modal */}
+      <ArticleDetailModal
+        article={selectedArticle}
+        isOpen={Boolean(selectedArticle)}
+        onClose={() => setSelectedArticle(null)}
+      />
     </div>
   );
 }

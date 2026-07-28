@@ -265,17 +265,17 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
                 animate={{ opacity:1, y:0 }} 
                 transition={{ delay: i * 0.03 }}
                 onClick={() => handleOpenDetail(s.slug)}
-                className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:border-primary/40 transition-all cursor-pointer group"
+                className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:border-amber-500/40 transition-all cursor-pointer group"
               >
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[10px] font-extrabold tracking-wider text-primary uppercase bg-primary/10 px-2.5 py-1 rounded-md">{s.tag}</span>
-                  <span className="text-[11px] text-gray-400 font-bold group-hover:text-primary transition-colors">Detail & Unit Uji →</span>
+                  <span className="text-[10px] font-extrabold tracking-wider text-amber-800 uppercase bg-amber-50 border border-amber-200/50 px-2.5 py-1 rounded-md">{s.tag}</span>
+                  <span className="text-[11px] text-gray-400 font-bold group-hover:text-amber-700 transition-colors">Detail & Unit Uji →</span>
                 </div>
-                <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug group-hover:text-primary transition-colors">{s.title}</h3>
+                <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug group-hover:text-amber-700 transition-colors">{s.title}</h3>
                 <p className="text-sm text-secondary/60 leading-relaxed flex-1 mb-5">{s.desc}</p>
                 <button 
                   onClick={(e) => { e.stopPropagation(); handleOpenDetail(s.slug); }}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary transition-colors group-hover:gap-2.5"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 group-hover:text-amber-900 transition-colors group-hover:gap-2.5"
                 >
                   {t.link} <ArrowRight size={13} />
                 </button>

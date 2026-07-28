@@ -2,14 +2,16 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { BootcampDetailModal } from './BootcampDetailModal';
+import { bootcampDetailsMap, type BootcampDetail } from '@/data/bootcampDetails';
 
 const programs = {
   id: [
     { 
       category: 'SOFTWARE DEVELOPMENT', 
-      title: 'Core Banking - Temenos 24', 
+      title: 'Core Banking - Temenos T24', 
       desc: 'Mempelajari sistem core banking yang digunakan dalam industri perbankan modern.',
-      price: 'Rp 600.000+',
+      price: 'Biaya program mulai dari Rp 600.000',
       slug: 'core-banking-temenos-24',
       image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=800&auto=format&fit=crop'
     },
@@ -17,39 +19,39 @@ const programs = {
       category: 'SOFTWARE DEVELOPMENT', 
       title: 'Outsystems Development', 
       desc: 'Membangun aplikasi enterprise lebih cepat dengan platform low-code modern.',
-      price: 'Rp 600.000+',
+      price: 'Biaya program mulai dari Rp 600.000',
       slug: 'outsystems-development',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'
     },
     { 
       category: 'SOFTWARE DEVELOPMENT', 
-      title: 'Frontend Development - React.js', 
+      title: 'Frontend Development - React.JS', 
       desc: 'Menguasai fondasi untuk membangun antarmuka web modern.',
-      price: 'Rp 600.000+',
+      price: 'Biaya program mulai dari Rp 600.000',
       slug: 'frontend-development-reactjs',
       image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop'
     },
     { 
       category: 'SOFTWARE DEVELOPMENT', 
-      title: 'Backend Development - Node.js', 
-      desc: 'Merancang dan membangun API.',
-      price: 'Rp 600.000+',
+      title: 'Backend Development - Node.JS', 
+      desc: 'Merancang dan membangun API & database modern.',
+      price: 'Biaya program mulai dari Rp 600.000',
       slug: 'backend-development-nodejs',
       image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=800&auto=format&fit=crop'
     },
     { 
       category: 'IT QUALITY ASSURANCE', 
-      title: 'Manual Testing', 
+      title: 'QA Manual Testing', 
       desc: 'Menguasai pengujian software secara manual.',
-      price: 'Rp 600.000+',
+      price: 'Biaya program mulai dari Rp 600.000',
       slug: 'manual-testing',
       image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop'
     },
     { 
       category: 'IT QUALITY ASSURANCE', 
-      title: 'Automation Testing - Katalon', 
+      title: 'QA Automation Testing - Katalon', 
       desc: 'Menguasai automation testing end-to-end untuk hasil lebih cepat dan efisiensi.',
-      price: 'Rp 600.000+',
+      price: 'Biaya program mulai dari Rp 600.000',
       slug: 'automation-testing-katalon',
       image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop'
     },
@@ -57,9 +59,9 @@ const programs = {
   en: [
     { 
       category: 'SOFTWARE DEVELOPMENT', 
-      title: 'Core Banking - Temenos 24', 
+      title: 'Core Banking - Temenos T24', 
       desc: 'Learn the core banking systems used in the modern banking industry.',
-      price: 'Rp 600,000+',
+      price: 'Program fee starts from Rp 600,000',
       slug: 'core-banking-temenos-24',
       image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=800&auto=format&fit=crop'
     },
@@ -67,39 +69,39 @@ const programs = {
       category: 'SOFTWARE DEVELOPMENT', 
       title: 'Outsystems Development', 
       desc: 'Build enterprise applications faster with modern low-code platforms.',
-      price: 'Rp 600,000+',
+      price: 'Program fee starts from Rp 600,000',
       slug: 'outsystems-development',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'
     },
     { 
       category: 'SOFTWARE DEVELOPMENT', 
-      title: 'Frontend Development - React.js', 
+      title: 'Frontend Development - React.JS', 
       desc: 'Master the foundations for building modern web interfaces.',
-      price: 'Rp 600,000+',
+      price: 'Program fee starts from Rp 600,000',
       slug: 'frontend-development-reactjs',
       image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop'
     },
     { 
       category: 'SOFTWARE DEVELOPMENT', 
-      title: 'Backend Development - Node.js', 
-      desc: 'Design and build APIs.',
-      price: 'Rp 600,000+',
+      title: 'Backend Development - Node.JS', 
+      desc: 'Design and build APIs & modern databases.',
+      price: 'Program fee starts from Rp 600,000',
       slug: 'backend-development-nodejs',
       image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=800&auto=format&fit=crop'
     },
     { 
       category: 'IT QUALITY ASSURANCE', 
-      title: 'Manual Testing', 
+      title: 'QA Manual Testing', 
       desc: 'Master manual software testing.',
-      price: 'Rp 600,000+',
+      price: 'Program fee starts from Rp 600,000',
       slug: 'manual-testing',
       image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop'
     },
     { 
       category: 'IT QUALITY ASSURANCE', 
-      title: 'Automation Testing - Katalon', 
+      title: 'QA Automation Testing - Katalon', 
       desc: 'Master end-to-end automation testing for faster results and efficiency.',
-      price: 'Rp 600,000+',
+      price: 'Program fee starts from Rp 600,000',
       slug: 'automation-testing-katalon',
       image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop'
     },
@@ -117,7 +119,7 @@ const T = {
     h2a: 'BE THE NEXT',
     h2b: 'TECH AVENGERS',
     desc: 'Pilih program yang sesuai dengan tujuan karier dan kuasai skill yang dibutuhkan dibidang IT.',
-    cta: 'Jadwalkan Konsultasi Bootcamp via WhatsApp',
+    cta: 'Lihat Semua Program Bootcamp',
     link: 'Pelajari selengkapnya',
   },
   en: {
@@ -125,7 +127,7 @@ const T = {
     h2a: 'BE THE NEXT',
     h2b: 'TECH AVENGERS',
     desc: 'Choose the program that fits your career goals and master the skills needed in the IT field.',
-    cta: 'Schedule Bootcamp Consultation via WhatsApp',
+    cta: 'View All Bootcamp Programs',
     link: 'Learn more',
   },
 };
@@ -135,11 +137,20 @@ export function ProgramSection() {
   const t = T[lang];
   const cats = categories[lang];
   const progs = programs[lang];
+  
   const [activeCat, setActiveCat] = useState(cats[0]);
+  const [selectedBootcamp, setSelectedBootcamp] = useState<BootcampDetail | null>(null);
 
   const filtered = activeCat === cats[0]
     ? progs
     : progs.filter(p => p.category === activeCat);
+
+  const handleOpenDetail = (slug: string) => {
+    const detail = bootcampDetailsMap[slug];
+    if (detail) {
+      setSelectedBootcamp(detail);
+    }
+  };
 
   return (
     <section id="program" className="py-20 bg-white relative overflow-hidden">
@@ -184,6 +195,7 @@ export function ProgramSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
+              onClick={() => handleOpenDetail(p.slug)}
               className="bg-white border border-gray-200/90 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-primary/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
             >
               <div>
@@ -199,35 +211,35 @@ export function ProgramSection() {
                       {p.category}
                     </span>
                   </div>
-                  <div className="absolute top-3 right-3">
-                    <span className="text-[11px] font-extrabold text-secondary bg-white/95 backdrop-blur-md px-3 py-1 rounded-full shadow-md border border-gray-200">
-                      {p.price}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Card Content Body */}
                 <div className="p-6">
-                  <h3 className="text-lg font-extrabold text-secondary mb-2 leading-snug group-hover:text-primary transition-colors">
+                  <h3 className="text-base sm:text-lg font-black text-secondary mb-2 leading-snug group-hover:text-primary transition-colors">
                     {p.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-secondary/65 leading-relaxed font-medium line-clamp-3">
+                  <p className="text-xs sm:text-sm text-secondary/65 leading-relaxed font-medium line-clamp-3 mb-4">
                     {p.desc}
                   </p>
+
+                  <div className="text-xs font-bold text-amber-600 bg-amber-50 px-3 py-2 rounded-xl border border-amber-200/60 inline-block">
+                    {p.price}
+                  </div>
                 </div>
               </div>
 
               {/* Card Footer Link */}
               <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between bg-gray-50/50">
-                <a
-                  href={`https://wa.me/6281399271717?text=Halo%20E17%20Course,%20saya%20tertarik%20dengan%20program%20Bootcamp:%20*${encodeURIComponent(p.title)}*.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-primary hover:text-secondary transition-colors group-hover:gap-2.5"
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpenDetail(p.slug);
+                  }}
+                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-primary hover:text-secondary transition-colors group-hover:gap-2.5 bg-transparent border-none p-0 cursor-pointer"
                 >
                   {t.link} <ArrowRight size={14} />
-                </a>
+                </button>
 
                 <span className="text-[11px] font-bold text-gray-400">
                   Batch 2026
@@ -250,6 +262,13 @@ export function ProgramSection() {
         </div>
 
       </div>
+
+      {/* Bootcamp Detail Modal */}
+      <BootcampDetailModal
+        bootcamp={selectedBootcamp}
+        isOpen={Boolean(selectedBootcamp)}
+        onClose={() => setSelectedBootcamp(null)}
+      />
     </section>
   );
 }
