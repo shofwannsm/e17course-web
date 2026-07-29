@@ -204,7 +204,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
             {t.badges.map(b => (
               <span
                 key={b}
-                className="bg-amber-50/60 border border-amber-200/50 text-amber-800 text-xs font-extrabold px-4 py-2 rounded-full shadow-xs inline-flex items-center gap-2 hover:scale-[1.02] transition-transform duration-200 select-none"
+                className="bg-amber-100/70 border border-amber-300/60 text-amber-950 text-xs font-extrabold px-4 py-2 rounded-full shadow-xs inline-flex items-center gap-2 hover:scale-[1.02] transition-transform duration-200 select-none"
               >
                 <span className="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px] font-black shrink-0">
                   ✓
@@ -279,8 +279,8 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
                 className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:border-amber-500/40 transition-all cursor-pointer group"
               >
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[10px] font-extrabold tracking-wider text-amber-800 uppercase bg-amber-50 border border-amber-200/50 px-2.5 py-1 rounded-md">{s.tag}</span>
-                  <span className="text-[11px] text-gray-400 font-bold group-hover:text-amber-700 transition-colors">Detail & Unit Uji →</span>
+                  <span className="text-[10px] font-extrabold tracking-wider text-amber-950 uppercase bg-amber-100 border border-amber-300/60 px-2.5 py-1 rounded-md">{s.tag}</span>
+                  <span className="text-[11px] text-gray-600 font-bold group-hover:text-amber-800 transition-colors">Detail & Unit Uji →</span>
                 </div>
                 <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug group-hover:text-amber-700 transition-colors">{s.title}</h3>
                 <p className="text-sm text-secondary/60 leading-relaxed flex-1 mb-5">{s.desc}</p>

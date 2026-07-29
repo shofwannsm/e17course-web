@@ -38,7 +38,7 @@ export function BootcampDetailModal({ bootcamp, isOpen, onClose }: BootcampDetai
 
           {/* Pop-Up Badge */}
           <div className="flex justify-start mb-2">
-            <span className="text-[10px] font-black tracking-widest text-amber-800 uppercase bg-amber-100 border border-amber-200/60 px-3 py-1 rounded-full">
+            <span className="text-[10px] font-black tracking-widest text-amber-950 uppercase bg-amber-100 border border-amber-300 px-3 py-1 rounded-full">
               {lang === 'en' ? 'PROGRAM DETAILS' : 'INFO SELENGKAPNYA'}
             </span>
           </div>
