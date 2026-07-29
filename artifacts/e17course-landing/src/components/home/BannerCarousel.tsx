@@ -15,90 +15,70 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
+import carouselBootcamp from '@assets/e17brand/carousel-bootcamp.png';
+import carouselBnsp from '@assets/e17brand/carousel-bnsp.png';
+import carouselCorporate from '@assets/e17brand/carousel-corporate.png';
+import carouselPrivat from '@assets/e17brand/carousel-privat.png';
 
 const slides = {
   id: [
     {
       id: 1,
-      badge: 'TERPOPULER | BATCH 2026',
-      title: 'Bootcamp Intensif Siap Kerja',
-      subtitle: 'PROYEK NYATA | DARI NOL HINGGA LULUS',
-      desc: 'Kurikulum praktis berbasis industri — software dev, QA testing, dan data engineering.',
-      cta: 'Jelajahi Bootcamp',
-      href: '/program#program',
-      img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1400&auto=format&fit=crop',
+      isFullImage: true,
+      img: carouselBootcamp,
+      bgColor: '#FFBF00',
+      title: 'Bootcamp Tech Avengers',
     },
     {
       id: 2,
-      badge: 'SOLUSI PERUSAHAAN | IN-HOUSE',
-      title: 'Corporate Training & Workforce Skilling',
-      subtitle: 'CUSTOM MODUL | ONLINE & HYBRID',
-      desc: 'Tingkatkan kompetensi tim IT perusahaan Anda dengan modul khusus dan instruktur praktisi senior.',
-      cta: 'Jadwalkan Konsultasi Corporate',
-      href: '/program#corporate',
-      img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1400&auto=format&fit=crop',
+      isFullImage: true,
+      img: carouselBnsp,
+      bgColor: '#FFBC06',
+      title: 'Sertifikasi BNSP',
     },
     {
       id: 3,
-      badge: 'RESMI BNSP | 26 SKEMA',
-      title: 'Program Sertifikasi Kompetensi BNSP 2026',
-      subtitle: 'SKKNI KEMNAKER RI | ASESOR LISENSI LSP',
-      desc: 'Validasi keahlianmu dengan sertifikat resmi berstandar nasional yang diakui secara luas oleh industri.',
-      cta: 'Lihat Skema Sertifikasi',
-      href: '/program#sertifikasi',
-      img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop',
+      isFullImage: true,
+      img: carouselCorporate,
+      bgColor: '#FFE3A8',
+      title: 'Corporate Training',
     },
     {
       id: 4,
-      badge: 'EKSLUSIF | MENTORING 1-ON-1',
-      title: 'Info Kelas Privat & Mentoring Eksklusif',
-      subtitle: 'FOKUS INTENSIF | JADWAL FLEKSIBEL',
-      desc: 'Bimbingan belajar 1-on-1 bersama instruktur praktisi aktif untuk akselerasi skill dan persiapan karier IT.',
-      cta: 'Konsultasi Kelas Privat',
-      href: 'https://wa.me/6281399271717?text=Halo%20E17%20Course,%20saya%20tertarik%20dengan%20program%20Kelas%20Privat%20%26%20Mentoring.',
-      img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop',
+      isFullImage: true,
+      img: carouselPrivat,
+      bgColor: '#FFFFFF',
+      title: 'Kelas IT Eksklusif',
     },
   ],
   en: [
     {
       id: 1,
-      badge: 'MOST POPULAR | BATCH 2026',
-      title: 'Intensive Job-Ready Bootcamp',
-      subtitle: 'REAL PROJECTS | FROM ZERO TO GRADUATE',
-      desc: 'Industry-based practical curriculum — software dev, QA testing, and data engineering.',
-      cta: 'Explore Bootcamp',
-      href: '/program#program',
-      img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1400&auto=format&fit=crop',
+      isFullImage: true,
+      img: carouselBootcamp,
+      bgColor: '#FFBF00',
+      title: 'Bootcamp Tech Avengers',
     },
     {
       id: 2,
-      badge: 'ENTERPRISE SOLUTION | IN-HOUSE',
-      title: 'Corporate Training & Workforce Skilling',
-      subtitle: 'CUSTOM MODULES | ONLINE & HYBRID',
-      desc: 'Enhance your company IT team competency with tailored modules and expert practitioner instructors.',
-      cta: 'Schedule Corporate Consultation',
-      href: '/program#corporate',
-      img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1400&auto=format&fit=crop',
+      isFullImage: true,
+      img: carouselBnsp,
+      bgColor: '#FFBC06',
+      title: 'BNSP Certification',
     },
     {
       id: 3,
-      badge: 'OFFICIAL BNSP | 26 SCHEMES',
-      title: 'BNSP Competency Certification Program 2026',
-      subtitle: 'SKKNI COMPLIANT | LSP LICENSED ASSESSORS',
-      desc: 'Validate your expertise with official nationally recognised certificates widely trusted by industry.',
-      cta: 'View Certification Schemes',
-      href: '/program#sertifikasi',
-      img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop',
+      isFullImage: true,
+      img: carouselCorporate,
+      bgColor: '#FFE3A8',
+      title: 'Corporate Training',
     },
     {
       id: 4,
-      badge: 'EXCLUSIVE | 1-ON-1 MENTORING',
-      title: 'Private Class Info & Exclusive Mentoring',
-      subtitle: 'INTENSIVE FOCUS | FLEXIBLE SCHEDULE',
-      desc: '1-on-1 private mentoring with active practitioner instructors for skill acceleration and IT career prep.',
-      cta: 'Consult Private Class',
-      href: 'https://wa.me/6281399271717?text=Halo%20E17%20Course,%20saya%20tertarik%20dengan%20program%20Kelas%20Privat%20%26%20Mentoring.',
-      img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop',
+      isFullImage: true,
+      img: carouselPrivat,
+      bgColor: '#FFFFFF',
+      title: 'Exclusive IT Class',
     },
   ],
 };
@@ -133,6 +113,7 @@ export function BannerCarousel() {
     skipSnaps: false 
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -144,12 +125,20 @@ export function BannerCarousel() {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on('select', onSelect).on('reInit', onSelect);
-    const interval = setInterval(() => emblaApi.scrollNext(), 5000);
+    
+    // Pause auto-sliding on hover
+    if (isHovered) return;
+    
+    const interval = setInterval(() => emblaApi.scrollNext(), 8000);
     return () => clearInterval(interval);
-  }, [emblaApi, onSelect]);
+  }, [emblaApi, onSelect, isHovered]);
 
   return (
-    <section className="bg-white pt-4 pb-12 overflow-hidden relative w-full">
+    <section 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="bg-white pt-4 pb-12 overflow-hidden relative w-full"
+    >
       
       {/* Top Immersive Secondary Banner Area */}
       <div className="relative bg-secondary text-white pt-10 pb-28 sm:pb-36 overflow-hidden">
@@ -181,82 +170,93 @@ export function BannerCarousel() {
           
           {/* Embla Viewport */}
           <div className="overflow-hidden w-full py-2" ref={emblaRef}>
-            <div className="flex touch-pan-y -ml-3 sm:-ml-6">
+            <div className="flex touch-pan-y">
               {currentSlides.map((s, idx) => {
                 const isSelected = idx === selectedIndex;
 
                 return (
                   <div 
                     key={s.id} 
-                    className="flex-[0_0_90%] sm:flex-[0_0_82%] md:flex-[0_0_76%] lg:flex-[0_0_68%] xl:flex-[0_0_62%] min-w-0 pl-3 sm:pl-6 transition-all duration-500"
+                    className="flex-[0_0_100%] min-w-0 px-4 md:px-8"
                   >
                     <div 
-                      className={`relative h-[380px] sm:h-[440px] md:h-[480px] w-full rounded-3xl overflow-hidden transition-all duration-500 shadow-2xl border ${
-                        isSelected 
-                          ? 'scale-100 opacity-100 border-white/20 shadow-primary/20' 
-                          : 'scale-[0.93] opacity-40 filter brightness-75 border-transparent'
-                      }`}
+                      className="relative aspect-[1024/381] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20"
                     >
                       {/* Full-Bleed Image Background */}
-                      <img 
-                        src={s.img} 
-                        alt={s.title} 
-                        className="w-full h-full object-cover" 
-                      />
-
-                      {/* Secondary Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/60 to-transparent opacity-95" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-secondary/85 via-transparent to-transparent opacity-80" />
-
-                      {/* Floating Content Overlay */}
-                      <div className="absolute inset-0 p-6 sm:p-10 md:p-14 flex flex-col justify-end items-start z-10">
-                        
-                        {/* Floating Action Buttons */}
-                        <div className="flex items-center gap-3 mb-6">
-                          <a
-                            href={s.href}
-                            className="w-11 h-11 rounded-full bg-primary text-secondary font-black shadow-lg flex items-center justify-center hover:scale-110 transition-transform"
-                            title="Buka Program"
-                          >
-                            <Play size={18} className="fill-secondary translate-x-0.5" />
-                          </a>
-                          <button
-                            className="w-11 h-11 rounded-full bg-white/15 backdrop-blur-md text-white border border-white/30 flex items-center justify-center hover:bg-white/30 transition-colors"
-                            title="Simpan Program"
-                          >
-                            <Bookmark size={18} />
-                          </button>
-                        </div>
-
-                        {/* Title */}
-                        <motion.h3 
-                          key={s.id + '-t-' + lang}
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight max-w-3xl mb-3 tracking-tight"
+                      {s.isFullImage ? (
+                        <div 
+                          className="w-full h-full flex items-center justify-center relative select-none"
+                          style={{ backgroundColor: s.bgColor || '#0d1a30' }}
                         >
-                          {s.title}
-                        </motion.h3>
-
-                        {/* Subtitle & Desc */}
-                        <div className="space-y-1 mb-6">
-                          <span className="text-xs font-mono font-bold tracking-widest uppercase text-primary block">
-                            {s.subtitle}
-                          </span>
-                          <p className="text-xs sm:text-sm text-gray-300 max-w-xl line-clamp-2 leading-relaxed">
-                            {s.desc}
-                          </p>
+                          <img 
+                            src={s.img} 
+                            alt={s.title} 
+                            className="w-full h-full object-contain" 
+                          />
                         </div>
+                      ) : (
+                        <>
+                          <img 
+                            src={s.img} 
+                            alt={s.title} 
+                            className="w-full h-full object-cover" 
+                          />
 
-                        {/* CTA Link Button */}
-                        <a
-                          href={s.href}
-                          className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold px-6 py-3 rounded-full bg-white/10 hover:bg-primary hover:text-secondary text-white border border-white/20 hover:border-primary transition-all duration-300 shadow-md group"
-                        >
-                          {s.cta} <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        </a>
+                          {/* Secondary Gradient Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/60 to-transparent opacity-95" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-secondary/85 via-transparent to-transparent opacity-80" />
 
-                      </div>
+                          {/* Floating Content Overlay */}
+                          <div className="absolute inset-0 p-6 sm:p-10 md:p-14 flex flex-col justify-end items-start z-10">
+                            
+                            {/* Floating Action Buttons */}
+                            <div className="flex items-center gap-3 mb-6">
+                              <a
+                                href={s.href}
+                                className="w-11 h-11 rounded-full bg-primary text-secondary font-black shadow-lg flex items-center justify-center hover:scale-110 transition-transform"
+                                title="Buka Program"
+                              >
+                                <Play size={18} className="fill-secondary translate-x-0.5" />
+                              </a>
+                              <button
+                                className="w-11 h-11 rounded-full bg-white/15 backdrop-blur-md text-white border border-white/30 flex items-center justify-center hover:bg-white/30 transition-colors"
+                                title="Simpan Program"
+                              >
+                                <Bookmark size={18} />
+                              </button>
+                            </div>
+
+                            {/* Title */}
+                            <motion.h3 
+                              key={s.id + '-t-' + lang}
+                              initial={{ opacity: 0, y: 15 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight max-w-3xl mb-3 tracking-tight"
+                            >
+                              {s.title}
+                            </motion.h3>
+
+                            {/* Subtitle & Desc */}
+                            <div className="space-y-1 mb-6">
+                              <span className="text-xs font-mono font-bold tracking-widest uppercase text-primary block">
+                                {s.subtitle}
+                              </span>
+                              <p className="text-xs sm:text-sm text-gray-300 max-w-xl line-clamp-2 leading-relaxed">
+                                {s.desc}
+                              </p>
+                            </div>
+
+                            {/* CTA Link Button */}
+                            <a
+                              href={s.href}
+                              className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold px-6 py-3 rounded-full bg-white/10 hover:bg-primary hover:text-secondary text-white border border-white/20 hover:border-primary transition-all duration-300 shadow-md group"
+                            >
+                              {s.cta} <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            </a>
+
+                          </div>
+                        </>
+                      )}
 
                     </div>
                   </div>

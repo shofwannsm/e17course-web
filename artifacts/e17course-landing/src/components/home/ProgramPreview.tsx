@@ -3,6 +3,13 @@ import { Link } from 'wouter';
 import { ArrowRight, Code2, ShieldCheck, Building2, Zap, Star, Users } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+
+
+
+
+
+
+
 const T = {
   id: {
     eyebrow: 'Program Kami',
