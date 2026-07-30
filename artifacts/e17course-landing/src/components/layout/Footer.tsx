@@ -71,15 +71,11 @@ export function Footer() {
           
           {/* Left Panel: Logo, Description, Social Media, and Contact Info */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {/* Logo, Desc & Social Media */}
-            <div className="flex flex-col justify-between space-y-6">
-              <div>
-                <img src={logo} alt="E17 Course Logo" className="h-10 md:h-12 mb-4 object-contain" />
-                <p className="text-gray-300 text-xs md:text-sm leading-relaxed max-w-xs">{t.desc}</p>
-              </div>
+            <div className="flex flex-col justify-start space-y-4">
+              <img src={logo} alt="E17 Course Logo" className="h-10 md:h-12 object-contain self-start" />
 
               <div>
-                <h5 className="font-semibold text-gray-200 text-xs md:text-sm mb-3 uppercase tracking-wider">{t.ourSocialMedia}</h5>
+                <h5 className="font-semibold text-gray-200 text-xs md:text-sm mb-2.5 uppercase tracking-wider">{t.ourSocialMedia}</h5>
                 <div className="flex items-center gap-3">
                   <a href="https://www.facebook.com/e17course" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#3b5998] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Facebook">
                     <FaFacebookF size={15} />

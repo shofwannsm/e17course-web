@@ -59,8 +59,8 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 py-3'
-          : 'bg-white/90 backdrop-blur-sm py-4'
+          ? 'bg-white/70 backdrop-blur-xl shadow-md shadow-black/5 border-b border-white/40 py-3'
+          : 'bg-white/40 backdrop-blur-lg border-b border-white/20 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6">
@@ -99,7 +99,7 @@ export function Navbar() {
             {/* Language toggle */}
             <button
               onClick={toggleLang}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white hover:border-primary/40 hover:bg-primary/5 transition-all text-xs font-bold text-secondary/70 hover:text-secondary"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/30 bg-white/30 backdrop-blur-md hover:border-primary/40 hover:bg-primary/10 transition-all text-xs font-bold text-secondary/70 hover:text-secondary"
               aria-label="Toggle language"
             >
               <Globe size={13} className="text-primary" />
@@ -126,7 +126,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100"
+            className="md:hidden bg-white/70 backdrop-blur-lg border-t border-white/30"
           >
             <nav className="flex flex-col px-4 py-4 gap-3 max-w-7xl mx-auto">
               {links.map((link) =>
