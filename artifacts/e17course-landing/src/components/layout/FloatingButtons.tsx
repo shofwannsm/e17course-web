@@ -20,12 +20,16 @@ export function FloatingButtons() {
         <span className="max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-300 whitespace-nowrap">{chat}</span>
         <MessageCircle size={20} />
       </motion.a>
-      <motion.button initial={{ opacity:0, x:20 }} animate={{ opacity:1, x:0 }} transition={{ delay:0.6 }}
+      <motion.a
+        href="/COMPRO_E17_CETAK.pdf"
+        download="COMPRO_E17_CETAK.pdf"
+        initial={{ opacity:0, x:20 }} animate={{ opacity:1, x:0 }} transition={{ delay:0.6 }}
         whileHover={{ scale:1.05, x:-3 }} whileTap={{ scale:0.95 }}
-        className="bg-primary text-white shadow-lg shadow-primary/30 px-4 py-3 rounded-full flex items-center gap-2 font-semibold text-sm transition-colors group overflow-hidden">
+        className="bg-primary text-white shadow-lg shadow-primary/30 px-4 py-3 rounded-full flex items-center gap-2 font-semibold text-sm transition-colors group overflow-hidden"
+      >
         <span className="max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-300 whitespace-nowrap">{download}</span>
         <FileDown size={20} />
-      </motion.button>
+      </motion.a>
     </div>
   );
 }

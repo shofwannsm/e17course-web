@@ -1,13 +1,27 @@
-import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo, useRef, type ReactNode, type ComponentPropsWithoutRef } from 'react';
+import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo, useRef, useState, type ReactNode, type ComponentPropsWithoutRef, type CSSProperties } from 'react';
 import gsap from 'gsap';
-import './CardSwap.css';
 
 export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   customClass?: string;
 }
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(({ customClass, className, ...rest }, ref) => (
-  <div ref={ref} {...rest} className={`card ${customClass ?? ''} ${className ?? ''}`.trim()} />
+const cardBaseStyle: CSSProperties = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  borderRadius: 20,
+  border: '1px solid rgba(212, 162, 0, 0.25)',
+  background: '#121622',
+  boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 162, 0, 0.1)',
+  transformStyle: 'preserve-3d',
+  willChange: 'transform',
+  backfaceVisibility: 'hidden',
+  WebkitBackfaceVisibility: 'hidden',
+  boxSizing: 'border-box',
+};
+
+export const Card = forwardRef<HTMLDivElement, CardProps>(({ customClass, className, style, ...rest }, ref) => (
+  <div ref={ref} {...rest} style={{ ...cardBaseStyle, ...style }} className={`card ${customClass ?? ''} ${className ?? ''}`.trim()} />
 ));
 Card.displayName = 'Card';
 
@@ -40,6 +54,20 @@ const placeNow = (el: HTMLDivElement | null, slot: Slot, skew: number) => {
   });
 };
 
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(query).matches
+  );
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia(query);
+    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, [query]);
+  return matches;
+}
+
 interface CardSwapProps {
   width?: number | string;
   height?: number | string;
@@ -65,26 +93,42 @@ export const CardSwap: React.FC<CardSwapProps> = ({
   easing = 'elastic',
   children,
 }) => {
+  const isTablet = useMediaQuery('(max-width: 768px)');
+  const isPhone = useMediaQuery('(max-width: 480px)');
+  const childArr = useMemo(() => Children.toArray(children), [children]);
+  const maxIndex = Math.max(0, childArr.length - 1);
+  const stackOffsetX = (maxIndex * cardDistance) / 2;
+  const stackOffsetY = (maxIndex * verticalDistance) / 2;
+  const mobileScale = isPhone ? 0.75 : 0.85;
+
+  const containerStyle: CSSProperties = {
+    position: 'absolute',
+    top: '-35%',
+    left: '70%',
+    transform: `translate(-50%, -50%) scale(${isTablet ? (isPhone ? 0.5 : 0.65) : 1})`,
+    transformOrigin: 'center center',
+    perspective: 900,
+    overflow: 'visible',
+  };
+
   const config =
     easing === 'elastic'
       ? {
-          ease: 'elastic.out(0.6,0.9)',
-          durDrop: 2,
-          durMove: 2,
-          durReturn: 2,
-          promoteOverlap: 0.9,
-          returnDelay: 0.05,
-        }
+        ease: 'elastic.out(0.6,0.9)',
+        durDrop: 2,
+        durMove: 2,
+        durReturn: 2,
+        promoteOverlap: 0.9,
+        returnDelay: 0.05,
+      }
       : {
-          ease: 'power1.inOut',
-          durDrop: 0.8,
-          durMove: 0.8,
-          durReturn: 0.8,
-          promoteOverlap: 0.45,
-          returnDelay: 0.2,
-        };
-
-  const childArr = useMemo(() => Children.toArray(children), [children]);
+        ease: 'power1.inOut',
+        durDrop: 0.8,
+        durMove: 0.8,
+        durReturn: 0.8,
+        promoteOverlap: 0.45,
+        returnDelay: 0.2,
+      };
   const refs = useMemo(
     () => childArr.map(() => React.createRef<HTMLDivElement>()),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -204,7 +248,7 @@ export const CardSwap: React.FC<CardSwapProps> = ({
   });
 
   return (
-    <div ref={container} className="card-swap-container" style={{ width, height }}>
+    <div ref={container} className="card-swap-container" style={{ width, height, ...containerStyle }}>
       {rendered}
     </div>
   );

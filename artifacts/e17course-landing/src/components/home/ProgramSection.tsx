@@ -170,7 +170,7 @@ export function ProgramSection() {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex gap-2 justify-center pb-3 mb-10">
+        <div className="flex flex-wrap gap-2 justify-center pb-3 mb-10">
           {cats.map((cat) => (
             <button
               key={cat}

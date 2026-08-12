@@ -52,7 +52,7 @@ export default function CleanLight() {
             <img src="/__mockup/images/logo.png" alt="E17" className="h-8 object-contain" />
             <span className="font-bold text-xl tracking-tight text-[#1C244B]">E17 Course</span>
           </div>
-          
+
           <div className="hidden md:flex items-center gap-8 font-medium text-sm text-[#555555]">
             <a href="#" className="text-[#E8734A] relative font-semibold">
               Beranda
@@ -63,7 +63,7 @@ export default function CleanLight() {
             <a href="#" className="hover:text-[#1C244B] transition-colors">Artikel</a>
             <a href="#" className="hover:text-[#1C244B] transition-colors">Tentang Kami</a>
           </div>
-          
+
           <div className="hidden md:flex items-center gap-4">
             <button className="text-[#1C244B] font-semibold text-sm px-4 py-2 hover:text-[#E8734A] transition-colors">
               Masuk
@@ -72,7 +72,7 @@ export default function CleanLight() {
               Daftar Sekarang
             </button>
           </div>
-          
+
           <button className="md:hidden text-[#1C244B]">
             <Menu size={24} />
           </button>
@@ -84,7 +84,7 @@ export default function CleanLight() {
         {/* Decorative background elements */}
         <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-[#E8734A]/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
         <div className="absolute top-40 -left-20 w-[400px] h-[400px] bg-[#467FF7]/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
-        
+
         <div className="grid md:grid-cols-2 gap-12 lg:gap-8 items-center">
           <div className="max-w-xl z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8734A]/10 text-[#E8734A] font-semibold text-xs mb-6 slide-up">
@@ -94,31 +94,31 @@ export default function CleanLight() {
               </span>
               Pendaftaran Gelombang 4 Dibuka
             </div>
-            
+
             <h1 className="text-5xl lg:text-6xl font-extrabold leading-[1.15] mb-6 slide-up stagger-1 text-[#1C244B]">
-              Bangun Karier IT, <br/>
+              Bangun Karier IT, <br />
               <span className="relative inline-block mt-2">
                 Dimulai dari Sini!
-                <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#467FF7]/30 -z-10" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00015 6.72665C47.8863 1.83842 129.588 -1.82136 198.026 6.72665" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/></svg>
+                <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#467FF7]/30 -z-10" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00015 6.72665C47.8863 1.83842 129.588 -1.82136 198.026 6.72665" stroke="currentColor" strokeWidth="4" strokeLinecap="round" /></svg>
               </span>
             </h1>
-            
+
             <p className="text-[#555555] text-lg lg:text-xl mb-8 leading-relaxed slide-up stagger-2">
               Tingkatkan keahlianmu dengan kurikulum industri terkini dan dapatkan <strong className="text-[#1C244B] font-bold">Sertifikasi Resmi BNSP</strong> untuk memvalidasi kompetensimu di dunia kerja profesional.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center gap-4 slide-up stagger-3">
               <button className="w-full sm:w-auto bg-[#E8734A] text-white font-semibold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-[#d66038] hover:shadow-xl hover:shadow-[#E8734A]/25 transition-all group">
                 Jelajahi Program
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              
-              <button className="w-full sm:w-auto bg-white border border-[#F8F9FC] shadow-sm text-[#1C244B] font-semibold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:border-[#467FF7]/30 hover:bg-[#F8F9FC] transition-all">
+
+              {/* <button className="w-full sm:w-auto bg-white border border-[#F8F9FC] shadow-sm text-[#1C244B] font-semibold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:border-[#467FF7]/30 hover:bg-[#F8F9FC] transition-all">
                 <PlayCircle size={20} className="text-[#467FF7]" />
                 Lihat Video
-              </button>
+              </button> */}
             </div>
-            
+
             <div className="mt-10 flex items-center gap-4 slide-up stagger-3">
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
@@ -137,10 +137,10 @@ export default function CleanLight() {
               </div>
             </div>
           </div>
-          
+
           <div className="relative slide-up stagger-2 hidden md:block">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[#F8F9FC] rounded-full blur-2xl -z-20"></div>
-            
+
             <div className="relative w-full aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#E8734A] to-[#467FF7] rounded-[2rem] rotate-3 opacity-10"></div>
               <div className="absolute inset-0 bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-white/50 -rotate-2 transition-transform hover:rotate-0 duration-500 flex flex-col">
@@ -150,7 +150,7 @@ export default function CleanLight() {
                   <div className="w-3 h-3 rounded-full bg-[#E8734A]/30"></div>
                 </div>
                 <img src="/__mockup/images/hero-visual.png" alt="Platform Preview" className="w-full h-full object-cover flex-1" />
-                
+
                 <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-lg border border-white flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-[#E8734A]/10 flex items-center justify-center text-[#E8734A] shrink-0">
                     <CheckCircle2 size={24} />
@@ -162,7 +162,7 @@ export default function CleanLight() {
                 </div>
               </div>
             </div>
-            
+
             {/* Floating element */}
             <div className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-[#F8F9FC] animate-[blob-bounce_8s_infinite_alternate]">
               <div className="flex items-center gap-3">
@@ -183,7 +183,7 @@ export default function CleanLight() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="bg-[#E8734A]/5 rounded-[2.5rem] p-8 md:p-12 overflow-hidden relative border border-[#E8734A]/10">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#E8734A]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          
+
           <div className="flex flex-col md:flex-row items-center gap-10 relative z-10">
             <div className="flex-1">
               <div className="inline-block bg-white text-[#E8734A] text-xs font-bold px-3 py-1.5 rounded-full shadow-sm mb-5">
@@ -198,14 +198,14 @@ export default function CleanLight() {
             <div className="w-full md:w-[45%] h-56 md:h-72 bg-white rounded-3xl shadow-sm border border-white overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#1C244B] to-[#467FF7] opacity-5"></div>
               <div className="absolute inset-0 flex items-center justify-center z-10">
-                 <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur shadow-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                   <PlayCircle size={32} className="text-[#E8734A]" />
-                 </div>
+                <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur shadow-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                  <PlayCircle size={32} className="text-[#E8734A]" />
+                </div>
               </div>
               <img src="/__mockup/images/hero-visual.png" className="w-full h-full object-cover opacity-60 mix-blend-overlay" alt="Course teaser" />
             </div>
           </div>
-          
+
           {/* Carousel dots */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
             <div className="w-8 h-2 bg-[#E8734A] rounded-full"></div>
@@ -220,12 +220,12 @@ export default function CleanLight() {
         <div className="max-w-7xl mx-auto px-6 mb-8">
           <p className="text-center text-sm font-bold tracking-wide text-[#555555] uppercase">DIPERCAYA OLEH PERUSAHAAN TEKNOLOGI TERKEMUKA</p>
         </div>
-        
+
         <div className="relative w-full max-w-5xl mx-auto">
           {/* Gradient masks for smooth fade effect at edges */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-          
+
           <div className="flex overflow-hidden">
             <div className="marquee-content flex items-center gap-20 px-8 whitespace-nowrap">
               {/* Partner Logos (Mocked with text) */}

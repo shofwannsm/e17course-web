@@ -1,12 +1,12 @@
 import { useMotionValue, useTransform, motion } from 'framer-motion';
-import { 
-  ChevronRight, 
-  PlayCircle, 
-  Users, 
-  CheckCircle2, 
-  Code2, 
-  Award, 
-  Terminal, 
+import {
+  ChevronRight,
+  PlayCircle,
+  Users,
+  CheckCircle2,
+  Code2,
+  Award,
+  Terminal,
   Sparkles,
   Laptop,
   Check
@@ -23,7 +23,7 @@ const T = {
     descBold: 'Apapun latar belakangmu,',
     descEnd: 'saatnya bertransformasi menjadi profesional IT bersertifikasi BNSP.',
     cta1: 'Jelajahi Program',
-    cta2: 'Lihat Video',
+    // cta2: 'Lihat Video',  
     ratingLabel: 'dari 2.000+ alumni',
     absorbed: 'Modul Proyek Nyata',
     absorbedVal: '100%',
@@ -41,7 +41,7 @@ const T = {
     descBold: 'Whatever your background,',
     descEnd: 'it\'s time to transform into a BNSP-certified IT professional.',
     cta1: 'Explore Programs',
-    cta2: 'Watch Video',
+    // cta2: 'Watch Video',
     ratingLabel: 'from 2,000+ alumni',
     absorbed: 'Real Project Modules',
     absorbedVal: '100%',
@@ -85,7 +85,7 @@ function Hero3DMockup({ t }: { t: typeof T.id }) {
 
       {/* Main 3D Card Stack Container (Inspired by Modern Neumorphic 3D App Mockups) */}
       <div className="relative bg-white rounded-[32px] p-6 shadow-2xl border border-gray-200/80 backdrop-blur-xl group-hover:shadow-primary/20 transition-all duration-500">
-        
+
         {/* App Titlebar Header */}
         <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-5">
           <div className="flex items-center gap-2">
@@ -105,7 +105,7 @@ function Hero3DMockup({ t }: { t: typeof T.id }) {
 
         {/* E17 Learning Hub App Content */}
         <div className="space-y-4">
-          
+
           {/* Brand Header inside mockup */}
           <div className="flex items-center justify-between">
             <img src={logo} alt="E17 Course" className="h-7 object-contain" />
@@ -274,10 +274,12 @@ export function Hero() {
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
 
+              {/* Tombol Video (sementara disembunyikan)
               <button className="w-full sm:w-auto text-secondary font-extrabold px-6 py-4 rounded-full border border-gray-200 hover:border-gray-300 flex items-center justify-center gap-2 transition-all duration-300 group active:scale-95 text-sm sm:text-base">
                 <PlayCircle size={20} className="text-primary group-hover:scale-110 transition-transform" />
                 {t.cta2}
               </button>
+              */}
             </motion.div>
 
             {/* Social Proof Avatars */}
@@ -291,9 +293,8 @@ export function Hero() {
                 {['BS', 'SR', 'AP', 'DM'].map((i, idx) => (
                   <div
                     key={idx}
-                    className={`w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold ${
-                      ['bg-primary text-secondary', 'bg-blue-600', 'bg-amber-500', 'bg-emerald-600'][idx]
-                    }`}
+                    className={`w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold ${['bg-primary text-secondary', 'bg-blue-600', 'bg-amber-500', 'bg-emerald-600'][idx]
+                      }`}
                   >
                     {i}
                   </div>

@@ -23,9 +23,9 @@ const T = {
     programTitle: 'PROGRAM UNGGULAN',
     programLinks: [
       { label: 'Bootcamp IT', href: '/program' },
-      { label: 'E-learning Interaktif', href: '/program' },
-      { label: 'Review CV AI', href: '#' },
-      { label: 'Corporate Training', href: '#' },
+      // { label: 'E-learning Interaktif', href: '/program' },
+      // { label: 'Review CV AI', href: '#' },
+      { label: 'Corporate Training', href: '/program' },
     ],
     copy: '© 2026 PT Edukasi Tujuh Belas. All rights reserved.',
     privacy: 'Kebijakan Privasi',
@@ -68,7 +68,7 @@ export function Footer() {
     <footer className="bg-secondary text-white pt-10 pb-8">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="bg-white/5 rounded-2xl p-6 md:p-10 shadow-xl border border-white/10 backdrop-blur-sm grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
-          
+
           {/* Left Panel: Logo, Description, Social Media, and Contact Info */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div className="flex flex-col justify-start space-y-4">

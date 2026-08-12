@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Play, 
-  Bookmark, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Bookmark,
   ArrowUpRight,
   GraduationCap,
   Award,
@@ -16,7 +16,7 @@ import {
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import carouselBootcamp from '@assets/e17brand/carousel-bootcamp.png';
-import carouselBnsp from '@assets/e17brand/carousel-bnsp.png';
+import carouselBnsp from '@assets/e17brand/baner_BNSP_v2.png';
 import carouselCorporate from '@assets/e17brand/carousel-corporate.png';
 import carouselPrivat from '@assets/e17brand/carousel-privat.png';
 
@@ -107,10 +107,10 @@ export function BannerCarousel() {
   const currentSlides = slides[lang];
   const currentQuickLinks = quickLinks[lang];
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true, 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
     align: 'center',
-    skipSnaps: false 
+    skipSnaps: false
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -125,24 +125,24 @@ export function BannerCarousel() {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on('select', onSelect).on('reInit', onSelect);
-    
+
     // Pause auto-sliding on hover
     if (isHovered) return;
-    
+
     const interval = setInterval(() => emblaApi.scrollNext(), 8000);
     return () => clearInterval(interval);
   }, [emblaApi, onSelect, isHovered]);
 
   return (
-    <section 
+    <section
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="bg-white pt-4 pb-12 overflow-hidden relative w-full"
     >
-      
+
       {/* Top Immersive Secondary Banner Area */}
       <div className="relative bg-secondary text-white pt-10 pb-28 sm:pb-36 overflow-hidden">
-        
+
         {/* Ambient Glow Effects */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -152,7 +152,7 @@ export function BannerCarousel() {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl md:text-3xl font-black text-white tracking-tight flex items-center gap-2">
-                Program Unggulan 
+                Program Unggulan
                 <span className="text-primary text-[11px] font-bold px-3 py-0.5 rounded-full bg-primary/15 border border-primary/30 uppercase tracking-wider">
                   Pilihan Utama 2026
                 </span>
@@ -167,7 +167,7 @@ export function BannerCarousel() {
 
         {/* Full-Width Carousel Slider Container */}
         <div className="relative w-full z-10">
-          
+
           {/* Embla Viewport */}
           <div className="overflow-hidden w-full py-2" ref={emblaRef}>
             <div className="flex touch-pan-y">
@@ -175,31 +175,31 @@ export function BannerCarousel() {
                 const isSelected = idx === selectedIndex;
 
                 return (
-                  <div 
-                    key={s.id} 
+                  <div
+                    key={s.id}
                     className="flex-[0_0_100%] min-w-0 px-4 md:px-8"
                   >
-                    <div 
+                    <div
                       className="relative aspect-[1024/381] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20"
                     >
                       {/* Full-Bleed Image Background */}
                       {s.isFullImage ? (
-                        <div 
+                        <div
                           className="w-full h-full flex items-center justify-center relative select-none"
                           style={{ backgroundColor: s.bgColor || '#0d1a30' }}
                         >
-                          <img 
-                            src={s.img} 
-                            alt={s.title} 
-                            className="w-full h-full object-contain" 
+                          <img
+                            src={s.img}
+                            alt={s.title}
+                            className="w-full h-full object-contain"
                           />
                         </div>
                       ) : (
                         <>
-                          <img 
-                            src={s.img} 
-                            alt={s.title} 
-                            className="w-full h-full object-cover" 
+                          <img
+                            src={s.img}
+                            alt={s.title}
+                            className="w-full h-full object-cover"
                           />
 
                           {/* Secondary Gradient Overlay */}
@@ -208,7 +208,7 @@ export function BannerCarousel() {
 
                           {/* Floating Content Overlay */}
                           <div className="absolute inset-0 p-6 sm:p-10 md:p-14 flex flex-col justify-end items-start z-10">
-                            
+
                             {/* Floating Action Buttons */}
                             <div className="flex items-center gap-3 mb-6">
                               <a
@@ -227,7 +227,7 @@ export function BannerCarousel() {
                             </div>
 
                             {/* Title */}
-                            <motion.h3 
+                            <motion.h3
                               key={s.id + '-t-' + lang}
                               initial={{ opacity: 0, y: 15 }}
                               animate={{ opacity: 1, y: 0 }}
@@ -266,8 +266,8 @@ export function BannerCarousel() {
           </div>
 
           {/* Left Arrow Navigation Button */}
-          <button 
-            onClick={scrollPrev} 
+          <button
+            onClick={scrollPrev}
             className="absolute left-3 sm:left-8 md:left-12 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary text-secondary font-black shadow-2xl border border-primary/50 flex items-center justify-center hover:scale-110 hover:shadow-primary/50 transition-all z-30"
             aria-label="Previous Slide"
           >
@@ -275,8 +275,8 @@ export function BannerCarousel() {
           </button>
 
           {/* Right Arrow Navigation Button */}
-          <button 
-            onClick={scrollNext} 
+          <button
+            onClick={scrollNext}
             className="absolute right-3 sm:right-8 md:right-12 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary text-secondary font-black shadow-2xl border border-primary/50 flex items-center justify-center hover:scale-110 hover:shadow-primary/50 transition-all z-30"
             aria-label="Next Slide"
           >
