@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Star, X, Youtube, ShieldCheck, Award, Users, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -7,12 +7,12 @@ interface StudentTestimonial {
   id: string;
   name: string;
   role: string;
-  company: string;
+  company?: string;
   program: string;
   quote: string;
   videoUrl: string;
-  posterImage: string;
-  youtubeId: string;
+  posterImage?: string;
+  fullVideoUrl: string;
   stars: number;
 }
 
@@ -20,172 +20,144 @@ const testimonialsData: { id: StudentTestimonial[]; en: StudentTestimonial[] } =
   id: [
     {
       id: '1',
-      name: 'Budi Santoso',
-      role: 'Core Banking Specialist',
-      company: 'Bank Swasta Nasional',
-      program: 'Core Banking - Temenos 24',
-      quote: 'Materi Temenos T24 dan pendampingan sertifikasi BNSP di E17 Course sangat aplikatif. Langsung relevan dengan kebutuhan perbankan modern!',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-42898-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Fikri Aulia',
+      role: 'Frontend Developer',
+      program: 'Frontend Developer',
+      quote: 'Course yang disediakan itu Sesuai dengan bidang yang saya minati',
+      videoUrl: '/assets/testimonials/Priview Fikri Aulia-1.mp4',
+      fullVideoUrl: '/assets/testimonials/fikri Aulia.mp4',
       stars: 5,
     },
     {
       id: '2',
-      name: 'Siti Rahmawati',
-      role: 'Frontend Engineer',
-      company: 'Digital Startup Jakarta',
-      program: 'Frontend Development - React.js',
-      quote: 'Dari nol belajar React.js hingga lulus sertifikasi BNSP. Instrukturnya ramah dan sangat sabar bimbing sampai paham!',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-working-on-a-laptop-42907-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Fitra Rizki',
+      role: 'Fullstack Developer',
+      program: 'Fullstack Developer',
+      quote: 'Mudah di Pahami',
+      videoUrl: '/assets/testimonials/Priview Fitra Rizki-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Fitra Rizki-1.mp4',
       stars: 5,
     },
     {
       id: '3',
-      name: 'Andi Saputra',
-      role: 'QA Automation Lead',
-      company: 'Enterprise Financial Tech',
-      program: 'Automation Testing - Katalon',
-      quote: 'Katalon Automation nya super praktis. Proses testing tim QA kami sekarang jauh lebih cepat dan efisien.',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-team-of-programmers-working-together-42900-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Sela Nurjanah',
+      role: 'QA Tester',
+      program: 'QA Tester',
+      quote: 'Banyak Pengalaman yang di peroleh saat Course',
+      videoUrl: '/assets/testimonials/Priview Sela Nurjanah-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Sela Nurjanah-1.mp4',
       stars: 5,
     },
     {
       id: '4',
-      name: 'Reza Firmansyah',
-      role: 'Backend Engineer',
-      company: 'Tech Solutions Indonesia',
-      program: 'Backend Development - Node.js',
-      quote: 'Materi Node.js dan perancangan RESTful API sangat terstruktur. Sangat membantu menaikkan level karier backend saya.',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-man-working-on-a-laptop-in-a-modern-office-42897-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Shana Nandya',
+      role: 'QA Tester',
+      program: 'QA Tester',
+      quote: 'Biaya Terjangkau, Ngebantu banget untuk orang awam',
+      videoUrl: '/assets/testimonials/Priview Shana Nandya-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Shana Nandya-1.mp4',
       stars: 5,
     },
     {
       id: '5',
-      name: 'Nina Kartika',
-      role: 'Low-Code Developer',
-      company: 'Enterprise System House',
-      program: 'Outsystems Development',
-      quote: 'Outsystems low-code platform membantu membangun aplikasi enterprise 3x lebih cepat. Sangat direkomendasikan!',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-woman-working-on-her-laptop-in-a-modern-office-42902-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Fikri Aulia',
+      role: 'Frontend Developer',
+      program: 'Frontend Developer',
+      quote: 'Course yang disediakan itu Sesuai dengan bidang yang saya minati',
+      videoUrl: '/assets/testimonials/Priview Fikri Aulia-1.mp4',
+      fullVideoUrl: '/assets/testimonials/fikri Aulia.mp4',
       stars: 5,
     },
     {
       id: '6',
-      name: 'Farhan Rizky',
-      role: 'Manual QA Specialist',
-      company: 'Logistics Digital Tech',
-      program: 'Manual Testing',
-      quote: 'Fondasi pengujian software manual diajarkan sangat teliti. Portofolio pengujian saya makin kredibel.',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-laptop-and-talking-to-a-colleague-42918-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Fitra Rizki',
+      role: 'Fullstack Developer',
+      program: 'Fullstack Developer',
+      quote: 'Mudah di Pahami',
+      videoUrl: '/assets/testimonials/Priview Fitra Rizki-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Fitra Rizki-1.mp4',
       stars: 5,
     },
     {
       id: '7',
-      name: 'Dian Permata',
-      role: 'Fullstack Developer',
-      company: 'Digital Bank Indonesia',
-      program: 'Fullstack Engineering',
-      quote: 'Pendampingan sertifikasi BNSP dari asesor praktisi langsung mengubah cara kerja dan kepercayaan diri saya di industri.',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-man-typing-on-a-laptop-42899-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Sela Nurjanah',
+      role: 'QA Tester',
+      program: 'QA Tester',
+      quote: 'Banyak Pengalaman yang di peroleh saat Course',
+      videoUrl: '/assets/testimonials/Priview Sela Nurjanah-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Sela Nurjanah-1.mp4',
       stars: 5,
     },
   ],
   en: [
     {
       id: '1',
-      name: 'Budi Santoso',
-      role: 'Core Banking Specialist',
-      company: 'National Private Bank',
-      program: 'Core Banking - Temenos 24',
-      quote: 'The Temenos T24 materials and BNSP mentoring at E17 Course were extremely practical. Immediately relevant for modern banking needs!',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-42898-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Fikri Aulia',
+      role: 'Frontend Developer',
+      program: 'Frontend Developer',
+      quote: 'The courses provided are in line with my interests',
+      videoUrl: '/assets/testimonials/Priview Fikri Aulia-1.mp4',
+      fullVideoUrl: '/assets/testimonials/fikri Aulia.mp4',
       stars: 5,
     },
     {
       id: '2',
-      name: 'Siti Rahmawati',
-      role: 'Frontend Engineer',
-      company: 'Digital Startup Jakarta',
-      program: 'Frontend Development - React.js',
-      quote: 'From zero React.js to passing BNSP certification. The instructors were friendly and very patient until I understood!',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-working-on-a-laptop-42907-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Fitra Rizki',
+      role: 'Fullstack Developer',
+      program: 'Fullstack Developer',
+      quote: 'Easy to understand',
+      videoUrl: '/assets/testimonials/Priview Fitra Rizki-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Fitra Rizki-1.mp4',
       stars: 5,
     },
     {
       id: '3',
-      name: 'Andi Saputra',
-      role: 'QA Automation Lead',
-      company: 'Enterprise Financial Tech',
-      program: 'Automation Testing - Katalon',
-      quote: 'Katalon Automation was super practical. Our QA team testing process is now much faster and more efficient.',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-team-of-programmers-working-together-42900-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Sela Nurjanah',
+      role: 'QA Tester',
+      program: 'QA Tester',
+      quote: 'Gained a lot of experience during the course',
+      videoUrl: '/assets/testimonials/Priview Sela Nurjanah-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Sela Nurjanah-1.mp4',
       stars: 5,
     },
     {
       id: '4',
-      name: 'Reza Firmansyah',
-      role: 'Backend Engineer',
-      company: 'Tech Solutions Indonesia',
-      program: 'Backend Development - Node.js',
-      quote: 'The Node.js and RESTful API design materials were very structured. Greatly helped level up my backend career.',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-man-working-on-a-laptop-in-a-modern-office-42897-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Shana Nandya',
+      role: 'QA Tester',
+      program: 'QA Tester',
+      quote: 'Affordable, very helpful for beginners',
+      videoUrl: '/assets/testimonials/Priview Shana Nandya-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Shana Nandya-1.mp4',
       stars: 5,
     },
     {
       id: '5',
-      name: 'Nina Kartika',
-      role: 'Low-Code Developer',
-      company: 'Enterprise System House',
-      program: 'Outsystems Development',
-      quote: 'The Outsystems low-code platform helps build enterprise apps 3x faster. Highly recommended!',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-woman-working-on-her-laptop-in-a-modern-office-42902-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Fikri Aulia',
+      role: 'Frontend Developer',
+      program: 'Frontend Developer',
+      quote: 'The courses provided are in line with my interests',
+      videoUrl: '/assets/testimonials/Priview Fikri Aulia-1.mp4',
+      fullVideoUrl: '/assets/testimonials/fikri Aulia.mp4',
       stars: 5,
     },
     {
       id: '6',
-      name: 'Farhan Rizky',
-      role: 'Manual QA Specialist',
-      company: 'Logistics Digital Tech',
-      program: 'Manual Testing',
-      quote: 'The fundamentals of manual software testing were taught meticulously. My test portfolio is much more credible.',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-laptop-and-talking-to-a-colleague-42918-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Fitra Rizki',
+      role: 'Fullstack Developer',
+      program: 'Fullstack Developer',
+      quote: 'Easy to understand',
+      videoUrl: '/assets/testimonials/Priview Fitra Rizki-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Fitra Rizki-1.mp4',
       stars: 5,
     },
     {
       id: '7',
-      name: 'Dian Permata',
-      role: 'Fullstack Developer',
-      company: 'Digital Bank Indonesia',
-      program: 'Fullstack Engineering',
-      quote: 'BNSP certification mentoring directly from practitioner assessors transformed my work approach and confidence.',
-      videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-man-typing-on-a-laptop-42899-large.mp4',
-      posterImage: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop',
-      youtubeId: 'dQw4w9WgXcQ',
+      name: 'Sela Nurjanah',
+      role: 'QA Tester',
+      program: 'QA Tester',
+      quote: 'Gained a lot of experience during the course',
+      videoUrl: '/assets/testimonials/Priview Sela Nurjanah-1.mp4',
+      fullVideoUrl: '/assets/testimonials/Sela Nurjanah-1.mp4',
       stars: 5,
     },
   ],
@@ -240,6 +212,111 @@ const T = {
   },
 };
 
+const TestimonialCard = ({ item, isActive, diff, setActiveIndex, index, setActiveVideo, activeVideo }: any) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Play if it's the center card AND no modal is open
+  const shouldPlay = isActive && !activeVideo;
+
+  useEffect(() => {
+    if (shouldPlay) {
+      const playPromise = videoRef.current?.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } else {
+      videoRef.current?.pause();
+    }
+  }, [shouldPlay]);
+
+  const rotateY = diff * -16;
+  const translateX = diff * 240;
+  const translateZ = -Math.abs(diff) * 110;
+  const scale = diff === 0 ? 1.06 : Math.max(0.72, 1 - Math.abs(diff) * 0.08);
+  const opacity = Math.abs(diff) > 3 ? 0 : Math.max(0.4, 1 - Math.abs(diff) * 0.2);
+  const zIndex = 50 - Math.abs(diff) * 10;
+
+  return (
+    <motion.div
+      onClick={() => {
+        if (isActive) {
+          setActiveVideo(item);
+        } else {
+          setActiveIndex(index);
+        }
+      }}
+      animate={{
+        x: translateX,
+        z: translateZ,
+        rotateY,
+        scale,
+        opacity,
+        zIndex,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 200,
+        damping: 24,
+        mass: 0.8,
+      }}
+      style={{
+        position: 'absolute',
+        transformStyle: 'preserve-3d',
+      }}
+      className={`w-[210px] sm:w-[260px] md:w-[290px] h-[360px] sm:h-[430px] md:h-[470px] rounded-[32px] overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 border ${
+        isActive 
+          ? 'border-primary ring-4 ring-primary/20 shadow-primary/30' 
+          : 'border-secondary/15 hover:border-secondary/40'
+      } bg-black group`}
+    >
+      <video
+        ref={videoRef}
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover filter brightness-95 group-hover:brightness-100 transition-all duration-500"
+      >
+        <source src={item.videoUrl} type="video/mp4" />
+      </video>
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-95 group-hover:opacity-100 transition-opacity" />
+
+      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+        <span className="text-[10px] font-black text-secondary bg-primary px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+          {item.program.split('-')[0]}
+        </span>
+      </div>
+
+      <div className="absolute inset-0 flex items-center justify-center z-10">
+        <div className={`w-14 h-14 rounded-full bg-white/95 text-secondary flex items-center justify-center shadow-2xl transition-all duration-300 ${
+          isActive ? 'scale-100 bg-primary text-secondary animate-pulse' : 'scale-90 opacity-80 group-hover:scale-100 group-hover:bg-primary'
+        }`}>
+          <Play size={24} className="fill-secondary translate-x-0.5" />
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 p-5 text-left z-10 text-white">
+        <p className="text-xs text-gray-200 italic line-clamp-2 leading-relaxed mb-3 font-normal">
+          "{item.quote}"
+        </p>
+
+        <div className="pt-2.5 border-t border-white/15 flex items-center justify-between">
+          <div>
+            <h4 className="font-extrabold text-white text-xs sm:text-sm leading-snug">{item.name}</h4>
+            <p className="text-[11px] text-gray-300 font-medium truncate mt-0.5">{item.role}</p>
+          </div>
+
+          <div className="flex items-center gap-0.5 text-primary">
+            {[...Array(item.stars)].map((_, si) => (
+              <Star key={si} size={11} className="fill-primary text-primary" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export function Testimonials() {
   const { lang } = useLanguage();
   const t = T[lang];
@@ -259,12 +336,13 @@ export function Testimonials() {
 
   // Auto sliding animation
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    // Pause sliding if hover pauses it OR if the video modal is open
+    if (!isAutoPlaying || activeVideo !== null) return;
     const interval = setInterval(() => {
       nextSlide();
     }, 4500);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, nextSlide]);
+  }, [isAutoPlaying, activeVideo, nextSlide]);
 
   return (
     <section className="py-24 sm:py-32 bg-[#F8F5EE] text-secondary relative overflow-hidden w-full">
@@ -320,104 +398,19 @@ export function Testimonials() {
             if (diff > half) diff -= items.length;
             if (diff < -half) diff += items.length;
 
-            // 3D Arc Wall Transformation Math (Flowblox Curves)
-            // Center card (diff = 0) faces straight forward upright
-            // Side cards angle inward (rotateY) and push back in Z-axis (translateZ)
-            const rotateY = diff * -16; // Inward angle toward center
-            const translateX = diff * 240; // Responsive horizontal separation
-            const translateZ = -Math.abs(diff) * 110; // Push outer cards back to form 3D arc wall
-            const scale = diff === 0 ? 1.06 : Math.max(0.72, 1 - Math.abs(diff) * 0.08);
-            const opacity = Math.abs(diff) > 3 ? 0 : Math.max(0.4, 1 - Math.abs(diff) * 0.2);
-            const zIndex = 50 - Math.abs(diff) * 10;
             const isActive = diff === 0;
 
             return (
-              <motion.div
-                key={item.id}
-                onClick={() => {
-                  if (isActive) {
-                    setActiveVideo(item);
-                  } else {
-                    setActiveIndex(index);
-                  }
-                }}
-                animate={{
-                  x: translateX,
-                  z: translateZ,
-                  rotateY,
-                  scale,
-                  opacity,
-                  zIndex,
-                }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 200,
-                  damping: 24,
-                  mass: 0.8,
-                }}
-                style={{
-                  position: 'absolute',
-                  transformStyle: 'preserve-3d',
-                }}
-                className={`w-[210px] sm:w-[260px] md:w-[290px] h-[360px] sm:h-[430px] md:h-[470px] rounded-[32px] overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 border ${
-                  isActive 
-                    ? 'border-primary ring-4 ring-primary/20 shadow-primary/30' 
-                    : 'border-secondary/15 hover:border-secondary/40'
-                } bg-black group`}
-              >
-                {/* Autoplay Looping Video (Active center card plays video, inactive cards show crisp preview) */}
-                <video
-                  autoPlay={isActive}
-                  loop
-                  muted
-                  playsInline
-                  poster={item.posterImage}
-                  className="w-full h-full object-cover filter brightness-95 group-hover:brightness-100 transition-all duration-500"
-                >
-                  <source src={item.videoUrl} type="video/mp4" />
-                  <img src={item.posterImage} alt={item.name} className="w-full h-full object-cover" />
-                </video>
-
-                {/* Dark Gradient Protection Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
-
-                {/* Top Program Badge */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                  <span className="text-[10px] font-black text-secondary bg-primary px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-                    {item.program.split('-')[0]}
-                  </span>
-                </div>
-
-                {/* Play Button Center Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <div className={`w-14 h-14 rounded-full bg-white/95 text-secondary flex items-center justify-center shadow-2xl transition-all duration-300 ${
-                    isActive ? 'scale-100 bg-primary text-secondary animate-pulse' : 'scale-90 opacity-80 group-hover:scale-100 group-hover:bg-primary'
-                  }`}>
-                    <Play size={24} className="fill-secondary translate-x-0.5" />
-                  </div>
-                </div>
-
-                {/* Bottom Student Info & Quote */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 text-left z-10 text-white">
-                  <p className="text-xs text-gray-200 italic line-clamp-2 leading-relaxed mb-3 font-normal">
-                    "{item.quote}"
-                  </p>
-
-                  <div className="pt-2.5 border-t border-white/15 flex items-center justify-between">
-                    <div>
-                      <h4 className="font-extrabold text-white text-xs sm:text-sm leading-snug">{item.name}</h4>
-                      <p className="text-[11px] text-gray-300 font-medium truncate mt-0.5">{item.role}</p>
-                    </div>
-
-                    <div className="flex items-center gap-0.5 text-primary">
-                      {[...Array(item.stars)].map((_, si) => (
-                        <Star key={si} size={11} className="fill-primary text-primary" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-              </motion.div>
+              <TestimonialCard
+                key={index}
+                item={item}
+                index={index}
+                isActive={isActive}
+                diff={diff}
+                setActiveIndex={setActiveIndex}
+                setActiveVideo={setActiveVideo}
+                activeVideo={activeVideo}
+              />
             );
           })}
         </div>
@@ -496,11 +489,11 @@ export function Testimonials() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#121622] border border-white/15 rounded-3xl overflow-hidden w-full max-w-4xl shadow-2xl relative text-white"
+              className="bg-[#121622] border border-white/15 rounded-3xl overflow-hidden w-full max-w-[340px] sm:max-w-[420px] shadow-2xl relative text-white flex flex-col max-h-[95vh]"
             >
               <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-black/40">
                 <div className="flex items-center gap-2">
-                  <Youtube className="text-red-500" size={20} />
+                  <Play className="fill-white text-white" size={16} />
                   <h3 className="font-black text-white text-sm sm:text-base">
                     {activeVideo.name} — {activeVideo.program}
                   </h3>
@@ -514,13 +507,12 @@ export function Testimonials() {
                 </button>
               </div>
 
-              <div className="relative aspect-video w-full bg-black">
-                <iframe
-                  src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1&rel=0`}
-                  title={`${activeVideo.name} Testimonial Video`}
-                  className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+              <div className="relative aspect-[9/16] w-full bg-black shrink min-h-0 overflow-hidden">
+                <video
+                  src={activeVideo.fullVideoUrl}
+                  controls
+                  autoPlay
+                  className="absolute inset-0 w-full h-full object-contain"
                 />
               </div>
 
@@ -528,7 +520,7 @@ export function Testimonials() {
                 <div>
                   <p className="font-extrabold text-white text-sm">{activeVideo.name}</p>
                   <p className="text-gray-400">
-                    {activeVideo.role} • {activeVideo.company}
+                    {activeVideo.role}{activeVideo.company ? ` • ${activeVideo.company}` : ''}
                   </p>
                 </div>
                 <button

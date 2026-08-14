@@ -135,7 +135,7 @@ const T = {
   id: {
     eyebrow: 'BOOTCAMP',
     h2a: 'BE THE NEXT',
-    manifestoDesc: 'Seluruh program pembelajaran E17 Course berada dalam satu campaign besar bernama TechAvengers — merepresentasikan semangat kolaborasi, peningkatan skill, dan kesiapan menghadapi tantangan industri digital.',
+    manifestoDesc: 'Seluruh program pembelajaran E17 Course berada dalam satu campaign besar bernama TechAvengers merepresentasikan semangat kolaborasi, peningkatan skill, dan kesiapan menghadapi tantangan industri digital.',
     cta: 'Daftar & Konsultasi Bootcamp via WhatsApp',
     badgeText: 'BATCH 2026 DIBUKA',
     learnMore: 'Pelajari selengkapnya',
@@ -143,7 +143,7 @@ const T = {
   en: {
     eyebrow: 'BOOTCAMP',
     h2a: 'BE THE NEXT',
-    manifestoDesc: 'All E17 Course learning programs fall under one big master campaign named TechAvengers — representing collaboration spirit, skill enhancement, and readiness for digital industry challenges.',
+    manifestoDesc: 'All E17 Course learning programs fall under one big master campaign named TechAvengers representing collaboration spirit, skill enhancement, and readiness for digital industry challenges.',
     cta: 'Register & Consult Bootcamp via WhatsApp',
     badgeText: 'BATCH 2026 OPEN',
     learnMore: 'Learn more',

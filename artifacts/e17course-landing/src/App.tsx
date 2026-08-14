@@ -7,6 +7,7 @@ import Program from '@/pages/Program';
 import Artikel from '@/pages/Artikel';
 import ArtikelDetail from '@/pages/ArtikelDetail';
 import TentangKami from '@/pages/TentangKami';
+import Publikasi from '@/pages/Publikasi';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 import { LanguageProvider } from '@/context/LanguageContext';
 
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/artikel" component={Artikel} />
       <Route path="/artikel/:id" component={ArtikelDetail} />
       <Route path="/tentang" component={TentangKami} />
+      <Route path="/publikasi" component={Publikasi} />
       <Route component={NotFound} />
     </Switch>
   );

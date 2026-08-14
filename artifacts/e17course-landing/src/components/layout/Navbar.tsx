@@ -9,14 +9,14 @@ const navLinks = {
   id: [
     { name: 'Beranda',      href: '/',        type: 'route' as const },
     { name: 'Program',      href: '/program', type: 'route' as const },
-    { name: 'Publikasi',    href: '#publikasi', type: 'scroll' as const },
+    { name: 'Publikasi',    href: '/publikasi', type: 'route' as const },
     { name: 'Artikel',      href: '/artikel', type: 'route' as const },
     { name: 'Tentang Kami', href: '/tentang', type: 'route' as const },
   ],
   en: [
     { name: 'Home',         href: '/',        type: 'route' as const },
     { name: 'Programs',     href: '/program', type: 'route' as const },
-    { name: 'Publications', href: '#publikasi', type: 'scroll' as const },
+    { name: 'Publications', href: '/publikasi', type: 'route' as const },
     { name: 'Articles',     href: '/artikel', type: 'route' as const },
     { name: 'About Us',     href: '/tentang', type: 'route' as const },
   ],

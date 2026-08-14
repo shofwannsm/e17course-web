@@ -2,26 +2,26 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Award } from 'lucide-react';
 
 const partners = [
-  { name: 'EVOTEKS', sub: 'Tech Innovations', category: 'Industri', color: 'bg-amber-50 text-amber-800 border-amber-200' },
-  { name: 'ATLASFIZL', sub: 'Tech Solutions', category: 'Industri', color: 'bg-amber-50 text-amber-800 border-amber-200' },
-  { name: 'NS Development', sub: 'Software House', category: 'Industri', color: 'bg-blue-50 text-blue-800 border-blue-200' },
-  { name: 'FKDK Budi Luhur', sub: 'Fakultas Komunikasi & Desain', category: 'Kampus', color: 'bg-purple-50 text-purple-800 border-purple-200' },
-  { name: 'LSP Telematika', sub: 'Lembaga Sertifikasi Profesi', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
-  { name: 'Jagogo.net', sub: 'Live in Digital', category: 'Industri', color: 'bg-red-50 text-red-800 border-red-200' },
-  { name: 'PublikasiKu', sub: 'Academic Solution', category: 'Akademik', color: 'bg-orange-50 text-orange-800 border-orange-200' },
-  { name: 'LSP SDM TIK', sub: 'TIK & Kreatif', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
-  { name: 'IEC', sub: 'Intensive English Course', category: 'Pendidikan', color: 'bg-blue-50 text-blue-800 border-blue-200' },
-  { name: 'LSP PERS INDONESIA', sub: 'Lembaga Sertifikasi Profesi', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
-  { name: 'QIA Solution', sub: 'IT Consultant', category: 'Industri', color: 'bg-indigo-50 text-indigo-800 border-indigo-200' },
-  { name: 'SMK Muhammadiyah 2', sub: 'Tangerang', category: 'Sekolah', color: 'bg-sky-50 text-sky-800 border-sky-200' },
-  { name: 'BNSP', sub: 'Badan Nasional Sertifikasi Profesi', category: 'LSP & BNSP', color: 'bg-amber-100 text-amber-900 border-amber-300 font-bold' },
-  { name: 'Yayasan Budi Mulia', sub: 'Tangerang', category: 'Sekolah', color: 'bg-sky-50 text-sky-800 border-sky-200' },
-  { name: 'Evolusi Kreatif Solusi', sub: 'Digital Creative', category: 'Industri', color: 'bg-teal-50 text-teal-800 border-teal-200' },
-  { name: 'LSP Media Informatika', sub: 'Lembaga Sertifikasi Profesi', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
-  { name: 'Yayasan Abdi Karya', sub: 'YADIKA Jakarta', category: 'Sekolah', color: 'bg-sky-50 text-sky-800 border-sky-200' },
-  { name: 'SMK Negeri 10', sub: 'Tangerang', category: 'Sekolah', color: 'bg-sky-50 text-sky-800 border-sky-200' },
-  { name: 'LSP TIBD', sub: 'TI Bisnis Digital', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
-  { name: 'PT ALTEK CITRA CEMERLANG', sub: 'Mitra Industri', category: 'Industri', color: 'bg-amber-50 text-amber-800 border-amber-200' },
+  { name: 'EVOTEKS', logo: '/partners/LOGO EVOTEKS.png', sub: 'Tech Innovations', category: 'Industri', color: 'bg-amber-50 text-amber-800 border-amber-200' },
+  { name: 'ATLASFIZL', logo: '/partners/ATLASFIZL.png', sub: 'Tech Solutions', category: 'Industri', color: 'bg-amber-50 text-amber-800 border-amber-200' },
+  { name: 'NS Development', logo: '/partners/NS DEVELOPMENT.png', sub: 'Software House', category: 'Industri', color: 'bg-blue-50 text-blue-800 border-blue-200' },
+  { name: 'FKDK Budi Luhur', logo: '/partners/FKDK BUDI LUHUR.png', sub: 'Fakultas Komunikasi & Desain', category: 'Kampus', color: 'bg-purple-50 text-purple-800 border-purple-200' },
+  { name: 'LSP Telematika', logo: '/partners/LSP TELEMATIKA.png', sub: 'Lembaga Sertifikasi Profesi', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+  { name: 'Jagogo.net', logo: '/partners/JAGOGO.png', sub: 'Live in Digital', category: 'Industri', color: 'bg-red-50 text-red-800 border-red-200' },
+  { name: 'PublikasiKu', logo: '/partners/PUBLIKASIKU.png', sub: 'Academic Solution', category: 'Akademik', color: 'bg-orange-50 text-orange-800 border-orange-200' },
+  { name: 'LSP SDM TIK', logo: '/partners/LSP SDMTIK.png', sub: 'TIK & Kreatif', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+  { name: 'IEC', logo: '/partners/INTENSIVE ENGLISH COURSE.webp', sub: 'Intensive English Course', category: 'Pendidikan', color: 'bg-blue-50 text-blue-800 border-blue-200' },
+  { name: 'LSP PERS INDONESIA', logo: '/partners/LSP PERS INDONESIA.jpeg', sub: 'Lembaga Sertifikasi Profesi', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+  { name: 'QIA Solution', logo: '/partners/LOGO QIA SOLUTION.webp', sub: 'IT Consultant', category: 'Industri', color: 'bg-indigo-50 text-indigo-800 border-indigo-200' },
+  { name: 'SMK Muhammadiyah 2', logo: '/partners/LOGO SMK MUHAMMIDIYAH TANGERANG.png', sub: 'Tangerang', category: 'Sekolah', color: 'bg-sky-50 text-sky-800 border-sky-200' },
+  { name: 'BNSP', logo: '/partners/LOGO BNSP.png', sub: 'Badan Nasional Sertifikasi Profesi', category: 'LSP & BNSP', color: 'bg-amber-100 text-amber-900 border-amber-300 font-bold' },
+  { name: 'Yayasan Budi Mulia', logo: '/partners/YAYASAN PENDIDIKAN BUDI MULIA .png', sub: 'Tangerang', category: 'Sekolah', color: 'bg-sky-50 text-sky-800 border-sky-200' },
+  { name: 'Evolusi Kreatif Solusi', logo: '/partners/LOGO EVOLUSI KREATIF SOLUSI.png', sub: 'Digital Creative', category: 'Industri', color: 'bg-teal-50 text-teal-800 border-teal-200' },
+  { name: 'LSP Media Informatika', logo: '/partners/Logo lspmi.webp', sub: 'Lembaga Sertifikasi Profesi', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+  { name: 'Yayasan Abdi Karya', logo: '/partners/YAYASAN ABDI KARYA.png', sub: 'YADIKA Jakarta', category: 'Sekolah', color: 'bg-sky-50 text-sky-800 border-sky-200' },
+  { name: 'SMK Negeri 10', logo: '/partners/SMKN 10 TANGERANG.jpg', sub: 'Tangerang', category: 'Sekolah', color: 'bg-sky-50 text-sky-800 border-sky-200' },
+  { name: 'LSP TIBD', logo: '/partners/LEMBAGA SERTIFIKIASI PROFESI TEKNOLOGI INFORMATIKA BISNIS DIGITAL.jpg', sub: 'TI Bisnis Digital', category: 'LSP & BNSP', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+  { name: 'PT ALTEK CITRA CEMERLANG', logo: '/partners/PT ALTEK CITRA CEMERLANG.png', sub: 'Mitra Industri', category: 'Industri', color: 'bg-amber-50 text-amber-800 border-amber-200' },
 ];
 
 const T = {
@@ -44,7 +44,7 @@ export function PartnerMarquee() {
   return (
     <section className="py-14 bg-white border-y border-gray-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 mb-8 text-center">
-        
+
         {/* Section Pill Badge */}
         <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-secondary text-white font-extrabold text-xs tracking-wider uppercase mb-3 shadow-sm">
           <Award size={14} className="text-primary" /> {t.badge}
@@ -69,15 +69,21 @@ export function PartnerMarquee() {
           {[...partners, ...partners].map((p, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex flex-col items-center justify-center w-52 h-24 rounded-2xl border border-gray-200/80 bg-white hover:border-primary/50 hover:shadow-lg transition-all px-4 text-center group"
+              className="flex-shrink-0 flex flex-col items-center justify-center w-70 h-55 rounded-3xl border border-gray-200/80 bg-white hover:border-primary/50 hover:shadow-xl transition-all px- py-4 text-center group gap-4"
             >
-              <span className="font-black text-sm md:text-base text-secondary group-hover:text-primary transition-colors leading-tight">
-                {p.name}
-              </span>
-              <span className="text-[11px] text-gray-500 font-medium truncate max-w-full mt-0.5">
+              <div className="h-17 w-full flex items-center justify-center">
+                {p.logo ? (
+                  <img src={p.logo} alt={p.name} className="max-h-full max-w-[90%] object-contain drop-shadow-sm" />
+                ) : (
+                  <span className="font-black text-lg md:text-xl text-secondary group-hover:text-primary transition-colors leading-tight">
+                    {p.name}
+                  </span>
+                )}
+              </div>
+              <span className="text-[15px] text-gray-500 font-semibold truncate max-w-full">
                 {p.sub}
               </span>
-              <span className={`text-[10px] font-extrabold px-2.5 py-0.5 rounded-full mt-2 border ${p.color}`}>
+              <span className={`text-[13px] font-extrabold px-3.5 py-1 rounded-full mt-2 border ${p.color}`}>
                 {p.category}
               </span>
             </div>

@@ -21,7 +21,7 @@ const T = {
     journeyTitle: 'Perjalanan Kami',
     journeyStory: [
       'Perjalanan E17 Course dimulai dari sebuah pengamatan sederhana: <i>"kebutuhan industri berkembang lebih cepat dibandingkan kesiapan talenta yang tersedia"</i>.',
-      'Berawal dari penyelenggaraan Bootcamp IT untuk membantu memenuhi kebutuhan talenta di perusahaan mitra, E17 Course terus berkembang seiring meningkatnya kebutuhan akan pembelajaran yang lebih relevan dengan dunia industri. Kami memperluas layanan mulai dari peningkatan kompetensi, pengakuan melalui sertifikasi, hingga pengembangan profesional yang berkelanjutan.',
+      'Berawal dari penyelenggaraan Bootcamp untuk membantu memenuhi kebutuhan talenta di perusahaan mitra, E17 Course terus berkembang seiring meningkatnya kebutuhan akan pembelajaran yang lebih relevan dengan dunia industri. Kami memperluas layanan mulai dari peningkatan kompetensi, pengakuan melalui sertifikasi, hingga pengembangan profesional yang berkelanjutan.',
     ],
 
     visionTitle: 'Visi',
@@ -53,7 +53,7 @@ const T = {
     ctaTitle: 'Siap Bertumbuh Bersama Kami?',
     ctaDesc: 'Bergabung dengan ribuan alumni yang sudah membuktikan bahwa belajar di E17 Course membuka peluang karier yang lebih luas.',
     cta1: 'Mulai Belajar Sekarang',
-    cta2: 'Konsultasi via WhatsApp',
+    cta2: 'Konsultasi Sekarang',
   },
   en: {
     h1a: 'No Matter Where You Start,',
@@ -101,7 +101,7 @@ const T = {
     ctaTitle: 'Ready to Grow With Us?',
     ctaDesc: 'Join thousands of alumni who have proven that learning at E17 Course opens wider career opportunities.',
     cta1: 'Start Learning Now',
-    cta2: 'Consultation via WhatsApp',
+    cta2: 'Consult Now',
   },
 };
 
@@ -168,7 +168,7 @@ function Interactive3DWorkspace() {
       <motion.div
         animate={{ y: [0, 6, 0] }}
         transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-        className="absolute -bottom-5 -right-4 bg-white/95 text-secondary backdrop-blur-md border border-primary/30 p-3 rounded-2xl shadow-2xl flex flex-col gap-1 text-[11px] font-extrabold"
+        className="absolute -bottom-10 -right-4 md:-right-8 bg-white/95 text-secondary backdrop-blur-md border border-primary/30 p-3 rounded-2xl shadow-2xl flex flex-col gap-1 text-[11px] font-extrabold"
       >
         <span className="text-[10px] uppercase font-black tracking-widest text-primary/80">Fondasi Karier</span>
         <div className="flex items-center gap-1.5 flex-wrap">
@@ -193,9 +193,18 @@ export default function TentangKami() {
       <main className="pt-[72px]">
 
         {/* 1. PERJALANAN KAMI SECTION (Now at the top, seamless layout) */}
-        <section className="py-20 bg-gray-50 border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <div className="max-w-3xl mb-12">
+        <section className="py-20 bg-gray-50 border-b border-gray-100 relative overflow-hidden">
+          {/* Watermark Logo as Background Layer */}
+          <div className="absolute top-1/2 lg:top-[40%] left-1/2 lg:left-[70%] -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[500px] md:w-[800px] lg:w-[700px] opacity-25 grayscale pointer-events-none z-0 flex justify-center items-center">
+            <img
+              src="/logo-e17-course.png"
+              alt="E17 Course Watermark"
+              className="w-full h-auto object-contain"
+            />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+            <div className="max-w-4xl mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-2xl bg-primary/25 flex items-center justify-center text-secondary">
                   <Compass size={20} className="text-amber-600" />
@@ -250,14 +259,14 @@ export default function TentangKami() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              
+
               {/* Left Column: Title and Story paragraphs */}
               <div className="lg:col-span-7 space-y-6">
                 <h2 className="text-3xl md:text-5xl font-black text-secondary leading-[1.15] tracking-tight">
                   {t.h1a}<br />
                   <span className="text-primary">{t.h1b}</span>
                 </h2>
-                
+
                 <div className="space-y-5 text-secondary/75 text-sm sm:text-base leading-relaxed font-medium">
                   {t.story.map((p: string, i: number) => (
                     <p key={i} dangerouslySetInnerHTML={{ __html: p.replace(/<b>/g, '<strong class="text-secondary font-extrabold">').replace(/<\/b>/g, '</strong>') }} />

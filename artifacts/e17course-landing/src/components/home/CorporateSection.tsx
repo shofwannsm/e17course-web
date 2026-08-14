@@ -10,7 +10,7 @@ const T = {
     benefits: [
       'Kurikulum disesuaikan kebutuhan bisnis perusahaan',
       'Instruktur berpengalaman dari industri nyata',
-      'Jadwal fleksibel — online, offline, atau hybrid',
+      'Jadwal fleksibel online, offline, atau hybrid',
       'Laporan kompetensi dan sertifikat kelulusan',
     ],
     cta: 'Jadwalkan Konsultasi Corporate',
@@ -31,7 +31,7 @@ const T = {
     benefits: [
       'Curriculum tailored to company business needs',
       'Experienced instructors from real industries',
-      'Flexible schedule — online, offline, or hybrid',
+      'Flexible schedule online, offline, or hybrid',
       'Competency reports and graduation certificates',
     ],
     cta: 'Schedule Corporate Consultation',

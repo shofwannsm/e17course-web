@@ -4,7 +4,8 @@ import { ArrowRight, Star, ShieldCheck, CheckCircle2 } from 'lucide-react';
 export default function BoldNavy() {
   return (
     <div className="min-h-screen w-full bg-[#1C244B] text-white font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden">
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         
         .marquee {
@@ -27,7 +28,7 @@ export default function BoldNavy() {
             </div>
             <span className="font-bold text-xl tracking-tight">Course</span>
           </div>
-          
+
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[#E2E8F0]">
             <a href="#" className="text-white hover:text-[#F8D806] transition-colors">Beranda</a>
             <a href="#" className="hover:text-white transition-colors">Program</a>
@@ -58,12 +59,12 @@ export default function BoldNavy() {
               <ShieldCheck size={16} />
               <span>Lembaga Pelatihan Tersertifikasi BNSP</span>
             </div>
-            
+
             <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
               Bangun Karier <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8734A] to-[#F8D806]">IT</span>,<br />
               Dimulai dari Sini!
             </h1>
-            
+
             <p className="text-lg lg:text-xl text-[#E2E8F0] mb-8 leading-relaxed max-w-xl">
               Tingkatkan kompetensi Anda dengan kurikulum berbasis industri dan dapatkan sertifikasi resmi untuk bersaing di dunia kerja global.
             </p>
@@ -97,9 +98,9 @@ export default function BoldNavy() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-[#E8734A]/20 to-transparent rounded-2xl transform translate-x-4 translate-y-4" />
             <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#1C244B]">
-              <img 
-                src="/__mockup/images/hero-bold-navy.jpg" 
-                alt="IT Professional" 
+              <img
+                src="/__mockup/images/hero-bold-navy.jpg"
+                alt="IT Professional"
                 className="w-full h-[600px] object-cover opacity-90"
               />
               {/* Floating Badge */}
@@ -128,7 +129,7 @@ export default function BoldNavy() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Promo Terbatas BootCamp IT!</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Promo Terbatas  !</h2>
             <p className="text-white/90 text-lg">Dapatkan potongan hingga 50% untuk program Fullstack Web Development dan Data Science. Kesempatan terbatas bulan ini.</p>
           </div>
           <button className="bg-[#1C244B] hover:bg-[#151b3b] text-white px-8 py-4 rounded-md text-base font-bold transition-all shadow-xl whitespace-nowrap">
@@ -145,7 +146,7 @@ export default function BoldNavy() {
         <div className="overflow-hidden relative w-full flex">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0d1128] to-transparent z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0d1128] to-transparent z-10" />
-          
+
           <div className="marquee gap-16 items-center opacity-50">
             {/* Repeated logos for infinite scroll effect */}
             {[...Array(2)].map((_, i) => (

@@ -15,7 +15,7 @@ export const articleContentsMap: Record<number, ArticleContent> = {
     category: 'Web Development',
     title: '8 Rekomendasi Mesin Pencari Bebas Akses dan Legal',
     author: 'E17 Editorial',
-    date: '14 June 2024',
+    date: '14 June 2026',
     readTime: '5 menit',
     image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
     content: [
@@ -37,7 +37,7 @@ export const articleContentsMap: Record<number, ArticleContent> = {
     category: 'Digital Marketing',
     title: '5+ Contoh Digital Marketing yang Sukses di Indonesia',
     author: 'Raniah Fatimah',
-    date: '21 June 2023',
+    date: '21 June 2026',
     readTime: '4 menit',
     image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80',
     content: [
@@ -56,7 +56,7 @@ export const articleContentsMap: Record<number, ArticleContent> = {
     category: 'Career Development',
     title: '130+ Contoh Judul Karya Ilmiah di Berbagai Bidang',
     author: 'Muthiatur Rohmah',
-    date: '05 May 2024',
+    date: '05 May 2026',
     readTime: '6 menit',
     image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80',
     content: [
@@ -78,7 +78,7 @@ export const articleContentsMap: Record<number, ArticleContent> = {
     category: 'Software Dev',
     title: 'React.js vs Next.js: Mana yang Harus Kamu Pelajari Duluan?',
     author: 'Budi Santoso',
-    date: '08 July 2024',
+    date: '08 July 2026',
     readTime: '6 menit',
     image: 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&q=80',
     content: [
@@ -96,7 +96,7 @@ export const articleContentsMap: Record<number, ArticleContent> = {
     category: 'Sertifikasi',
     title: 'Panduan Lengkap Sertifikasi BNSP 2026: Syarat & Alur Uji',
     author: 'Reza Firmansyah',
-    date: '10 July 2024',
+    date: '10 July 2026',
     readTime: '8 menit',
     image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
     content: [
@@ -115,7 +115,7 @@ export const articleContentsMap: Record<number, ArticleContent> = {
     category: 'Career Development',
     title: '7 Skill Soft Wajib Dimiliki IT Professional di 2026',
     author: 'Andi Pratama',
-    date: '12 July 2024',
+    date: '12 July 2026',
     readTime: '4 menit',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
     content: [

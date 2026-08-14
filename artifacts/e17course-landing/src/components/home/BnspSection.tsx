@@ -121,7 +121,7 @@ const T = {
     sub: 'Pilihan Skema Sertifikasi',
     link: 'Lihat detail & unit kompetensi',
     cta: 'Konsultasi & Daftar Sertifikasi',
-    viewAllPage: 'Lihat Semua 26 Skema Sertifikasi Lengkap di Halaman Program',
+    viewAllPage: 'Lihat Semua Skema Sertifikasi',
     noResults: 'Tidak ada skema yang cocok dengan pencarian Anda.',
   },
   en: {
@@ -136,7 +136,7 @@ const T = {
     sub: 'Choice of Certification Schemes',
     link: 'View details & unit competencies',
     cta: 'Consult & Register for Certification',
-    viewAllPage: 'View All 26 Full Certification Schemes on Program Page',
+    viewAllPage: 'View All Certification Schemes',
     noResults: 'No certification schemes match your search.',
   },
 };

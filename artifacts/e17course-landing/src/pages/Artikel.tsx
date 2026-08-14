@@ -21,7 +21,7 @@ const T = {
         title: '8 Rekomendasi Mesin Pencari Bebas Akses dan Legal, Situs Se...',
         excerpt: 'Cari mesin pencari bebas akses selain situs Yandex? Yuk simak situs selain Yandex bebas akses atau ...',
         author: 'E17 Editorial',
-        date: '14 June 2024',
+        date: '14 June 2026',
         readTime: '5 menit',
         image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
       },
@@ -31,7 +31,7 @@ const T = {
         title: '5+ Contoh Digital Marketing yang Sukses di Indonesia',
         excerpt: 'Contoh digital marketing adalah periklanan online, email marketing, social media marketing, SEO, da...',
         author: 'Raniah Fatimah',
-        date: '21 June 2023',
+        date: '21 June 2026',
         readTime: '4 menit',
         image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80',
       },
@@ -41,7 +41,7 @@ const T = {
         title: '130+ Contoh Judul Karya Ilmiah di Berbagai Bidang, Simak!',
         excerpt: 'Bingung mencari referensi tentang judul karya ilmiah untuk tugas kuliah? Yuk simak pembahasannya pa...',
         author: 'Muthiatur Rohmah',
-        date: '05 May 2024',
+        date: '05 May 2026',
         readTime: '6 menit',
         image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80',
       },
@@ -51,7 +51,7 @@ const T = {
         title: 'React.js vs Next.js: Mana yang Harus Kamu Pelajari Duluan?',
         excerpt: 'Banyak pemula bingung harus mulai dari React atau Next.js. Artikel ini membahas perbedaan keduanya dan rekomendasi berdasarkan tujuan kariermu.',
         author: 'Budi Santoso',
-        date: '08 July 2024',
+        date: '08 July 2026',
         readTime: '6 menit',
         image: 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&q=80',
       },
@@ -61,7 +61,7 @@ const T = {
         title: 'Panduan Lengkap Sertifikasi BNSP 2026: Syarat & Alur Uji',
         excerpt: 'Sertifikasi BNSP adalah bukti kompetensi resmi diakui negara. Simak persiapan berkas, portofolio, dan tips sukses uji kompetensi.',
         author: 'Reza Firmansyah',
-        date: '10 July 2024',
+        date: '10 July 2026',
         readTime: '8 menit',
         image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
       },
@@ -71,7 +71,7 @@ const T = {
         title: '7 Skill Soft Wajib Dimiliki IT Professional di 2026',
         excerpt: 'Kemampuan teknis memang penting, tapi soft skill yang kuatlah yang membedakan IT professional biasa dari yang unggul.',
         author: 'Andi Pratama',
-        date: '12 July 2024',
+        date: '12 July 2026',
         readTime: '4 menit',
         image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
       },
@@ -90,7 +90,7 @@ const T = {
         title: '8 Recommended Free and Legal Search Engines',
         excerpt: 'Looking for accessible search engines? Let\'s explore legal search engine alternatives...',
         author: 'E17 Editorial',
-        date: '14 June 2024',
+        date: '14 June 2026',
         readTime: '5 min',
         image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
       },
@@ -100,7 +100,7 @@ const T = {
         title: '5+ Successful Digital Marketing Examples in Indonesia',
         excerpt: 'Examples of digital marketing include online advertising, email marketing, social media marketing, SEO, and more...',
         author: 'Raniah Fatimah',
-        date: '21 June 2023',
+        date: '21 June 2026',
         readTime: '4 min',
         image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80',
       },
@@ -110,7 +110,7 @@ const T = {
         title: '130+ Scientific Paper Title Examples in Various Fields',
         excerpt: 'Confused looking for references for scientific paper titles? Let\'s check out the discussion...',
         author: 'Muthiatur Rohmah',
-        date: '05 May 2024',
+        date: '05 May 2026',
         readTime: '6 min',
         image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80',
       },
@@ -120,7 +120,7 @@ const T = {
         title: 'React.js vs Next.js: Which Should You Learn First?',
         excerpt: 'Many beginners are confused whether to start with React or Next.js. This article discusses the differences...',
         author: 'Budi Santoso',
-        date: '08 July 2024',
+        date: '08 July 2026',
         readTime: '6 min',
         image: 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&q=80',
       },
@@ -130,7 +130,7 @@ const T = {
         title: 'Complete Guide to BNSP Certification 2026',
         excerpt: 'BNSP certification is official proof of competence. Check document prep, portfolio, and exam tips.',
         author: 'Reza Firmansyah',
-        date: '10 July 2024',
+        date: '10 July 2026',
         readTime: '8 min',
         image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
       },
@@ -140,7 +140,7 @@ const T = {
         title: '7 Essential Soft Skills for IT Professionals in 2026',
         excerpt: 'Technical skills are important, but strong soft skills set extraordinary IT professionals apart.',
         author: 'Andi Pratama',
-        date: '12 July 2024',
+        date: '12 July 2026',
         readTime: '4 min',
         image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
       },
@@ -192,7 +192,7 @@ export default function Artikel() {
 
       <main className="pt-[80px] pb-20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 pt-8">
-          
+
           {/* Direct Title Section */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <h1 className="text-3xl sm:text-4xl font-extrabold text-secondary tracking-tight">
@@ -218,11 +218,10 @@ export default function Artikel() {
               <button
                 key={cat}
                 onClick={() => setActiveCat(cat)}
-                className={`shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all border ${
-                  activeCat === cat
+                className={`shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all border ${activeCat === cat
                     ? 'bg-secondary text-white border-secondary shadow-sm'
                     : 'bg-white text-secondary/70 border-gray-200 hover:border-gray-400 hover:text-secondary'
-                }`}
+                  }`}
               >
                 {cat}
               </button>

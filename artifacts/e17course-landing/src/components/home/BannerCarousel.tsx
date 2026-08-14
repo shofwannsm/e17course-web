@@ -28,6 +28,7 @@ const slides = {
       img: carouselBootcamp,
       bgColor: '#FFBF00',
       title: 'Bootcamp Tech Avengers',
+      href: '/program#program',
     },
     {
       id: 2,
@@ -35,6 +36,7 @@ const slides = {
       img: carouselBnsp,
       bgColor: '#FFBC06',
       title: 'Sertifikasi BNSP',
+      href: '/program#sertifikasi',
     },
     {
       id: 3,
@@ -42,6 +44,7 @@ const slides = {
       img: carouselCorporate,
       bgColor: '#FFE3A8',
       title: 'Corporate Training',
+      href: '/program#corporate',
     },
     {
       id: 4,
@@ -49,6 +52,7 @@ const slides = {
       img: carouselPrivat,
       bgColor: '#FFFFFF',
       title: 'Kelas IT Eksklusif',
+      href: 'https://wa.me/6281399271717?text=Halo%20E17%20Course,%20saya%20tertarik%20dengan%20program%20Kelas%20Privat.',
     },
   ],
   en: [
@@ -58,6 +62,7 @@ const slides = {
       img: carouselBootcamp,
       bgColor: '#FFBF00',
       title: 'Bootcamp Tech Avengers',
+      href: '/program#program',
     },
     {
       id: 2,
@@ -65,6 +70,7 @@ const slides = {
       img: carouselBnsp,
       bgColor: '#FFBC06',
       title: 'BNSP Certification',
+      href: '/program#sertifikasi',
     },
     {
       id: 3,
@@ -72,6 +78,7 @@ const slides = {
       img: carouselCorporate,
       bgColor: '#FFE3A8',
       title: 'Corporate Training',
+      href: '/program#corporate',
     },
     {
       id: 4,
@@ -79,18 +86,18 @@ const slides = {
       img: carouselPrivat,
       bgColor: '#FFFFFF',
       title: 'Exclusive IT Class',
+      href: 'https://wa.me/6281399271717?text=Halo%20E17%20Course,%20saya%20tertarik%20dengan%20program%20Kelas%20Privat.',
     },
   ],
 };
 
 const quickLinks = {
   id: [
-    { id: 'bootcamp', icon: GraduationCap, label: 'BOOTCAMP IT', sub: 'Pelatihan Siap Kerja', href: '/program#program' },
+    { id: 'bootcamp', icon: GraduationCap, label: 'BOOTCAMP', sub: 'Pelatihan Siap Kerja', href: '/program#program' },
     { id: 'bnsp', icon: Award, label: 'SERTIFIKASI BNSP', sub: '26 Skema Resmi', href: '/program#sertifikasi' },
     { id: 'corporate', icon: Building2, label: 'CORPORATE TRAINING', sub: 'In-House Skilling', href: '/program#corporate' },
     { id: 'privat', icon: UserCheck, label: 'KELAS PRIVAT', sub: 'Mentoring 1-on-1', href: 'https://wa.me/6281399271717?text=Halo%20E17%20Course,%20saya%20tertarik%20dengan%20program%20Kelas%20Privat.' },
     { id: 'artikel', icon: BookOpen, label: 'ARTIKEL & BERITA', sub: 'Edukasi & Tren IT', href: '/artikel' },
-    { id: 'whatsapp', icon: MessageSquare, label: 'KONSULTASI WA', sub: 'Respon Cepat', href: 'https://wa.me/6281399271717' },
   ],
   en: [
     { id: 'bootcamp', icon: GraduationCap, label: 'IT BOOTCAMP', sub: 'Job-Ready Training', href: '/program#program' },
@@ -98,7 +105,6 @@ const quickLinks = {
     { id: 'corporate', icon: Building2, label: 'CORPORATE TRAINING', sub: 'In-House Skilling', href: '/program#corporate' },
     { id: 'privat', icon: UserCheck, label: 'PRIVATE CLASS', sub: '1-on-1 Mentoring', href: 'https://wa.me/6281399271717?text=Halo%20E17%20Course,%20saya%20tertarik%20dengan%20program%20Kelas%20Privat.' },
     { id: 'artikel', icon: BookOpen, label: 'ARTICLES & NEWS', sub: 'IT Education & Trends', href: '/artikel' },
-    { id: 'whatsapp', icon: MessageSquare, label: 'WA CONSULTATION', sub: 'Fast Response', href: 'https://wa.me/6281399271717' },
   ],
 };
 
@@ -179,86 +185,25 @@ export function BannerCarousel() {
                     key={s.id}
                     className="flex-[0_0_100%] min-w-0 px-4 md:px-8"
                   >
-                    <div
-                      className="relative aspect-[1024/381] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20"
+                    <a
+                      href={s.href}
+                      target={s.href.startsWith('http') ? '_blank' : undefined}
+                      rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="relative aspect-[1024/381] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20 block cursor-pointer hover:shadow-[0_8px_40px_rgba(255,191,0,0.3)] transition-shadow duration-300"
                     >
                       {/* Full-Bleed Image Background */}
-                      {s.isFullImage ? (
-                        <div
-                          className="w-full h-full flex items-center justify-center relative select-none"
-                          style={{ backgroundColor: s.bgColor || '#0d1a30' }}
-                        >
-                          <img
-                            src={s.img}
-                            alt={s.title}
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                      ) : (
-                        <>
-                          <img
-                            src={s.img}
-                            alt={s.title}
-                            className="w-full h-full object-cover"
-                          />
+                      <div
+                        className="w-full h-full flex items-center justify-center relative select-none"
+                        style={{ backgroundColor: s.bgColor || '#0d1a30' }}
+                      >
+                        <img
+                          src={s.img}
+                          alt={s.title}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
 
-                          {/* Secondary Gradient Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/60 to-transparent opacity-95" />
-                          <div className="absolute inset-0 bg-gradient-to-r from-secondary/85 via-transparent to-transparent opacity-80" />
-
-                          {/* Floating Content Overlay */}
-                          <div className="absolute inset-0 p-6 sm:p-10 md:p-14 flex flex-col justify-end items-start z-10">
-
-                            {/* Floating Action Buttons */}
-                            <div className="flex items-center gap-3 mb-6">
-                              <a
-                                href={s.href}
-                                className="w-11 h-11 rounded-full bg-primary text-secondary font-black shadow-lg flex items-center justify-center hover:scale-110 transition-transform"
-                                title="Buka Program"
-                              >
-                                <Play size={18} className="fill-secondary translate-x-0.5" />
-                              </a>
-                              <button
-                                className="w-11 h-11 rounded-full bg-white/15 backdrop-blur-md text-white border border-white/30 flex items-center justify-center hover:bg-white/30 transition-colors"
-                                title="Simpan Program"
-                              >
-                                <Bookmark size={18} />
-                              </button>
-                            </div>
-
-                            {/* Title */}
-                            <motion.h3
-                              key={s.id + '-t-' + lang}
-                              initial={{ opacity: 0, y: 15 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight max-w-3xl mb-3 tracking-tight"
-                            >
-                              {s.title}
-                            </motion.h3>
-
-                            {/* Subtitle & Desc */}
-                            <div className="space-y-1 mb-6">
-                              <span className="text-xs font-mono font-bold tracking-widest uppercase text-primary block">
-                                {s.subtitle}
-                              </span>
-                              <p className="text-xs sm:text-sm text-gray-300 max-w-xl line-clamp-2 leading-relaxed">
-                                {s.desc}
-                              </p>
-                            </div>
-
-                            {/* CTA Link Button */}
-                            <a
-                              href={s.href}
-                              className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold px-6 py-3 rounded-full bg-white/10 hover:bg-primary hover:text-secondary text-white border border-white/20 hover:border-primary transition-all duration-300 shadow-md group"
-                            >
-                              {s.cta} <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                            </a>
-
-                          </div>
-                        </>
-                      )}
-
-                    </div>
+                    </a>
                   </div>
                 );
               })}
@@ -310,7 +255,7 @@ export function BannerCarousel() {
 
       {/* Horizontal Quick-Access Feature Links Row */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 -mt-6 sm:-mt-10 relative z-30">
-        <div className="bg-white rounded-3xl border border-gray-200/80 shadow-2xl p-4 sm:p-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+        <div className="bg-white rounded-3xl border border-gray-200/80 shadow-2xl p-4 sm:p-6 grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
           {currentQuickLinks.map((item, i) => {
             const Icon = item.icon;
             const isExternal = item.href.startsWith('http');
@@ -324,7 +269,9 @@ export function BannerCarousel() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.05 }}
-                className="flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-secondary hover:text-white hover:border-secondary hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                className={`flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-secondary hover:text-white hover:border-secondary hover:shadow-xl transition-all duration-300 group cursor-pointer ${
+                  i === 4 ? 'col-span-2 lg:col-span-1 w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.5rem)] lg:w-full mx-auto lg:mx-0' : ''
+                }`}
               >
                 <div className="w-12 h-12 rounded-2xl bg-white border border-gray-200 group-hover:bg-primary group-hover:border-primary flex items-center justify-center text-secondary group-hover:text-secondary mb-3 transition-colors shadow-sm">
                   <Icon size={22} className="group-hover:scale-110 transition-transform" />
