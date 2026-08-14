@@ -77,9 +77,14 @@ export function CorporateSection() {
                 );
               })}
             </div>
-            <button className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-secondary text-white font-bold text-sm hover:bg-secondary/90 transition-all group">
+            <a 
+              href="https://api.whatsapp.com/send/?phone=6281399271717&text&type=phone_number&app_absent=0" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex w-fit items-center gap-2 px-7 py-3.5 rounded-full bg-secondary text-white font-bold text-sm hover:bg-secondary/90 transition-all group"
+            >
               {t.cta}<ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </motion.div>
 
           <motion.div initial={{ opacity:0, x:24 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ delay:0.1 }}>
