@@ -32,4 +32,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", router);
 
+// Add root route to prevent 404 on the main page
+app.get("/", (req: Request, res: Response) => {
+  res.send("🚀 E17 Course API is running successfully!");
+});
+
 export default app;
