@@ -14,7 +14,7 @@ export const articleContentsMap: Record<number, ArticleContent> = {
     id: 1,
     category: 'Web Development',
     title: '8 Rekomendasi Mesin Pencari Bebas Akses dan Legal',
-    author: 'E17 Editorial',
+    author: 'Wildan Wicaksono',
     date: '14 June 2026',
     readTime: '5 menit',
     image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',

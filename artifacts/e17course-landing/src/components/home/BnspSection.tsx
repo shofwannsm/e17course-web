@@ -114,7 +114,7 @@ const T = {
     h2a: 'TERLATIH, KOMPETEN,',
     h2b: 'UNGGUL!',
     descQuote: 'Untuk menang di dunia kerja, kompetensi saja tidak cukup.',
-    descQuoteEm: 'You need a stamp of excellence!',
+    descQuoteEm: '',
     desc: 'E17 Course siap mendampingi proses Sertifikasi BNSP, mulai<br />dari persiapan dokumen, portofolio, hingga uji kompetensi.',
     searchPlaceholder: 'Cari skema... (misal: Data Analyst, Video Editor, Web Developer)',
     badges: ['Diakui Nasional', 'Mengacu SKKNI Kemnaker RI', 'Asesor Berlisensi LSP'],
@@ -129,7 +129,7 @@ const T = {
     h2a: 'TRAINED, COMPETENT,',
     h2b: 'EXCELLENT!',
     descQuote: 'To win in the workplace, competency alone is not enough.',
-    descQuoteEm: 'You need a stamp of excellence!',
+    descQuoteEm: '',
     desc: 'E17 Course is ready to assist your BNSP Certification process, from document preparation, portfolio, to competency testing.',
     searchPlaceholder: 'Search scheme... (e.g., Data Analyst, Video Editor, Web Developer)',
     badges: ['Nationally Recognised', 'SKKNI Compliant', 'LSP Licensed Assessors'],
@@ -150,18 +150,18 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
   const t = T[lang];
   const cats = categories[lang];
   const items = schemes[lang];
-  
+
   const [activeCat, setActiveCat] = useState(cats[0].label);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedScheme, setSelectedScheme] = useState<BnspSchemeDetail | null>(null);
 
   // Filter items by category
-  const categoryFiltered = activeCat === cats[0].label 
-    ? items 
+  const categoryFiltered = activeCat === cats[0].label
+    ? items
     : items.filter(s => s.category === (cats.findIndex(c => c.label === activeCat) >= 1 ? categories.id[cats.findIndex(c => c.label === activeCat)].label : activeCat));
 
   // Filter items by search query
-  const filtered = categoryFiltered.filter(s => 
+  const filtered = categoryFiltered.filter(s =>
     s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     s.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
     s.tag.toLowerCase().includes(searchTerm.toLowerCase())
@@ -183,9 +183,9 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
         <span className="text-[18rem] font-extrabold text-secondary/[0.025] select-none leading-none">BNSP</span>
       </div>
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative">
-        
+
         {/* Section Header */}
-        <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="text-center mb-10 max-w-3xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-white border border-primary/20 shadow-sm text-primary text-[11px] font-extrabold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
             <ShieldCheck size={14} />{t.badge}
           </div>
@@ -195,11 +195,11 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
           <p className="text-secondary/90 text-sm md:text-base font-bold leading-relaxed max-w-2xl mx-auto mb-2">
             {t.descQuote} <br /><em className="text-accent font-extrabold not-italic">{t.descQuoteEm}</em>
           </p>
-          <p 
+          <p
             className="text-secondary/70 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto mb-6"
             dangerouslySetInnerHTML={{ __html: t.desc }}
           />
-          
+
           <div className="flex flex-wrap justify-center gap-3 mb-6">
             {t.badges.map(b => (
               <span
@@ -229,7 +229,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
                 className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-gray-200 shadow-sm text-xs sm:text-sm text-secondary focus:outline-none focus:border-primary transition-all placeholder:text-gray-400"
               />
               {searchTerm && (
-                <button 
+                <button
                   onClick={() => setSearchTerm('')}
                   className="absolute right-4 text-xs font-bold text-gray-400 hover:text-secondary"
                 >
@@ -246,19 +246,17 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
             const isActive = activeCat === cat.label;
 
             return (
-              <button 
-                key={cat.label} 
-                onClick={() => setActiveCat(cat.label)} 
-                className={`px-4 py-2 rounded-full text-xs md:text-sm font-bold border transition-all flex items-center gap-2 ${
-                  isActive 
-                    ? 'bg-primary text-secondary border-primary shadow-sm' 
-                    : 'bg-white text-secondary/60 border-gray-200 hover:border-gray-400 hover:text-secondary'
-                }`}
+              <button
+                key={cat.label}
+                onClick={() => setActiveCat(cat.label)}
+                className={`px-4 py-2 rounded-full text-xs md:text-sm font-bold border transition-all flex items-center gap-2 ${isActive
+                  ? 'bg-primary text-secondary border-primary shadow-sm'
+                  : 'bg-white text-secondary/60 border-gray-200 hover:border-gray-400 hover:text-secondary'
+                  }`}
               >
                 <span>{cat.label}</span>
-                <span className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
-                  isActive ? 'bg-secondary/15 text-secondary' : 'bg-gray-100 text-gray-500'
-                }`}>
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-black ${isActive ? 'bg-secondary/15 text-secondary' : 'bg-gray-100 text-gray-500'
+                  }`}>
                   {cat.count}
                 </span>
               </button>
@@ -270,10 +268,10 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
         {displayedItems.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {displayedItems.map((s, i) => (
-              <motion.div 
-                key={s.slug} 
-                initial={{ opacity:0, y:16 }} 
-                animate={{ opacity:1, y:0 }} 
+              <motion.div
+                key={s.slug}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.03 }}
                 onClick={() => handleOpenDetail(s.slug)}
                 className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:border-amber-500/40 transition-all cursor-pointer group"
@@ -284,7 +282,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
                 </div>
                 <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug group-hover:text-amber-700 transition-colors">{s.title}</h3>
                 <p className="text-sm text-secondary/60 leading-relaxed flex-1 mb-5">{s.desc}</p>
-                <button 
+                <button
                   onClick={(e) => { e.stopPropagation(); handleOpenDetail(s.slug); }}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 group-hover:text-amber-900 transition-colors group-hover:gap-2.5"
                 >
@@ -302,7 +300,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
         {/* On Home Page: Direct CTA to Dedicated Program Page */}
         {isHomePage && (
           <div className="flex flex-col items-center mt-10">
-            <Link 
+            <Link
               href="/program#sertifikasi"
               className="px-8 py-4 rounded-full bg-secondary text-white font-extrabold text-xs sm:text-sm hover:bg-secondary/90 transition-all flex items-center gap-2.5 shadow-md hover:shadow-lg group"
             >
@@ -316,7 +314,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
 
         {/* On Program Page: WhatsApp Consultation CTA */}
         {!isHomePage && (
-          <motion.div initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="flex justify-center mt-12">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex justify-center mt-12">
             <a href="https://wa.me/6281399271717" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full bg-primary text-secondary font-bold text-base hover:bg-primary/90 transition-all flex items-center gap-2 group shadow-md hover:shadow-lg">
               {t.cta}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
@@ -326,7 +324,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
       </div>
 
       {/* Interactive Detail Modal */}
-      <BnspDetailModal 
+      <BnspDetailModal
         scheme={selectedScheme}
         isOpen={Boolean(selectedScheme)}
         onClose={() => setSelectedScheme(null)}

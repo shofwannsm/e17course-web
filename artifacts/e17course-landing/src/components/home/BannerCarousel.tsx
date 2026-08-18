@@ -147,7 +147,7 @@ export function BannerCarousel() {
     >
 
       {/* Top Immersive Secondary Banner Area */}
-      <div className="relative bg-secondary text-white pt-10 pb-28 sm:pb-36 overflow-hidden">
+      <div className="relative bg-secondary text-white pt-6 pb-16 sm:pt-10 sm:pb-28 md:pb-36 overflow-hidden">
 
         {/* Ambient Glow Effects */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[140px] pointer-events-none" />
@@ -183,13 +183,13 @@ export function BannerCarousel() {
                 return (
                   <div
                     key={s.id}
-                    className="flex-[0_0_100%] min-w-0 px-4 md:px-8"
+                    className="flex-[0_0_100%] min-w-0 px-2 sm:px-4 md:px-8"
                   >
                     <a
                       href={s.href}
                       target={s.href.startsWith('http') ? '_blank' : undefined}
                       rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="relative aspect-[1024/381] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20 block cursor-pointer hover:shadow-[0_8px_40px_rgba(255,191,0,0.3)] transition-shadow duration-300"
+                      className="relative aspect-[1024/381] w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/20 block cursor-pointer hover:shadow-[0_8px_40px_rgba(255,191,0,0.3)] transition-shadow duration-300"
                     >
                       {/* Full-Bleed Image Background */}
                       <div
@@ -213,19 +213,19 @@ export function BannerCarousel() {
           {/* Left Arrow Navigation Button */}
           <button
             onClick={scrollPrev}
-            className="absolute left-3 sm:left-8 md:left-12 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary text-secondary font-black shadow-2xl border border-primary/50 flex items-center justify-center hover:scale-110 hover:shadow-primary/50 transition-all z-30"
+            className="absolute left-1 sm:left-6 md:left-12 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-primary text-secondary font-black shadow-2xl border border-primary/50 hidden md:flex items-center justify-center hover:scale-110 hover:shadow-primary/50 transition-all z-30"
             aria-label="Previous Slide"
           >
-            <ChevronLeft size={24} className="stroke-[3]" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[3]" />
           </button>
 
           {/* Right Arrow Navigation Button */}
           <button
             onClick={scrollNext}
-            className="absolute right-3 sm:right-8 md:right-12 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary text-secondary font-black shadow-2xl border border-primary/50 flex items-center justify-center hover:scale-110 hover:shadow-primary/50 transition-all z-30"
+            className="absolute right-1 sm:right-6 md:right-12 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-primary text-secondary font-black shadow-2xl border border-primary/50 hidden md:flex items-center justify-center hover:scale-110 hover:shadow-primary/50 transition-all z-30"
             aria-label="Next Slide"
           >
-            <ChevronRight size={24} className="stroke-[3]" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[3]" />
           </button>
 
         </div>
@@ -254,7 +254,7 @@ export function BannerCarousel() {
       </div>
 
       {/* Horizontal Quick-Access Feature Links Row */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 -mt-6 sm:-mt-10 relative z-30">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 -mt-8 sm:-mt-12 md:-mt-16 relative z-30">
         <div className="bg-white rounded-3xl border border-gray-200/80 shadow-2xl p-4 sm:p-6 grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
           {currentQuickLinks.map((item, i) => {
             const Icon = item.icon;

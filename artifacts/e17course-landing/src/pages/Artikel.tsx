@@ -20,7 +20,7 @@ const T = {
         category: 'Web Development',
         title: '8 Rekomendasi Mesin Pencari Bebas Akses dan Legal, Situs Se...',
         excerpt: 'Cari mesin pencari bebas akses selain situs Yandex? Yuk simak situs selain Yandex bebas akses atau ...',
-        author: 'E17 Editorial',
+        author: 'Wildan Wicaksono',
         date: '14 June 2026',
         readTime: '5 menit',
         image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
@@ -89,7 +89,7 @@ const T = {
         category: 'Web Development',
         title: '8 Recommended Free and Legal Search Engines',
         excerpt: 'Looking for accessible search engines? Let\'s explore legal search engine alternatives...',
-        author: 'E17 Editorial',
+        author: '',
         date: '14 June 2026',
         readTime: '5 min',
         image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
@@ -219,8 +219,8 @@ export default function Artikel() {
                 key={cat}
                 onClick={() => setActiveCat(cat)}
                 className={`shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all border ${activeCat === cat
-                    ? 'bg-secondary text-white border-secondary shadow-sm'
-                    : 'bg-white text-secondary/70 border-gray-200 hover:border-gray-400 hover:text-secondary'
+                  ? 'bg-secondary text-white border-secondary shadow-sm'
+                  : 'bg-white text-secondary/70 border-gray-200 hover:border-gray-400 hover:text-secondary'
                   }`}
               >
                 {cat}
