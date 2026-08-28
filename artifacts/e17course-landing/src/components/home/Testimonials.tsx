@@ -302,7 +302,7 @@ const TestimonialCard = ({ item, isActive, diff, setActiveIndex, index, setActiv
 
         <div className="pt-2.5 border-t border-white/15 flex items-center justify-between">
           <div>
-            <h4 className="font-extrabold text-white text-xs sm:text-sm leading-snug">{item.name}</h4>
+            <h3 className="font-extrabold text-white text-xs sm:text-sm leading-snug">{item.name}</h3>
             <p className="text-[11px] text-gray-300 font-medium truncate mt-0.5">{item.role}</p>
           </div>
 
@@ -431,11 +431,15 @@ export function Testimonials() {
               <button
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  activeIndex === idx ? 'w-8 bg-primary shadow-sm' : 'w-2.5 bg-secondary/20 hover:bg-secondary/40'
-                }`}
+                className="p-4 -m-4 cursor-pointer focus:outline-none"
                 aria-label={`Slide ${idx + 1}`}
-              />
+              >
+                <div 
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    activeIndex === idx ? 'w-8 bg-primary shadow-sm' : 'w-2.5 bg-secondary/20 hover:bg-secondary/40'
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
@@ -519,7 +523,7 @@ export function Testimonials() {
               <div className="p-5 bg-black/60 flex items-center justify-between text-xs text-gray-300">
                 <div>
                   <p className="font-extrabold text-white text-sm">{activeVideo.name}</p>
-                  <p className="text-gray-400">
+                  <p className="text-gray-500">
                     {activeVideo.role}{activeVideo.company ? ` • ${activeVideo.company}` : ''}
                   </p>
                 </div>

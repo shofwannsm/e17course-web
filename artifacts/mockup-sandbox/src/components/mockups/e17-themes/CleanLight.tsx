@@ -4,7 +4,7 @@ import { Menu, ChevronRight, PlayCircle, Star, Users, CheckCircle2, ArrowRight }
 export default function CleanLight() {
   return (
     <div className="relative min-h-screen w-full bg-[#FFFFFF] text-[#1C244B] overflow-x-hidden selection:bg-[#E8734A] selection:text-white" style={{ fontFamily: '"Plus Jakarta Sans", sans-serif' }}>
-      <style dangerouslySetInlineStyle={{
+      <style dangerouslySetInnerHTML={{
         __html: `
           @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
           

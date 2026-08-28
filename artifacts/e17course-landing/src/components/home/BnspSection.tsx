@@ -220,18 +220,18 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
         {!isHomePage && (
           <div className="max-w-xl mx-auto mb-8 relative">
             <div className="relative flex items-center">
-              <Search className="absolute left-4 text-gray-400" size={18} />
+              <Search className="absolute left-4 text-gray-500" size={18} />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder={t.searchPlaceholder}
-                className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-gray-200 shadow-sm text-xs sm:text-sm text-secondary focus:outline-none focus:border-primary transition-all placeholder:text-gray-400"
+                className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-gray-200 shadow-sm text-xs sm:text-sm text-secondary focus:outline-none focus:border-primary transition-all placeholder:text-gray-500"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-4 text-xs font-bold text-gray-400 hover:text-secondary"
+                  className="absolute right-4 text-xs font-bold text-gray-500 hover:text-secondary"
                 >
                   Clear
                 </button>
@@ -251,7 +251,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
                 onClick={() => setActiveCat(cat.label)}
                 className={`px-4 py-2 rounded-full text-xs md:text-sm font-bold border transition-all flex items-center gap-2 ${isActive
                   ? 'bg-primary text-secondary border-primary shadow-sm'
-                  : 'bg-white text-secondary/60 border-gray-200 hover:border-gray-400 hover:text-secondary'
+                  : 'bg-white text-secondary/70 border-gray-200 hover:border-gray-400 hover:text-secondary'
                   }`}
               >
                 <span>{cat.label}</span>
@@ -281,7 +281,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
                   <span className="text-[11px] text-gray-600 font-bold group-hover:text-amber-800 transition-colors">Detail & Unit Uji →</span>
                 </div>
                 <h3 className="text-base font-extrabold text-secondary mb-3 leading-snug group-hover:text-amber-700 transition-colors">{s.title}</h3>
-                <p className="text-sm text-secondary/60 leading-relaxed flex-1 mb-5">{s.desc}</p>
+                <p className="text-sm text-secondary/70 leading-relaxed flex-1 mb-5">{s.desc}</p>
                 <button
                   onClick={(e) => { e.stopPropagation(); handleOpenDetail(s.slug); }}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 group-hover:text-amber-900 transition-colors group-hover:gap-2.5"
@@ -306,7 +306,7 @@ export function BnspSection({ isHomePage = false }: BnspSectionProps) {
             >
               {t.viewAllPage} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <p className="text-xs text-gray-400 mt-2 font-medium">
+            <p className="text-xs text-gray-500 mt-2 font-medium">
               Menampilkan 6 skema terpopuler dari 26 skema sertifikasi BNSP resmi
             </p>
           </div>

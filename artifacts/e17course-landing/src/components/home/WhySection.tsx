@@ -65,13 +65,13 @@ export function WhySection() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-secondary mb-6 leading-tight">
               {t.h2a}<br /><span className="text-primary">{t.h2b}</span>
             </h2>
-            <p className="text-secondary/60 text-lg mb-12 leading-relaxed">{t.desc}</p>
+            <p className="text-secondary/70 text-lg mb-12 leading-relaxed">{t.desc}</p>
             <div className="grid grid-cols-2 gap-6">
               {t.stats.map((s, i) => (
                 <motion.div key={i} initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay: i*0.1 }}
                   className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
                   <div className={`text-3xl md:text-4xl font-extrabold ${statColors[i]} mb-1`}>{s.value}</div>
-                  <div className="text-secondary/60 font-medium text-sm">{s.label}</div>
+                  <div className="text-secondary/70 font-medium text-sm">{s.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -86,7 +86,7 @@ export function WhySection() {
                     <Icon size={22} className={colors[i].color} />
                   </div>
                   <h4 className="text-base font-bold text-secondary mb-2">{b.title}</h4>
-                  <p className="text-sm text-secondary/60 leading-relaxed">{b.desc}</p>
+                  <p className="text-sm text-secondary/70 leading-relaxed">{b.desc}</p>
                 </motion.div>
               );
             })}

@@ -5,6 +5,7 @@ import { FloatingButtons } from '@/components/layout/FloatingButtons';
 import { ProgramSection } from '@/components/home/ProgramSection';
 import { BnspSection } from '@/components/home/BnspSection';
 import { CorporateSection } from '@/components/home/CorporateSection';
+import { SEO } from '@/components/SEO';
 
 export default function Program() {
   useEffect(() => {
@@ -27,6 +28,10 @@ export default function Program() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-foreground">
+      <SEO 
+        title="Program Pelatihan | E17Course" 
+        description="Jelajahi berbagai program pelatihan IT, Bootcamp, Corporate Training, dan Sertifikasi BNSP dari E17Course."
+      />
       <Navbar />
       <main className="pt-[72px]">
         <ProgramSection />

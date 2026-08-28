@@ -243,7 +243,7 @@ export function BootcampCardStack() {
             >
               {t.learnMore} <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+            <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">
               {t.badgeText}
             </span>
           </div>

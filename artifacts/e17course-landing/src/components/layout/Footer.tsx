@@ -77,18 +77,18 @@ export function Footer() {
               <img src={logo} alt="E17 Course Logo" className="h-10 md:h-12 object-contain self-start" />
 
               <div>
-                <h5 className="font-semibold text-gray-200 text-xs md:text-sm mb-2.5 uppercase tracking-wider">{t.ourSocialMedia}</h5>
+                <h3 className="font-semibold text-gray-200 text-xs md:text-sm mb-2.5 uppercase tracking-wider">{t.ourSocialMedia}</h3>
                 <div className="flex items-center gap-3">
-                  <a href="https://www.facebook.com/e17course" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#3b5998] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Facebook">
+                  <a href="https://www.facebook.com/e17course" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#3b5998] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Facebook">
                     <FaFacebookF size={15} />
                   </a>
-                  <a href="https://x.com/e17course" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-black border border-white/10 flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="X">
+                  <a href="https://x.com/e17course" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-black border border-white/10 flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="X">
                     <FaXTwitter size={15} />
                   </a>
-                  <a href="https://www.instagram.com/e17course/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Instagram">
+                  <a href="https://www.instagram.com/e17course/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="Instagram">
                     <FaInstagram size={16} />
                   </a>
-                  <a href="https://www.youtube.com/@e17course" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FF0000] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="YouTube">
+                  <a href="https://www.youtube.com/@e17course" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#FF0000] flex items-center justify-center text-white hover:scale-105 transition-all" aria-label="YouTube">
                     <FaYoutube size={16} />
                   </a>
                 </div>
@@ -97,7 +97,7 @@ export function Footer() {
 
             {/* Address & Contact Info */}
             <div className="flex flex-col justify-start">
-              <h4 className="font-bold text-white text-base md:text-lg mb-4">{t.contactTitle}</h4>
+              <h3 className="font-bold text-white text-base md:text-lg mb-4">{t.contactTitle}</h3>
               <ul className="space-y-4 text-gray-300 text-sm">
                 <li className="flex items-start gap-3">
                   <MapPin className="text-primary shrink-0 mt-1" size={18} />
@@ -123,7 +123,7 @@ export function Footer() {
           <div className="lg:col-span-5 lg:border-l lg:border-white/10 lg:pl-10 grid grid-cols-2 gap-6 pt-6 lg:pt-0 border-t lg:border-t-0 border-white/10">
             {/* Navigation Column */}
             <div>
-              <h4 className="font-bold text-white text-sm md:text-base tracking-wider uppercase mb-4">{t.companyTitle}</h4>
+              <h3 className="font-bold text-white text-sm md:text-base tracking-wider uppercase mb-4">{t.companyTitle}</h3>
               <ul className="space-y-3">
                 {t.companyLinks.map((link, i) => (
                   <li key={i}>
@@ -137,7 +137,7 @@ export function Footer() {
 
             {/* Program Column */}
             <div>
-              <h4 className="font-bold text-white text-sm md:text-base tracking-wider uppercase mb-4">{t.programTitle}</h4>
+              <h3 className="font-bold text-white text-sm md:text-base tracking-wider uppercase mb-4">{t.programTitle}</h3>
               <ul className="space-y-3">
                 {t.programLinks.map((link, i) => (
                   <li key={i}>

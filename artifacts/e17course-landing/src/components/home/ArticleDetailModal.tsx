@@ -45,9 +45,9 @@ export function ArticleDetailModal({ article, isOpen, onClose }: ArticleDetailMo
           </h2>
 
           {/* Meta Info */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-400 font-semibold mb-6 pb-4 border-b border-gray-100">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 font-semibold mb-6 pb-4 border-b border-gray-100">
             <span className="flex items-center gap-1.5 text-secondary/70">
-              <User size={14} className="text-gray-400" /> {article.author}
+              <User size={14} className="text-gray-500" /> {article.author}
             </span>
             <span className="flex items-center gap-1.5">
               <Calendar size={14} /> {article.date}

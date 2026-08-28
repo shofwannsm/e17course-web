@@ -94,7 +94,7 @@ function Hero3DMockup({ t }: { t: typeof T.id }) {
               <div className="w-3 h-3 rounded-full bg-yellow-400" />
               <div className="w-3 h-3 rounded-full bg-green-400" />
             </div>
-            <span className="text-[11px] font-mono font-bold text-gray-400 ml-2">e17course.com/learning-hub</span>
+            <span className="text-[11px] font-mono font-bold text-gray-500 ml-2">e17course.com/learning-hub</span>
           </div>
 
           <span className="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
@@ -172,7 +172,7 @@ function Hero3DMockup({ t }: { t: typeof T.id }) {
         </div>
         <div>
           <p className="font-black text-secondary text-base leading-none mb-0.5">{t.absorbedVal}</p>
-          <p className="text-[11px] font-bold text-secondary/60">{t.absorbed}</p>
+          <p className="text-[11px] font-bold text-secondary/70">{t.absorbed}</p>
         </div>
       </motion.div>
 
@@ -293,7 +293,7 @@ export function Hero() {
                 {['BS', 'SR', 'AP', 'DM'].map((i, idx) => (
                   <div
                     key={idx}
-                    className={`w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold ${['bg-primary text-secondary', 'bg-blue-600', 'bg-amber-500', 'bg-emerald-600'][idx]
+                    className={`w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold ${['bg-primary text-secondary', 'bg-blue-700', 'bg-amber-700', 'bg-emerald-700'][idx]
                       }`}
                   >
                     {i}
@@ -308,7 +308,7 @@ export function Hero() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-xs text-secondary/50 mt-0.5">
+                <p className="text-xs text-secondary/70 mt-0.5">
                   <span className="font-bold text-secondary">4.9/5</span> {t.ratingLabel}
                 </p>
               </div>

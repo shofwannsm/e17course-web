@@ -13,6 +13,7 @@ export function FloatingButtons() {
         href="https://wa.me/6281399271717?text=Halo%20E17%20Course,%20saya%20ingin%20konsultasi%20mengenai%20program%20pelatihan%20%26%20sertifikasi%20BNSP."
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={lang === 'en' ? 'Contact via WhatsApp' : 'Hubungi via WhatsApp'}
         initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}
         whileHover={{ scale: 1.05, x: -3 }} whileTap={{ scale: 0.95 }}
         className="bg-accent text-white shadow-lg shadow-accent/40 px-4 py-3 rounded-full flex items-center gap-2 font-semibold text-sm transition-colors group overflow-hidden"
@@ -23,6 +24,7 @@ export function FloatingButtons() {
       <motion.a
         href="/COMPRO_E17.pdf"
         download="COMPRO_E17.pdf"
+        aria-label={lang === 'en' ? 'Download Company Profile' : 'Unduh Profil Perusahaan'}
         initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}
         whileHover={{ scale: 1.05, x: -3 }} whileTap={{ scale: 0.95 }}
         className="bg-primary text-white shadow-lg shadow-primary/30 px-4 py-3 rounded-full flex items-center gap-2 font-semibold text-sm transition-colors group overflow-hidden"

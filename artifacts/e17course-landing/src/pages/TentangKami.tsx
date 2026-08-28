@@ -5,6 +5,7 @@ import { FloatingButtons } from '@/components/layout/FloatingButtons';
 import { Cpu, Star, Users, Hammer, Eye, Target, CheckCircle2, ArrowRight, GraduationCap, Briefcase, Award, BookOpen, Compass } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import buildingFuture from '@assets/e17brand/building-future.png';
+import { SEO } from '@/components/SEO';
 
 const T = {
   id: {
@@ -188,6 +189,10 @@ export default function TentangKami() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-foreground">
+      <SEO 
+        title={`${t.storyTitle} | E17Course`} 
+        description="Mengenal lebih dekat perjalanan, visi, dan misi E17Course sebagai lembaga pendidikan dan pelatihan terdepan."
+      />
       <Navbar />
 
       <main className="pt-[72px]">

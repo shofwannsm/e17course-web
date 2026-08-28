@@ -6,6 +6,7 @@ import { FloatingButtons } from '@/components/layout/FloatingButtons';
 import { ArrowLeft, Clock, User, Calendar, BookOpen, ChevronRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { articleContentsMap } from '@/data/articleContents';
+import { SEO } from '@/components/SEO';
 
 const categoryColors: Record<string, string> = {
   'Web Development': 'bg-cyan-50 text-cyan-700 border-cyan-200/60',
@@ -51,6 +52,11 @@ export default function ArtikelDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50/50 font-sans text-foreground">
+      <SEO 
+        title={`${article.title} | E17Course`} 
+        description={article.content[0].replace(/<[^>]*>?/gm, '').substring(0, 150) + '...'}
+        type="article"
+      />
       <Navbar />
 
       <main className="pt-[80px] pb-20">
@@ -79,9 +85,9 @@ export default function ArtikelDetail() {
             </h1>
 
             {/* Metadata */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-400 font-semibold mt-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 font-semibold mt-4">
               <span className="flex items-center gap-1.5 text-secondary/70">
-                <User size={14} className="text-gray-400" /> {article.author}
+                <User size={14} className="text-gray-500" /> {article.author}
               </span>
               <span className="flex items-center gap-1.5">
                 <Calendar size={14} /> {article.date}
@@ -156,7 +162,7 @@ export default function ArtikelDetail() {
                             {oth.title}
                           </h4>
                         </div>
-                        <span className="text-[10px] text-gray-400 font-semibold block mt-1">
+                        <span className="text-[10px] text-gray-500 font-semibold block mt-1">
                           {oth.date}
                         </span>
                       </div>

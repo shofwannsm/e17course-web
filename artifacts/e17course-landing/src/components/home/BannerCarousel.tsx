@@ -15,10 +15,10 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
-import carouselBootcamp from '@assets/e17brand/carousel-bootcamp.png';
-import carouselBnsp from '@assets/e17brand/baner_BNSP_v2.png';
-import carouselCorporate from '@assets/e17brand/carousel-corporate.png';
-import carouselPrivat from '@assets/e17brand/carousel-privat.png';
+import carouselBootcamp from '@assets/e17brand/carousel-bootcamp.webp';
+import carouselBnsp from '@assets/e17brand/baner_BNSP_v2.webp';
+import carouselCorporate from '@assets/e17brand/carousel-corporate.webp';
+import carouselPrivat from '@assets/e17brand/carousel-privat.webp';
 
 const slides = {
   id: [
@@ -163,9 +163,9 @@ export function BannerCarousel() {
                   Pilihan Utama 2026
                 </span>
               </h2>
-              <p className="text-xs text-gray-400 mt-1">PT Edukasi Tujuh Belas • E17 Course</p>
+              <p className="text-xs text-gray-500 mt-1">PT Edukasi Tujuh Belas • E17 Course</p>
             </div>
-            <span className="text-xs font-semibold text-gray-400 hidden sm:inline-block">
+            <span className="text-xs font-semibold text-gray-300 hidden sm:inline-block">
               Diperbarui Mei 2026
             </span>
           </div>
@@ -189,6 +189,7 @@ export function BannerCarousel() {
                       href={s.href}
                       target={s.href.startsWith('http') ? '_blank' : undefined}
                       rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      aria-label={s.title}
                       className="relative aspect-[1024/381] w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/20 block cursor-pointer hover:shadow-[0_8px_40px_rgba(255,191,0,0.3)] transition-shadow duration-300"
                     >
                       {/* Full-Bleed Image Background */}
@@ -200,6 +201,8 @@ export function BannerCarousel() {
                           src={s.img}
                           alt={s.title}
                           className="w-full h-full object-contain"
+                          loading={idx === 0 ? "eager" : "lazy"}
+                          fetchPriority={idx === 0 ? "high" : "auto"}
                         />
                       </div>
 
@@ -279,7 +282,7 @@ export function BannerCarousel() {
                 <h3 className="text-xs sm:text-sm font-black tracking-tight leading-snug group-hover:text-white text-secondary transition-colors">
                   {item.label}
                 </h3>
-                <p className="text-[10px] text-gray-400 group-hover:text-gray-300 font-semibold mt-0.5 transition-colors flex items-center gap-0.5">
+                <p className="text-[10px] text-gray-600 group-hover:text-gray-300 font-semibold mt-0.5 transition-colors flex items-center gap-0.5">
                   {item.sub} {isExternal && <ArrowUpRight size={10} />}
                 </p>
               </motion.a>

@@ -6,6 +6,7 @@ import { FloatingButtons } from '@/components/layout/FloatingButtons';
 import { ArrowRight, Clock, User, Search } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useLocation } from 'wouter';
+import { SEO } from '@/components/SEO';
 
 const T = {
   id: {
@@ -188,6 +189,10 @@ export default function Artikel() {
 
   return (
     <div className="min-h-screen bg-gray-50/50 font-sans text-foreground">
+      <SEO 
+        title={`${t.title} | E17Course`} 
+        description="Temukan artikel terbaru, tips, dan wawasan seputar dunia digital, karir, dan teknologi dari E17Course."
+      />
       <Navbar />
 
       <main className="pt-[80px] pb-20">
@@ -201,13 +206,13 @@ export default function Artikel() {
 
             {/* Search Input */}
             <div className="relative">
-              <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+              <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
               <input
                 type="text"
                 placeholder={t.searchPlaceholder}
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full sm:w-64 pl-9 pr-4 py-2 text-xs sm:text-sm border border-gray-200 rounded-full bg-white text-secondary focus:outline-none focus:border-primary transition-all placeholder:text-gray-400 shadow-sm"
+                className="w-full sm:w-64 pl-9 pr-4 py-2 text-xs sm:text-sm border border-gray-200 rounded-full bg-white text-secondary focus:outline-none focus:border-primary transition-all placeholder:text-gray-500 shadow-sm"
               />
             </div>
           </div>
@@ -246,6 +251,7 @@ export default function Artikel() {
                       <img
                         src={a.image}
                         alt={a.title}
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
@@ -260,16 +266,16 @@ export default function Artikel() {
                         {a.title}
                       </h2>
 
-                      <p className="text-xs sm:text-sm text-secondary/60 leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-secondary/70 leading-relaxed line-clamp-3">
                         {a.excerpt}
                       </p>
                     </div>
                   </div>
 
                   {/* Card Footer */}
-                  <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-semibold bg-gray-50/50">
+                  <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500 font-semibold bg-gray-50/50">
                     <span className="flex items-center gap-1.5 text-secondary/70 font-bold">
-                      <User size={13} className="text-gray-400" /> {a.author}
+                      <User size={13} className="text-gray-500" /> {a.author}
                     </span>
                     <span className="flex items-center gap-1">
                       <Clock size={12} /> {a.date}

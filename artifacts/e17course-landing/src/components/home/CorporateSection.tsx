@@ -65,7 +65,7 @@ export function CorporateSection() {
             <h2 className="text-4xl md:text-5xl font-extrabold text-secondary leading-[1.1] mb-5">
               {t.h2a}<br /><span className="text-primary">{t.h2b}</span><br />{t.h2c}
             </h2>
-            <p className="text-secondary/60 text-sm leading-relaxed mb-8 max-w-md">{t.desc}</p>
+            <p className="text-secondary/70 text-sm leading-relaxed mb-8 max-w-md">{t.desc}</p>
             <div className="flex flex-col gap-3 mb-8">
               {t.benefits.map((b, i) => {
                 const Icon = benefitIcons[i];

@@ -50,11 +50,11 @@ export function PartnerMarquee() {
           <Award size={14} className="text-primary" /> {t.badge}
         </div>
 
-        <h3 className="text-2xl md:text-3xl font-extrabold text-secondary mb-2">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-secondary mb-2">
           {t.h3}
-        </h3>
+        </h2>
 
-        <p className="text-sm text-secondary/60 max-w-2xl mx-auto">
+        <p className="text-sm text-secondary/70 max-w-2xl mx-auto">
           {t.desc}
         </p>
 

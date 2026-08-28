@@ -132,7 +132,7 @@ export function BnspDetailModal({ scheme, isOpen, onClose }: BnspDetailModalProp
               <div className="divide-y divide-amber-100/60">
                 {scheme.units.map((unit, idx) => (
                   <div key={unit.kode} className="px-4 py-3 grid grid-cols-12 gap-2 text-xs sm:text-sm items-center hover:bg-[#fffdf0] transition-colors">
-                    <div className="col-span-2 sm:col-span-1 text-center font-bold text-gray-400 border-r border-gray-100 pr-1">
+                    <div className="col-span-2 sm:col-span-1 text-center font-bold text-gray-500 border-r border-gray-100 pr-1">
                       {idx + 1}.
                     </div>
                     <div className="col-span-4 sm:col-span-4 text-center font-mono font-bold text-[#92400e] border-r border-gray-100 pr-1">

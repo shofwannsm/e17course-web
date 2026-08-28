@@ -66,7 +66,7 @@ export function ProgramHighlights() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-secondary/60 text-lg"
+            className="text-secondary/70 text-lg"
           >
             Pilih jalur belajar yang paling sesuai dengan kebutuhan karier dan tujuan profesional Anda.
           </motion.p>
@@ -93,7 +93,7 @@ export function ProgramHighlights() {
                 </div>
 
                 <h3 className="text-xl font-extrabold text-secondary mb-3">{program.title}</h3>
-                <p className="text-secondary/60 mb-8 leading-relaxed text-sm">{program.desc}</p>
+                <p className="text-secondary/70 mb-8 leading-relaxed text-sm">{program.desc}</p>
 
                 <a
                   href={`#${program.id}`}

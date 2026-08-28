@@ -178,7 +178,7 @@ export function ProgramSection() {
               className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-extrabold transition-all border ${
                 activeCat === cat
                   ? 'bg-primary text-secondary border-primary shadow-sm'
-                  : 'bg-white text-secondary/60 border-gray-200 hover:border-gray-400 hover:text-secondary'
+                  : 'bg-white text-secondary/70 border-gray-200 hover:border-gray-400 hover:text-secondary'
               }`}
             >
               {cat}
@@ -241,7 +241,7 @@ export function ProgramSection() {
                   {t.link} <ArrowRight size={14} />
                 </button>
 
-                <span className="text-[11px] font-bold text-gray-400">
+                <span className="text-[11px] font-bold text-gray-500">
                   Batch 2026
                 </span>
               </div>

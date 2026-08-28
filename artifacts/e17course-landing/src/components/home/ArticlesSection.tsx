@@ -277,16 +277,16 @@ export function ArticlesSection() {
                           {a.title}
                         </h3>
 
-                        <p className="text-xs sm:text-sm text-secondary/60 leading-relaxed line-clamp-3 font-medium">
+                        <p className="text-xs sm:text-sm text-secondary/70 leading-relaxed line-clamp-3 font-medium">
                           {a.excerpt}
                         </p>
                       </div>
                     </div>
 
                     {/* Footer Meta Details */}
-                    <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-semibold bg-gray-50/50">
+                    <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500 font-semibold bg-gray-50/50">
                       <span className="flex items-center gap-1.5 text-secondary/70 font-bold">
-                        <User size={13} className="text-gray-400" /> {a.author}
+                        <User size={13} className="text-gray-500" /> {a.author}
                       </span>
                       <span className="flex items-center gap-1">
                         <Clock size={12} /> {a.date}
